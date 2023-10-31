@@ -64,4 +64,18 @@ fliesModel <- aov(preggers$longevity~as.factor(preggers$condition))
 anova(fliesModel)
 ```
 
+```{r}
+modelLabels <- c("1 Reproduction 1", "5 Reproduction Condition 4", "125 (Male Fruit Flies) 120")
+modelMatrix <- matrix(
+  data = c(FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE, TRUE, FALSE),
+  nrow = 3,
+  ncol = 3,
+  byrow = FALSE
+)
+hasseDiagram::hasse(
+ data = modelMatrix,
+ labels = modelLabels
+)
+```
+
 
