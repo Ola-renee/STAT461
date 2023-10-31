@@ -33,3 +33,12 @@ lapply(
 )
 ```
 
+
+
+```{r}
+flies <- read.csv('/Users/billybevidas/Desktop/Homework\ College\ FA23/STAT\ 461/ihKZg5j2.csv')
+fliesModel <- aov(preggers$longevity~as.factor(preggers$condition))
+anova(fliesModel)
+```
+
+
