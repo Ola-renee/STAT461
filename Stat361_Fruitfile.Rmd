@@ -31,19 +31,23 @@ lapply(
   FUN = library,
   character.only = TRUE
 )
+
+
+# Set options
+options(knitr.kable.NA = "")
+
+
+# Load additional tools
+source("https://raw.github.com/neilhatfield/STAT461/master/rScripts/ANOVATools.R")
+
 ```
 
 type 1 error is point
 
 
-```{r}
-
+```{r  Loading data}
 
 fruitflies <- read_csv("fruitflies.csv")
-
-```
-
-```{r}
 
 ### Set year to an ordered factor
 fruitflies$condition <- factor(
@@ -51,18 +55,8 @@ x = fruitflies$condition,
 levels = c("Null", "One Pregnant", "One Virgin","Eight Pregnant","Eight Virgin")
 )
 
-
-
 ```
 
-
-type 1 error is point
-
-
-```{r}
-fliesModel <- aov(preggers$longevity~as.factor(preggers$condition))
-anova(fliesModel)
-```
 
 ```{r}
 modelLabels <- c("1 Reproduction 1", "5 Reproduction Condition 4", "125 (Male Fruit Flies) 120")
