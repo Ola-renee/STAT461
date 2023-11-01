@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 ```{r}
 
 # Load packages
-packages <- c("tidyverse", "knitr","dplyr", "kableExtra","parameters", "emmeans", "DescTools","dunn.test", "multcompView")
+packages <- c("tidyverse", "knitr","dplyr", "kableExtra","parameters", "emmeans", "DescTools","dunn.test")
 
 
 
@@ -41,6 +41,18 @@ options(knitr.kable.NA = "")
 source("https://raw.github.com/neilhatfield/STAT461/master/rScripts/ANOVATools.R")
 
 ```
+
+# Introduction and Background
+<!-- This is where you'll write the portion of your narrative which frames the context for the SRQ. This is also where you will 1) explicitly state the SRQ and 2) incorporate any additional references (if applicable) -->
+
+There have always been theories throughout history on the physiological cost of reproduction in terms of reduced lifespan^[https://www.nature.com/articles/294580a0.pdf]. Although it has not been determined that there is a significant impact on the longevity of human males on reproduction, two scientists, Linda Partidge and Marion Farquhar decided to test the impact on sexual reproduction of male fruit flies. This is because while some species do not need to have a partner to reproduce, fruit flies do, which is why there were chosen for this study. 
+
+In order to make any statistical discoveries within this study, we would need to see that if a male fruit fly reproduces, their lives are cut significantly shorter than those that do not reproduce within their life. Although we cannot determine anything for humans through this study, we can make some inference on if sexual reproduction impacts the longevity of a living object and this could potentially begin a study on how it affects a human life time. While there might be ethical dilemmas involved here and other things to figure out for that part of the research, fruit flies are a good way to begin to understand the affect of sexual activity on longevity. 
+
+Overall, this experiment is trying to help explore whether or not if the reproduction process for male fruit flies affects their longevity? If there turns out to be a statistically significant impact on the fruit flies longevity, our post hoc question would include the following. 
+
++ Does the amount of other flies in the area make a statistical difference?
++ Does being in an area with virgin fruit flies have a statistical difference from being in an area with pregnant fruit flies?
 
 type 1 error is point
 
