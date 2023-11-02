@@ -11,8 +11,7 @@ knitr::opts_chunk$set(
 	echo = FALSE,
 	fig.align = "center",
 	message = FALSE,
-	warning = FALSE,
-	include=FALSE
+	warning = FALSE
 )
 
 ```
@@ -133,12 +132,17 @@ The alternative hypothesis is that there is a statistically significant impact.
 We express these hypotheses as:
 
 $$
-H_{0} ∶y_{ij}=\ \mu..+\varepsilon_{ij}
-$$ $$ H_{A} ∶y_{ij}=\ \mu..+\alpha_i\ +\varepsilon_{ij}$$
+  H_{0} : y_{ij} = \mu + \varepsilon_{ij}
+$$
+$$
+  H_{A} : y_{ij} = \mu + \alpha_i + \varepsilon_{ij} 
+$$
 
-where $y_{ij}$ represents a fly's longevity, $ \mu$ the overall mean longevity, $\alpha_i$​ the effect of being in reproductive condition $i$, and $\varepsilon_{ij}$ ​the residual effects.
+where \( y_{ij} \) represents a fly's longevity, \( \mu \) the overall mean longevity, \( \alpha_i \) the effect of being in reproductive condition \( i \), and \( \varepsilon_{ij} \) the residual effects.
 
 ## Type I Error Control
+
+$y_{ij}$ represents a fly's longevity, $\mu$ the overall mean
 
 We have decided to set our overall Type I error rate at 6%. For multiple comparisons, we will maintain the Simultaneous Confidence Interval error rate at the same level using Tukey’s HSD. Our threshold for declaring results as statistically unusual will be set at 4%.
 
@@ -330,7 +334,7 @@ geom_point(size = 2) +
 
 ```
 
-## \# Post Hoc for the Parametric Shortcut
+### Post Hoc for the Parametric Shortcut
 
 ```{r ANOVA Table}
 # Modern ANOVA Table ----
@@ -516,52 +520,14 @@ threshold = 0.1 # Your Overall Type I Error Rate
 
 ```
 
-# Box Plot + Connecting Letters
-
-```{r}
 
 
 
-multcompView::multcompBoxplot(
-formula = longevity ~ condition,
-data = fruitflies,
-compFn = "TukeyHSD",
-plotList = list(
-boxplot = list(fig = c(0, 0.85, 0, 1)),
-multcompLetters = list(
-fig = c(0.8, 0.9, 0.1, 0.9),
-fontsize = 12,
-fontface = "bold"
-)
-)
-)
-
-
-
-
-```
-
-```{r}
-# Basic boxplot
-boxplot(longevity ~ condition, data = fruitflies, main="Longevity by Condition", xlab="Condition", ylab="Longevity")
-
-# Adding the Tukey post hoc groupings
-letters <- multcompView::multcompLetters4(
-  object = fruitflies_Model, 
-  comp = hsdfruitflies, 
-  threshold = 0.1
-)$condition
-
-# Compute boxplot statistics for letter placement
-box_stats <- boxplot.stats(fruitflies$longevity[fruitflies$condition == levels(fruitflies$condition)[1]])$stats
-
-# Place the letters above the boxplot
-text(1:length(levels(fruitflies$condition)), box_stats[5] + 1, labels = letters, cex = 1.5, col = "red")
-
-
-```
 
 # Author Contributions
+
+
+
 
 ```{r Author Contributions, echo=FALSE, fig.pos= "H"}
 # Create a data frame with the partner names and years
@@ -569,12 +535,12 @@ Contributions <- data.frame(
   Name = c(
     "Olachi Mbakwe",
     " William Bevidas",
-    "Claudia Silverstein",
+    "Claudia Silverstein"
   ),
   Respondsibilites = c(
     "Introduction",
     "Data Exploration",
-    "Results",
+    "Results"
   )
 )
 
