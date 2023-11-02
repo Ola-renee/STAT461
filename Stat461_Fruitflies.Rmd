@@ -1,8 +1,11 @@
 ---
-title: "Fruit Flies"
+title: "Analysis of Longevity in Male Fruit Flies in Relation to Reproductive Effort"
 author: "Olachi Mbakwe, William Bevidas, Claudia Silverstein"
 date: "2023-10-31"
 output: pdf_document
+editor_options: 
+  markdown: 
+    wrap: sentence
 ---
 
 ```{r setup, include=FALSE}
@@ -16,8 +19,6 @@ knitr::opts_chunk$set(
 )
 
 ```
-
-
 
 ```{r packages, message=FALSE, warning=FALSE, include=FALSE}
 
@@ -45,20 +46,24 @@ source("https://raw.github.com/neilhatfield/STAT461/master/rScripts/shadowgram.R
 ```
 
 # Introduction and Background
+
 <!-- This is where you'll write the portion of your narrative which frames the context for the SRQ. This is also where you will 1) explicitly state the SRQ and 2) incorporate any additional references (if applicable) -->
 
-There have always been theories throughout history on the physiological cost of reproduction in terms of reduced lifespan^[https://www.nature.com/articles/294580a0.pdf]. Although it has not been determined that there is a significant impact on the longevity of human males on reproduction, two scientists, Linda Partidge and Marion Farquhar decided to test the impact on sexual reproduction of male fruit flies. This is because while some species do not need to have a partner to reproduce, fruit flies do, which is why there were chosen for this study. 
+There have always been theories throughout history on the physiological cost of reproduction in terms of reduced lifespan[^1].
+Although it has not been determined that there is a significant impact on the longevity of human males on reproduction, two scientists, Linda Partidge and Marion Farquhar decided to test the impact on sexual reproduction of male fruit flies.
+This is because while some species do not need to have a partner to reproduce, fruit flies do, which is why there were chosen for this study.
 
-In order to make any statistical discoveries within this study, we would need to see that if a male fruit fly reproduces, their lives are cut significantly shorter than those that do not reproduce within their life. Although we cannot determine anything for humans through this study, we can make some inference on if sexual reproduction impacts the longevity of a living object and this could potentially begin a study on how it affects a human life time. While there might be ethical dilemmas involved here and other things to figure out for that part of the research, fruit flies are a good way to begin to understand the affect of sexual activity on longevity. 
+[^1]: <https://www.nature.com/articles/294580a0.pdf>
 
-Overall, this experiment is trying to help explore whether or not if the reproduction process for male fruit flies affects their longevity? If there turns out to be a statistically significant impact on the fruit flies longevity, our post hoc question would include the following. 
+In order to make any statistical discoveries within this study, we would need to see that if a male fruit fly reproduces, their lives are cut significantly shorter than those that do not reproduce within their life.
+Although we cannot determine anything for humans through this study, we can make some inference on if sexual reproduction impacts the longevity of a living object and this could potentially begin a study on how it affects a human life time.
+While there might be ethical dilemmas involved here and other things to figure out for that part of the research, fruit flies are a good way to begin to understand the affect of sexual activity on longevity.
 
-+ Does the amount of other flies in the area make a statistical difference?
-+ Does being in an area with virgin fruit flies have a statistical difference from being in an area with pregnant fruit flies?
+Overall, this experiment is trying to help explore whether or not if the reproduction process for male fruit flies affects their longevity?
+If there turns out to be a statistically significant impact on the fruit flies longevity, our post hoc question would include the following.
 
-
-# Study Design and Methods
-
+-   Does the amount of other flies in the area make a statistical difference?
+-   Does being in an area with virgin fruit flies have a statistical difference from being in an area with pregnant fruit flies?
 
 ```{r  Loading data}
 
@@ -73,6 +78,39 @@ levels = c("Null", "OnePreg", "OneVirgin","EightPreg","EightVirgin")
 
 ```
 
+# Study Design and Methods
+
+In order to address our comparative research question concerning male fruit fly longevity in relation to their reproductive conditions, we've designed a quasi-experimental study.
+This study retrospectively analyzes data collected from an experiment involving male fruit flies exposed to different reproductive scenarios.
+
+### Data Acquisition
+
+The dataset was compiled from previous experimental trials where male fruit flies (Drosophila melanogaster) were exposed to different mating conditions.
+This data has been systematically recorded and categorized based on the reproductive condition each male was subjected to during the trial period.
+
+### Population and Data Collection
+
+Our population of interest is composed of male fruit flies (Drosophila melanogaster) from a controlled laboratory experiment.The dataset was compiled from previous experimental trials where male fruit flies were exposed to various mating conditions.
+This data has been systematically recorded and categorized based on the reproductive condition each male was subjected to during the trial period.
+After importing the dataset, we transformed the 'condition' variable into an ordered factor to accurately reflect the range of mating conditions encountered.
+The conditions range from the absence of females ('Null') to exposure to multiple virgin females ('EightVirgin'), chosen to simulate different degrees of sexual competition and reproductive opportunities.
+We hypothesize that these variables may significantly influence the longevity of the flies.
+
+Conditions Defined: - 'Null': Males with no exposure to females, serving as a baseline control group.
+- 'OnePreg': Males exposed to one pregnant female.
+- 'OneVirgin': Males exposed to one virgin female.
+- 'EightPreg': Males exposed to eight pregnant females.
+- 'EightVirgin': Males exposed to eight virgin females.
+
+## Sampling Method
+
+From the dataset, a stratified sampling approach was used to ensure an equal representation of flies from each reproductive condition.
+This balanced design helps in comparing the longevity across different reproductive scenarios and controlling for potential confounding variables.
+
+## Analytical Approach
+
+The Hasse diagram for the study, indicates a hierarchical structure of the factors, from a single factor of reproduction to the specific conditions and the individual male fruit flies within those conditions.
+This suggests a nested experimental design and implies that we can explore not only the main effects of reproductive conditions but also potential interactions.
 
 ```{r Hasse Diagram}
 
@@ -91,10 +129,28 @@ hasseDiagram::hasse(
 )
 ```
 
+## Hypotheses
+
+The null hypothesis for our study is that there is no statistically significant impact of reproductive condition on male fruit fly longevity.
+The alternative hypothesis is that there is a statistically significant impact.
+We express these hypotheses as:
+
+$$
+H_{0} ∶y_{ij}=\ \mu..+\varepsilon_{ij}
+$$ $$ H_{A} ∶y_{ij}=\ \mu..+\alpha_i\ +\varepsilon_{ij}$$
+
+where $y_{ij}$ represents a fly's longevity, $ \mu$ the overall mean longevity, $\alpha_i$​ the effect of being in reproductive condition $i$, and $\varepsilon_{ij}$ ​the residual effects.
+
+## Type I Error Control
+
+We have decided to set our overall Type I error rate at 6%. For multiple comparisons, we will maintain the Simultaneous Confidence Interval error rate at the same level using Tukey’s HSD. Our threshold for declaring results as statistically unusual will be set at 4%.
+
+
 # Exploration of the Data
 
-
 ### Exploration 1
+
+
 
 ```{r Histogram }
 
@@ -113,8 +169,8 @@ aStep = 4
 
 
 
-### Exploration 2 
 
+### Exploration 2
 
 ```{r Descriptive statistics}
 
@@ -158,7 +214,6 @@ latex_options = c("scale_down", "HOLD_position")
 
 ### Exploration 3
 
-
 ```{r}
 fruitflies %>%
   drop_na(condition) %>%
@@ -170,8 +225,8 @@ fruitflies %>%
   theme(legend.position = "bottom")
 
 ```
-### Exploration 4 
 
+### Exploration 4
 
 ```{r Density Plot}
 
@@ -184,7 +239,6 @@ fruitflies %>%
   xlab("Longevity") +
   theme(legend.position = "bottom")
 ```
-
 
 ### Exploration 5
 
@@ -205,21 +259,15 @@ text = element_text(size = 12)
 
 ```
 
-
 # Results
 
-
-
-
-
-
+To answer our main research question, we will seek to use the parametric shortcut known as the ANOVA F test. There are three assumptions that our data must satisfy to use this approach: residuals follow a Gaussian distribution, homoscedasticity, and independence of observations.
 
 
 # Assumptions
 
-
-
 ### model
+
 ```{r model}
 # Fit the model and parametric shortcut ----
 fruitflies_Model <- aov(
@@ -230,8 +278,8 @@ na.action = "na.omit"
 
 ```
 
-
 ### Gaussian Residuals
+
 ```{r}
 
 # Assumption Assessment Visualizations ----
@@ -246,9 +294,6 @@ ylab = "Residuals (points)"
 )
 
 ```
-
-
-
 
 ```{r Homoscedasticity}
 
@@ -288,9 +333,7 @@ geom_point(size = 2) +
 
 ```
 
-
-
-## # Post Hoc for the Parametric Shortcut
+## \# Post Hoc for the Parametric Shortcut
 
 ```{r ANOVA Table}
 # Modern ANOVA Table ----
@@ -315,8 +358,6 @@ latex_options = c("HOLD_position")
 
 ```
 
-
-
 ```{r}
 
 # Point Estimates for Parametric Shortcut ----
@@ -338,7 +379,6 @@ latex_options = c("HOLD_position")
 )
 
 ```
-
 
 ## The emmeans Approach
 
@@ -367,8 +407,8 @@ kableExtra:: kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_o
 
 ```
 
+## Tukey's [& Kramer's] Honest Significant Difference
 
-## Tukey’s [& Kramer’s] Honest Significant Difference
 ```{r}
 
 ### same code as the on above different ordering 
@@ -393,8 +433,8 @@ kableExtra::kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_op
 
 ```
 
+## DescTools Method
 
-##  DescTools Method
 ```{r}
 
 # Demo Code for DescTool Pairwise Post Hoc ----
@@ -422,7 +462,7 @@ kableExtra::kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_op
 
 ```
 
-## Special Comparisons (Dunnett’s)
+## Special Comparisons (Dunnett's)
 
 ```{r}
 
@@ -450,7 +490,6 @@ kableExtra::kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_op
 
 ```
 
-
 ## Post Hoc Effect Sizes
 
 ```{r}
@@ -468,8 +507,6 @@ kableExtra::kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_op
 
 ```
 
-
-
 ## Connecting Letter Report
 
 ```{r}
@@ -481,7 +518,6 @@ threshold = 0.1 # Your Overall Type I Error Rate
 )
 
 ```
-
 
 # Box Plot + Connecting Letters
 
@@ -507,6 +543,7 @@ fontface = "bold"
 
 
 ```
+
 ```{r}
 # Basic boxplot
 boxplot(longevity ~ condition, data = fruitflies, main="Longevity by Condition", xlab="Condition", ylab="Longevity")
@@ -527,9 +564,7 @@ text(1:length(levels(fruitflies$condition)), box_stats[5] + 1, labels = letters,
 
 ```
 
-
 # Author Contributions
-
 
 ```{r Author Contributions, echo=FALSE, fig.pos= "H"}
 # Create a data frame with the partner names and years
@@ -555,27 +590,3 @@ Contributions <- kable(Contributions,
 Contributions
 
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
