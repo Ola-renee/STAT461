@@ -3,9 +3,6 @@ title: "Analysis of Longevity in Male Fruit Flies in Relation to Reproductive Ef
 author: "Olachi Mbakwe, William Bevidas, Claudia Silverstein"
 date: "2023-10-31"
 output: pdf_document
-editor_options: 
-  markdown: 
-    wrap: sentence
 ---
 
 ```{r setup, include=FALSE}
