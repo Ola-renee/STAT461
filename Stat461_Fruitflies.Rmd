@@ -1,0 +1,581 @@
+---
+title: "Fruit Flies"
+author: "Olachi Mbakwe, William Bevidas, Claudia Silverstein"
+date: "2023-10-31"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(
+	echo = FALSE,
+	fig.align = "center",
+	message = FALSE,
+	warning = FALSE,
+	include=FALSE
+)
+
+```
+
+
+
+```{r packages, message=FALSE, warning=FALSE, include=FALSE}
+
+# Load packages
+packages <- c("tidyverse", "knitr","dplyr", "kableExtra", "hasseDiagram","psych", "car", "parameters", "emmeans", "DescTools","dunn.test", "multcompView")
+
+
+lapply(
+  X = packages,
+  FUN = library,
+  character.only = TRUE
+)
+
+
+# Set options
+options(knitr.kable.NA = "")
+options(contrasts = c("contr.sum", "contr.poly"))
+
+
+# Load additional tools
+source("https://raw.github.com/neilhatfield/STAT461/master/rScripts/ANOVATools.R")
+
+source("https://raw.github.com/neilhatfield/STAT461/master/rScripts/shadowgram.R")
+
+```
+
+# Introduction and Background
+<!-- This is where you'll write the portion of your narrative which frames the context for the SRQ. This is also where you will 1) explicitly state the SRQ and 2) incorporate any additional references (if applicable) -->
+
+There have always been theories throughout history on the physiological cost of reproduction in terms of reduced lifespan^[https://www.nature.com/articles/294580a0.pdf]. Although it has not been determined that there is a significant impact on the longevity of human males on reproduction, two scientists, Linda Partidge and Marion Farquhar decided to test the impact on sexual reproduction of male fruit flies. This is because while some species do not need to have a partner to reproduce, fruit flies do, which is why there were chosen for this study. 
+
+In order to make any statistical discoveries within this study, we would need to see that if a male fruit fly reproduces, their lives are cut significantly shorter than those that do not reproduce within their life. Although we cannot determine anything for humans through this study, we can make some inference on if sexual reproduction impacts the longevity of a living object and this could potentially begin a study on how it affects a human life time. While there might be ethical dilemmas involved here and other things to figure out for that part of the research, fruit flies are a good way to begin to understand the affect of sexual activity on longevity. 
+
+Overall, this experiment is trying to help explore whether or not if the reproduction process for male fruit flies affects their longevity? If there turns out to be a statistically significant impact on the fruit flies longevity, our post hoc question would include the following. 
+
++ Does the amount of other flies in the area make a statistical difference?
++ Does being in an area with virgin fruit flies have a statistical difference from being in an area with pregnant fruit flies?
+
+
+# Study Design and Methods
+
+
+```{r  Loading data}
+
+fruitflies <- read_csv("fruitflies.csv")
+
+### Set year to an ordered factor
+
+fruitflies$condition <- factor(
+x = fruitflies$condition,
+levels = c("Null", "OnePreg", "OneVirgin","EightPreg","EightVirgin")
+)
+
+```
+
+
+```{r Hasse Diagram}
+
+modelLabels <- c("1 Reproduction 1", "5 Reproduction Condition 4", "125 (Male Fruit Flies) 120")
+
+modelMatrix <- matrix(
+  data = c(FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE, TRUE, FALSE),
+  nrow = 3,
+  ncol = 3,
+  byrow = FALSE
+)
+
+hasseDiagram::hasse(
+ data = modelMatrix,
+ labels = modelLabels
+)
+```
+
+# Exploration of the Data
+
+
+### Exploration 1
+
+```{r Histogram }
+
+
+# You can use a histogram or any other kind of data visualization.
+shadowgram(
+dataVec = fruitflies$longevity,
+label = "Longevity",
+layers = 50,
+color = "blue",
+aStep = 4
+)
+
+
+```
+
+
+
+### Exploration 2 
+
+
+```{r Descriptive statistics}
+
+# Descriptive statistics on score by year in school ----
+fruitfliesStats <- psych::describeBy(
+x = fruitflies$longevity,
+group = fruitflies$condition,
+na.rm = TRUE,
+skew = TRUE,
+ranges = TRUE,
+quant = c(0.25, 0.75),
+IQR = FALSE,
+mat = TRUE
+)
+
+fruitfliesStats %>%
+tibble::remove_rownames() %>%
+tibble::column_to_rownames(
+var = "group1"
+) %>%
+dplyr::select(
+n, min, Q0.25, median, Q0.75, max, mad, mean, sd, skew, kurtosis
+) %>%
+knitr::kable(
+caption = "Summary Statistics for Fruit Flies Longevity",
+digits = 3,
+format.args = list(big.mark = ","),
+align = rep('c', 11),
+col.names = c("n", "Min", "Q1", "Median", "Q3", "Max", "MAD", "SAM", "SASD",
+"Sample Skew", "Sample Ex. Kurtosis"),
+booktabs = TRUE
+) %>%
+kableExtra::kable_classic_2(
+font_size = 12,
+latex_options = c("scale_down", "HOLD_position")
+)
+
+
+
+```
+
+### Exploration 3
+
+
+```{r}
+fruitflies %>%
+  drop_na(condition) %>%
+  ggplot(mapping = aes(x = condition, y = longevity, color = condition, shape = condition)) +
+  geom_point(na.rm = TRUE) +
+  theme_bw() +
+  labs(x = "Condition", y = "Longevity") +
+  scale_color_manual(values = c("blue", "red", "green", "purple", "orange")) + # Make sure to adjust the colors accordingly
+  theme(legend.position = "bottom")
+
+```
+### Exploration 4 
+
+
+```{r Density Plot}
+
+fruitflies %>%
+  drop_na(condition) %>%
+  ggplot(mapping = aes(x = longevity, fill = condition)) +
+  geom_density(na.rm = TRUE, alpha = 0.5) +
+  theme_bw() +
+  scale_fill_manual(values = c("blue", "red", "green", "purple", "orange")) + # Make sure to adjust the colors accordingly
+  xlab("Longevity") +
+  theme(legend.position = "bottom")
+```
+
+
+### Exploration 5
+
+```{r box plots}
+
+ggplot(
+data = fruitflies,
+mapping = aes(x = condition, y = longevity, fill = condition)
+) +
+geom_boxplot() +
+theme_bw() +
+xlab("Condition of FruitFlies") +
+ylab("Longevity") +
+theme(
+legend.position = "none",
+text = element_text(size = 12)
+)
+
+```
+
+
+# Results
+
+
+
+
+
+
+
+
+# Assumptions
+
+
+
+### model
+```{r model}
+# Fit the model and parametric shortcut ----
+fruitflies_Model <- aov(
+formula = longevity ~ condition,
+data = fruitflies,
+na.action = "na.omit"
+)
+
+```
+
+
+### Gaussian Residuals
+```{r}
+
+# Assumption Assessment Visualizations ----
+## Gaussian Residuals Assumption
+car::qqPlot(
+x = fruitflies_Model$residuals,
+distribution = "norm",
+envelope = 0.90,
+id = FALSE,
+pch = 20,
+ylab = "Residuals (points)"
+)
+
+```
+
+
+
+
+```{r Homoscedasticity}
+
+## Strip Chart for Homoscedasticity ----
+
+ggplot(
+data = data.frame(
+residuals = fruitflies_Model$residuals,
+fitted = fruitflies_Model$fitted.values
+),
+mapping = aes(x = fitted, y = residuals)
+) +
+geom_point(size = 2) +
+  geom_smooth(
+    formula = y ~ x,
+    method = stats::loess,
+    method.args = list(degree = 1),
+    se = FALSE,
+    linewidth = 0.5
+  ) +
+  geom_hline(
+    yintercept = mean(residuals(fruitflies_Model)),
+    color = "darkgrey",
+    linetype = "solid",
+    linewidth = 1
+  ) +
+  geom_hline(
+    yintercept = 0,
+    color = "red",
+    linetype = "dashed"
+  ) + 
+  theme_bw() +
+    labs(
+      x = "Fitted values (points)",
+      y = "Residuals (points)"
+  )
+
+```
+
+
+
+## # Post Hoc for the Parametric Shortcut
+
+```{r ANOVA Table}
+# Modern ANOVA Table ----
+
+parameters::model_parameters(
+model = fruitflies_Model,
+effectsize_type = c("eta", "omega", "epsilon")
+) %>%
+knitr::kable(
+digits = 4,
+col.names = c(
+"Source", "SS", "df", "MS", "F", "p-value",
+"Eta Sq.", "Omega Sq.", "Epsilon Sq."),
+caption = "ANOVA Table for Fruit Flies Study",
+booktabs = TRUE,
+align = c("l", rep("c", 8))
+) %>%
+kableExtra::kable_classic(
+font_size = 10,
+latex_options = c("HOLD_position")
+)
+
+```
+
+
+
+```{r}
+
+# Point Estimates for Parametric Shortcut ----
+
+pointEst <- dummy.coef(fruitflies_Model)
+pointEst <- unlist(pointEst)
+names(pointEst) <- c("Grand Mean","Null", "OnePreg", "OneVirgin","EightPreg","EightVirgin")
+data.frame("Estimate" = pointEst) %>%
+knitr::kable(
+digits = 2,
+caption = "Point Estimates from the Fruit Flies Study",
+format = "latex",
+booktabs = TRUE,
+align = "c"
+) %>%
+kableExtra::kable_classic(
+font_size = 12,
+latex_options = c("HOLD_position")
+)
+
+```
+
+
+## The emmeans Approach
+
+```{r}
+
+
+ # Demo Code for emmeans Post Hoc ----
+fruitfliesHPairs <- emmeans::emmeans(
+object = fruitflies_Model, # Your aov/lm object
+specs = pairwise ~ condition, # Creates all pairs of the levels of the factor listed
+adjust = "tukey", # How you want to control the error rate
+level = 0.9 # 1 - Your overall Type I Error Rate
+)
+
+
+## Make a professional looking table
+knitr::kable(
+x = fruitfliesHPairs$contrasts, # Grab the appropriate sub-object
+digits = 3,
+caption = "Pairwise Post Hoc Comparison via Tukey HSD",
+col.names = c("Pair", "Difference", "SE", "DF", "t", "p-value"),
+align = "lccccc",
+booktabs = TRUE
+) %>%
+kableExtra:: kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_options = "HOLD_position")
+
+```
+
+
+## Tukey’s [& Kramer’s] Honest Significant Difference
+```{r}
+
+### same code as the on above different ordering 
+# Post Hoc via Tukey HSD ----
+hsdfruitflies <- TukeyHSD(
+x = fruitflies_Model, # Your aov/lm object
+conf.level = 0.95 # 1 -- Your overall Type I Error level
+)
+
+
+## Kable Code for Tukey HSD
+knitr::kable(
+x = hsdfruitflies$condition, # Notice the factor's name
+digits = 3,
+caption = "Post Hoc Tukey HSD Comparisons",
+col.names = c("Difference", "Lower Bound",
+"Upper Bound", "Adj. p-Value"),
+align = 'cccc',
+booktabs = TRUE,
+) %>%
+kableExtra::kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_options = "HOLD_position")
+
+```
+
+
+##  DescTools Method
+```{r}
+
+# Demo Code for DescTool Pairwise Post Hoc ----
+dtPH <- DescTools::PostHocTest(
+x = fruitflies_Model, # Your aov/lm object
+method = "newmankeuls", # Your chosen method
+conf.level = 0.9 # 1 -- Your Overall Type I Error Rate
+)
+## Kable Code for DescTools
+knitr::kable(
+x = dtPH$condition, # Notice the use of the factor name
+digits = 3,
+caption = paste( # Creates a nice title; copy at will
+"Post Hoc",
+attr(dtPH, "method"),
+"Comparisons"
+),
+col.names = c("Difference", "Lower Bound",
+"Upper Bound", "Adj. p-Value"),
+align = 'lcccc',
+booktabs = TRUE,
+) %>%
+kableExtra::kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_options = "HOLD_position")
+
+
+```
+
+## Special Comparisons (Dunnett’s)
+
+```{r}
+
+
+## Dunnett's Test via DescTools
+dunnett <- DescTools::DunnettTest(
+formula = longevity ~ condition,
+data = fruitflies,
+control = "Null", # Enter the level that you want to compare to
+conf.level = 0.9 # 1 -- Your Overall Type I Error Rate
+)
+## Kable Code for Dunnett's Test
+knitr::kable(
+x = dunnett$`Null`, # Note the use of special treatment level
+digits = 3,
+caption = paste("Post Hoc Comparisons--Dunnett's Test"),
+col.names = c("Difference", "Lower Bound",
+"Upper Bound", "Adj. p-Value"),
+align = 'lcccc',
+booktabs = TRUE
+) %>%
+kableExtra::kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_options = "HOLD_position")
+
+
+
+```
+
+
+## Post Hoc Effect Sizes
+
+```{r}
+# Post Hoc Effect Sizes ----
+anova.PostHoc(fruitflies_Model) %>%
+knitr::kable(
+digits = 3,
+caption = "Post Hoc Comparison Effect Sizes",
+col.names = c("Pairwise Comparison","Cohen's d", "Hedge's g",
+"Prob. Superiority"),
+align = 'lccc',
+booktabs = TRUE
+) %>%
+kableExtra::kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_options = "HOLD_position")
+
+```
+
+
+
+## Connecting Letter Report
+
+```{r}
+
+multcompView::multcompLetters4(
+object = fruitflies_Model, # Your aov/lm object
+comp = hsdfruitflies, # Your stored comparisons
+threshold = 0.1 # Your Overall Type I Error Rate
+)
+
+```
+
+
+# Box Plot + Connecting Letters
+
+```{r}
+
+
+
+multcompView::multcompBoxplot(
+formula = longevity ~ condition,
+data = fruitflies,
+compFn = "TukeyHSD",
+plotList = list(
+boxplot = list(fig = c(0, 0.85, 0, 1)),
+multcompLetters = list(
+fig = c(0.8, 0.9, 0.1, 0.9),
+fontsize = 12,
+fontface = "bold"
+)
+)
+)
+
+
+
+
+```
+```{r}
+# Basic boxplot
+boxplot(longevity ~ condition, data = fruitflies, main="Longevity by Condition", xlab="Condition", ylab="Longevity")
+
+# Adding the Tukey post hoc groupings
+letters <- multcompView::multcompLetters4(
+  object = fruitflies_Model, 
+  comp = hsdfruitflies, 
+  threshold = 0.1
+)$condition
+
+# Compute boxplot statistics for letter placement
+box_stats <- boxplot.stats(fruitflies$longevity[fruitflies$condition == levels(fruitflies$condition)[1]])$stats
+
+# Place the letters above the boxplot
+text(1:length(levels(fruitflies$condition)), box_stats[5] + 1, labels = letters, cex = 1.5, col = "red")
+
+
+```
+
+
+# Author Contributions
+
+
+```{r Author Contributions, echo=FALSE, fig.pos= "H"}
+# Create a data frame with the partner names and years
+Contributions <- data.frame(
+  Name = c(
+    "Olachi Mbakwe",
+    " William Bevidas",
+    "Claudia Silverstein",
+  ),
+  Respondsibilites = c(
+    "Introduction",
+    "Data Exploration",
+    "Results",
+  )
+)
+
+
+Contributions <- kable(Contributions,
+  col.names = c("Name", "Respondsibility"),
+  caption = "Author Contributions and Responsibilities") %>%
+  kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_options = "HOLD_position") 
+
+Contributions
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
