@@ -235,12 +235,12 @@ fruitflies %>%
   theme(legend.position = "bottom")
 ```
 
-# Results
+## Results
 
 To answer our main research question, we will seek to use the parametric shortcut known as the ANOVA F test. There are three assumptions that our data must satisfy to use this approach: residuals follow a Gaussian distribution, homoscedasticity, and independence of observations.
 
 
-# Assumptions
+## Assumptions
 
 ### model
 
@@ -309,7 +309,7 @@ geom_point(size = 2) +
 
 ```
 
-### Omnibus Results
+## Omnibus Results
 
 ```{r ANOVATable}
 # Modern ANOVA Table ----
@@ -334,7 +334,7 @@ latex_options = c("HOLD_position")
 
 ```
 
-As we can see from Table \ref{tab:ANOVATable}, the condition a fruit fly is put under accounts for approximately 16.1248 times as much variation as the residuals. Under the null model that the reproduction condition does not impact the longevity of fruit flies, we would anticipate observing a value for the *F* ratio at least as large as we did ~0% of the time we repeat the study. Since our *p*-value is less than our unusualness threshold (0 < 0.04), we will reject the null hypothesis and decide to act as if the reproduction condition for fruit flies does impact the longevity of fruit flies. When looking at the values for $\eta^2$, $\omega^2$, and $\epsilon^2$, we can see that the effect sizes are significantly large, as large is defined as ... 
+As we can see from Table \ref{tab:ANOVATable}, the condition a fruit fly is put under accounts for approximately 16.1248 times as much variation as the residuals. Under the null model that the reproduction condition does not impact the longevity of fruit flies, we would anticipate observing a value for the *F* ratio at least as large as we did ~0% of the time we repeat the study. Since our *p*-value is less than our unusualness threshold (0 < 0.04), we will reject the null hypothesis and decide to act as if the reproduction condition for fruit flies does impact the longevity of fruit flies. When looking at the values for $\eta^2$, $\omega^2$, and $\epsilon^2$, we can see that the effect sizes are significantly large since Cohen and Field's suggested rules of thumb consider a large effect size to be above 0.26 and 0.14 for their respective effect sizes. This compliments the results of the hypothesis test because having a large effect size means that there would have been a larger effect, leading to potential differences throuhgout the model.
 
 ```{r}
 # Point Estimates for Parametric Shortcut ----
@@ -357,15 +357,14 @@ latex_options = c("HOLD_position")
 
 ```
 
+In general, a group of fruit flies will have a larger longevity at a rate of 
+57.90 times as many days per fly; this is our estimate for baseline performance (\(\widehat{\mu_{\bullet\bullet}}\)). We can also see the factor level (treatment) effects (\(\widehat{\alpha_i}\)) estimates. For the null treatment, male fruit flies will accumulate an addition 4.06 days per fly. For the pregnant treatments, male fruit flies will accumulate an additional 10.70 days per fly if there is only 1 other female fly present whereas if there are 8 female flies, they lose approximately 0.98 days per fly. As for the virgin treatments, male fruit flies will accumulate an additional 7.30 days per fly if there is only 1 other female fruit fly present whereas if there are 8, they lost about 21.19 days per fly. 
 
-```{r}
-#In general a group of fruit flies will accumulate `r round(dummy.coef(fruitflies_Model)[[1]], 2)` times as many points as students; this is our estimate for baseline performance (\(\widehat{\mu_{\bullet\bullet}}\)). We can also see the factor level (treatment) effects (\(\widehat{\alpha_i}\)) estimates. For Seniors, they accumulated an additional `r round(dummy.coef(songModel)$Year[2], 2)` points per student where as the Juniors  accumulated `r round(dummy.coef(songModel)$Year[1], 2)` points per student and the Others only accumulated `r round(dummy.coef(songModel)$Year[3], 2)` points per student. This suggests that both Seniors and Others were performing worse that baseline (*GSAM*).
-```
+This suggests that when male fruit flies are put in a room with eight virgin fruit flies, they do much worse than the baseline performance. Looking at these numbers however, it might also suggest that putting them in a room with eight other fruit flies decreases their longevity, since they both do worse than the baseline performance. It seems as though the treatment of eight virgin flies performs much worse than the rest, so this is something that can be looked into during the post-hoc analysis. 
 
+## Post Hoc Analysis
 
-### Post Hoc Analysis
-
-## The emmeans Approach
+### The emmeans Approach
 
 ```{r}
 
