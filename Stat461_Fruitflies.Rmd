@@ -91,11 +91,18 @@ After importing the dataset, we transformed the 'condition' variable into an ord
 The conditions range from the absence of females ('Null') to exposure to multiple virgin females ('EightVirgin'), chosen to simulate different degrees of sexual competition and reproductive opportunities.
 We hypothesize that these variables may significantly influence the longevity of the flies.
 
-Conditions Defined: - 'Null': Males with no exposure to females, serving as a baseline control group.
-- 'OnePreg': Males exposed to one pregnant female.
-- 'OneVirgin': Males exposed to one virgin female.
-- 'EightPreg': Males exposed to eight pregnant females.
-- 'EightVirgin': Males exposed to eight virgin females.
+Conditions Defined: 
+
+- 'Null': Males with no exposure to females, serving as a baseline control group. 
+
+- 'OnePreg': Males exposed to one pregnant female. 
+
+- 'OneVirgin': Males exposed to one virgin female. 
+
+- 'EightPreg': Males exposed to eight pregnant females. 
+
+- 'EightVirgin': Males exposed to eight virgin females. 
+
 
 ## Sampling Method
 
@@ -298,7 +305,7 @@ geom_point(size = 2) +
 
 ```
 
-### Post Hoc for the Parametric Shortcut
+### Omnibus Results
 
 ```{r ANOVA Table}
 # Modern ANOVA Table ----
@@ -344,6 +351,8 @@ latex_options = c("HOLD_position")
 )
 
 ```
+
+### Post Hoc Analysis
 
 ## The emmeans Approach
 
@@ -501,7 +510,7 @@ Contributions <- data.frame(
     " William Bevidas",
     "Claudia Silverstein"
   ),
-  Respondsibilites = c(
+  Responsibilites = c(
     "Introduction",
     "Data Exploration",
     "Results"
@@ -510,7 +519,7 @@ Contributions <- data.frame(
 
 
 Contributions <- kable(Contributions,
-  col.names = c("Name", "Respondsibility"),
+  col.names = c("Name", "Responsibility"),
   caption = "Author Contributions and Responsibilities") %>%
   kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_options = "HOLD_position") 
 
