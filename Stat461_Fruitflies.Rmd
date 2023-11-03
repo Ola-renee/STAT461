@@ -310,7 +310,7 @@ geom_point(size = 2) +
 
 ### Omnibus Results
 
-```{r ANOVA Table}
+```{r ANOVATable}
 # Modern ANOVA Table ----
 
 parameters::model_parameters(
@@ -333,6 +333,8 @@ latex_options = c("HOLD_position")
 
 ```
 
+As we can see from Table \ref{tab:ANOVATable}, the condition a fruit fly is put under accounts for approximately 16.1248 times as much variation as the residuals. Under the null model that the reproduction condition does not impact the longevity of fruit flies, we would anticipate observing a value for the *F* ratio at least as large as we did ~0% of the time we repeat the study. Since our *p*-value is less than our unusualness threshold (0 < 0.04), we will reject the null hypothesis and decide to act as if the reproduction condition for fruit flies does impact the longevity of fruit flies. When looking at the values for $\eta^2$, $\omega^2$, and $\epsilon^2$, we can see that the effect sizes are significantly large, as large is defined as ... 
+
 ```{r}
 # Point Estimates for Parametric Shortcut ----
 
@@ -353,6 +355,12 @@ latex_options = c("HOLD_position")
 )
 
 ```
+
+
+```{r}
+#In general a group of fruit flies will accumulate `r round(dummy.coef(fruitflies_Model)[[1]], 2)` times as many points as students; this is our estimate for baseline performance (\(\widehat{\mu_{\bullet\bullet}}\)). We can also see the factor level (treatment) effects (\(\widehat{\alpha_i}\)) estimates. For Seniors, they accumulated an additional `r round(dummy.coef(songModel)$Year[2], 2)` points per student where as the Juniors  accumulated `r round(dummy.coef(songModel)$Year[1], 2)` points per student and the Others only accumulated `r round(dummy.coef(songModel)$Year[3], 2)` points per student. This suggests that both Seniors and Others were performing worse that baseline (*GSAM*).
+```
+
 
 ### Post Hoc Analysis
 
