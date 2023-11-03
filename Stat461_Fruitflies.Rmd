@@ -11,7 +11,8 @@ knitr::opts_chunk$set(
 	echo = FALSE,
 	fig.align = "center",
 	message = FALSE,
-	warning = FALSE
+	warning = FALSE,
+	dpi = 300 # helps create higher quality graphics in Word
 )
 
 ```
@@ -36,8 +37,6 @@ options(contrasts = c("contr.sum", "contr.poly"))
 
 # Load additional tools
 source("https://raw.github.com/neilhatfield/STAT461/master/rScripts/ANOVATools.R")
-
-source("https://raw.github.com/neilhatfield/STAT461/master/rScripts/shadowgram.R")
 
 ```
 
@@ -149,32 +148,7 @@ We have decided to set our overall Type I error rate at 6%. For multiple compari
 
 # Exploration of the Data
 
-### Exploration 1
-
-
-
-```{r Histogram }
-
-
-# You can use a histogram or any other kind of data visualization.
-shadowgram(
-dataVec = fruitflies$longevity,
-label = "Longevity",
-layers = 50,
-color = "blue",
-aStep = 4
-)
-
-
-```
-
-
-
-
-### Exploration 2
-
-```{r Descriptive statistics}
-
+```{r Statistics}
 # Descriptive statistics on score by year in school ----
 fruitfliesStats <- psych::describeBy(
 x = fruitflies$longevity,
@@ -208,29 +182,38 @@ kableExtra::kable_classic_2(
 font_size = 12,
 latex_options = c("scale_down", "HOLD_position")
 )
-
-
-
 ```
 
-### Exploration 3
+Table \ref{tab:Statistics} displays the values of many of the descriptive statistics for each of the treatments used described above. When looking at the five number summary, it is easy to see that having eight virgin fruit flies in the same room results in a much smaller Median, *Sample Arithmetic Mean (SAM)*, and generally a smaller range of values. It also looks like the treatment of having one pregnant fruit fly in the room has the highest longevity value according to the *SAM* as well as the highest median. The ranges are quite close together between the last three treatments. According to the boxplots in Figure \ref{fig:boxplots}, the null treatment seems to have the most variance and the two treatments with pregnant fruit flies both have outliers while the others do not. There also seems to be a decrease in longevity as the female fruit fly numbers increase and whether or not they were pregnant. 
 
-```{r}
-fruitflies %>%
-  drop_na(condition) %>%
-  ggplot(mapping = aes(x = condition, y = longevity, color = condition, shape = condition)) +
-  geom_point(na.rm = TRUE) +
+```{r boxplots}
+#| fig.cap = "Side-by-side Box Plots of Longevity by Condition",
+#| fig.width = 6,
+#| fig.height = 3,
+#| fig.pos="H"
+#| 
+ggplot(
+  data = fruitflies,
+  mapping = aes(x = condition, y = longevity, fill = condition)
+) +
+  geom_boxplot() +
   theme_bw() +
-  labs(x = "Condition", y = "Longevity") +
-  scale_color_manual(values = c("blue", "red", "green", "purple", "orange")) + # Make sure to adjust the colors accordingly
-  theme(legend.position = "bottom")
+  xlab("Condition of FruitFlies") +
+  ylab("Longevity") +
+  theme(
+    legend.position = "none",
+    text = element_text(size = 12)
+  )
 
 ```
 
-### Exploration 4
+The density plots in Figure \ref{fig:Density} helps to show how the distribution of each of the treatment values looks. The null condition looks to be spread across the entire range of values from all measurements. Having 1 fruit fly that is either pregnant or not shows to be quite close together. Having 8 pregnant fruit flies seems to be pretty close to the values of having 1 fly, but having 8 virgin fruit flies looks to have much smaller values than the rest. 
 
-```{r Density Plot}
-
+```{r Density}
+#| fig.cap = "Densities Plots of Longevity by Condition",
+#| fig.width = 6,
+#| fig.height = 3,
+#| fig.pos="H"
 fruitflies %>%
   drop_na(condition) %>%
   ggplot(mapping = aes(x = longevity, fill = condition)) +
@@ -239,25 +222,6 @@ fruitflies %>%
   scale_fill_manual(values = c("blue", "red", "green", "purple", "orange")) + # Make sure to adjust the colors accordingly
   xlab("Longevity") +
   theme(legend.position = "bottom")
-```
-
-### Exploration 5
-
-```{r box plots}
-
-ggplot(
-data = fruitflies,
-mapping = aes(x = condition, y = longevity, fill = condition)
-) +
-geom_boxplot() +
-theme_bw() +
-xlab("Condition of FruitFlies") +
-ylab("Longevity") +
-theme(
-legend.position = "none",
-text = element_text(size = 12)
-)
-
 ```
 
 # Results
@@ -551,5 +515,13 @@ Contributions <- kable(Contributions,
   kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_options = "HOLD_position") 
 
 Contributions
+
+```
+
+\newpage
+
+# Code Appendix
+
+```{r codeAppendix, ref.label = knitr::all_labels(), echo = TRUE, eval = FALSE}
 
 ```
