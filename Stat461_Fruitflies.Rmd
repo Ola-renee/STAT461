@@ -77,6 +77,7 @@ levels = c("Null", "OnePreg", "OneVirgin","EightPreg","EightVirgin")
 
 In order to address our comparative research question concerning male fruit fly longevity in relation to their reproductive conditions, we've designed a quasi-experimental study.
 This study retrospectively analyzes data collected from an experiment involving male fruit flies exposed to different reproductive scenarios.
+To collect our data, scientists randomly divided 125 male fruit flies into five groups of 25.  The longevity was quantitatively collected by the number of days the fly was alive. The final data collection is publicly available. Our primary response is the longevity of male fruit flies. This has been operationalized as the total number of days they were alive. 
 
 ### Data Acquisition
 
@@ -493,6 +494,9 @@ comp = hsdfruitflies, # Your stored comparisons
 threshold = 0.1 # Your Overall Type I Error Rate
 )
 ```
+#Discussions and Limitations
+We explored our research question of whether or not if the reproduction process for male fruit flies impacts their longevity. From our data, we found that the reproduction process for male fruit flies does not appear to influence their longevity. 
+Our study has several limitations such as examining a niche population of just fruit flies collected in Dahomey in 1970. This can be broadened to a larger population for less limitation. Additionally, we can incorporate additional attributes to give us more insight. For example, the size of the fruit fly can be reported. 
 
 
 # Author Contributions
