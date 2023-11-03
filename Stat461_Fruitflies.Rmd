@@ -95,13 +95,13 @@ Conditions Defined:
 
 - 'Null': Males with no exposure to females, serving as a baseline control group. 
 
-- 'OnePreg': Males exposed to one pregnant female. 
+- 'OnePreg': Males exposed to one pregnant female per day. 
 
-- 'OneVirgin': Males exposed to one virgin female. 
+- 'OneVirgin': Males exposed to one virgin female per day.
 
-- 'EightPreg': Males exposed to eight pregnant females. 
+- 'EightPreg': Males exposed to eight pregnant females per day.
 
-- 'EightVirgin': Males exposed to eight virgin females. 
+- 'EightVirgin': Males exposed to eight virgin females per day.
 
 
 ## Sampling Method
@@ -111,10 +111,15 @@ This balanced design helps in comparing the longevity across different reproduct
 
 ## Analytical Approach
 
-The Hasse diagram for the study, indicates a hierarchical structure of the factors, from a single factor of reproduction to the specific conditions and the individual male fruit flies within those conditions.
+The Hasse diagram (Figure \ref{fig:Hasse_Diagram}) for the study, indicates a hierarchical structure of the factors, from a single factor of reproduction to the specific conditions and the individual male fruit flies within those conditions.
 This suggests a nested experimental design and implies that we can explore not only the main effects of reproductive conditions but also potential interactions.
 
-```{r Hasse Diagram}
+```{r Hasse_Diagram}
+#| fig.cap = "Hasse Diagram for Fruit Fly Longevity",
+#| fig.width = 6,
+#| fig.height = 3,
+#| fig.pos="H"
+#| 
 
 modelLabels <- c("1 Reproduction 1", "5 Reproduction Condition 4", "125 (Male Fruit Flies) 120")
 
@@ -147,8 +152,6 @@ $$
 where \( y_{ij} \) represents a fly's longevity, \( \mu \) the overall mean longevity, \( \alpha_i \) the effect of being in reproductive condition \( i \), and \( \varepsilon_{ij} \) the residual effects.
 
 ## Type I Error Control
-
-$y_{ij}$ represents a fly's longevity, $\mu$ the overall mean
 
 We have decided to set our overall Type I error rate at 6%. For multiple comparisons, we will maintain the Simultaneous Confidence Interval error rate at the same level using Tukey’s HSD. Our threshold for declaring results as statistically unusual will be set at 4%.
 
@@ -191,7 +194,7 @@ latex_options = c("scale_down", "HOLD_position")
 )
 ```
 
-Table \ref{tab:Statistics} displays the values of many of the descriptive statistics for each of the treatments used described above. When looking at the five number summary, it is easy to see that having eight virgin fruit flies in the same room results in a much smaller Median, *Sample Arithmetic Mean (SAM)*, and generally a smaller range of values. It also looks like the treatment of having one pregnant fruit fly in the room has the highest longevity value according to the *SAM* as well as the highest median. The ranges are quite close together between the last three treatments. According to the boxplots in Figure \ref{fig:boxplots}, the null treatment seems to have the most variance and the two treatments with pregnant fruit flies both have outliers while the others do not. There also seems to be a decrease in longevity as the female fruit fly numbers increase and whether or not they were pregnant. 
+Table \ref{tab:Statistics} displays the values of many of the descriptive statistics for each of the treatments used described above. When looking at the five number summary, it is easy to see that having eight virgin fruit flies in the same room results in a much smaller median, *Sample Arithmetic Mean (SAM)*, and generally a smaller range of values. It also looks like the treatment of having one pregnant fruit fly in the room has the highest longevity value according to the *SAM* as well as the highest median. The ranges are quite close together between the last three treatments. According to the box plots in Figure \ref{fig:boxplots}, the null treatment seems to have the highest variability and the two treatments with pregnant fruit flies both have outliers while the others do not. There also seems to be a decrease in longevity as the female fruit fly numbers increase and whether or not they were pregnant. 
 
 ```{r boxplots}
 #| fig.cap = "Side-by-side Box Plots of Longevity by Condition",
@@ -214,7 +217,7 @@ ggplot(
 
 ```
 
-The density plots in Figure \ref{fig:Density} helps to show how the distribution of each of the treatment values looks. The null condition looks to be spread across the entire range of values from all measurements. Having 1 fruit fly that is either pregnant or not shows to be quite close together. Having 8 pregnant fruit flies seems to be pretty close to the values of having 1 fly, but having 8 virgin fruit flies looks to have much smaller values than the rest. 
+The density plots in Figure \ref{fig:Density} help to show how the distribution of each of the treatment values looks. The null condition looks to be spread across the entire range of values from all measurements. This reflects the box plots where the null treatment had the most variability. Having 1 fruit fly that is either pregnant or not shows to be quite close together. Having 8 pregnant fruit flies seems to be pretty close to the values of having 1 fly, but having 8 virgin fruit flies looks to have much smaller values than the rest. 
 
 ```{r Density}
 #| fig.cap = "Densities Plots of Longevity by Condition",
@@ -307,7 +310,7 @@ geom_point(size = 2) +
 
 ### Omnibus Results
 
-```{r ANOVA Table}
+```{r ANOVATable}
 # Modern ANOVA Table ----
 
 parameters::model_parameters(
@@ -330,8 +333,9 @@ latex_options = c("HOLD_position")
 
 ```
 
-```{r}
+As we can see from Table \ref{tab:ANOVATable}, the condition a fruit fly is put under accounts for approximately 16.1248 times as much variation as the residuals. Under the null model that the reproduction condition does not impact the longevity of fruit flies, we would anticipate observing a value for the *F* ratio at least as large as we did ~0% of the time we repeat the study. Since our *p*-value is less than our unusualness threshold (0 < 0.04), we will reject the null hypothesis and decide to act as if the reproduction condition for fruit flies does impact the longevity of fruit flies. When looking at the values for $\eta^2$, $\omega^2$, and $\epsilon^2$, we can see that the effect sizes are significantly large, as large is defined as ... 
 
+```{r}
 # Point Estimates for Parametric Shortcut ----
 
 pointEst <- dummy.coef(fruitflies_Model)
@@ -351,6 +355,12 @@ latex_options = c("HOLD_position")
 )
 
 ```
+
+
+```{r}
+#In general a group of fruit flies will accumulate `r round(dummy.coef(fruitflies_Model)[[1]], 2)` times as many points as students; this is our estimate for baseline performance (\(\widehat{\mu_{\bullet\bullet}}\)). We can also see the factor level (treatment) effects (\(\widehat{\alpha_i}\)) estimates. For Seniors, they accumulated an additional `r round(dummy.coef(songModel)$Year[2], 2)` points per student where as the Juniors  accumulated `r round(dummy.coef(songModel)$Year[1], 2)` points per student and the Others only accumulated `r round(dummy.coef(songModel)$Year[3], 2)` points per student. This suggests that both Seniors and Others were performing worse that baseline (*GSAM*).
+```
+
 
 ### Post Hoc Analysis
 
@@ -381,6 +391,8 @@ kableExtra:: kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_o
 
 ```
 
+Using our pre-chosen unusualness threshold of 4%, we can find which pairs of values have a significant difference on each other. According to the table and using our threshold, we would reject our null hypothesis in 5 of the 10 different pairs of values. There was a significant difference between the null method and having eight virgin flies, one pregnant and eight pregnant flies, one pregnant and eight virgin flies, one virgin and eight virgin flies, and eight pregnant and eight virgin flies. 
+
 ## Tukey's [& Kramer's] Honest Significant Difference
 
 ```{r}
@@ -404,13 +416,11 @@ align = 'cccc',
 booktabs = TRUE,
 ) %>%
 kableExtra::kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_options = "HOLD_position")
-
 ```
 
 ## DescTools Method
 
 ```{r}
-
 # Demo Code for DescTool Pairwise Post Hoc ----
 dtPH <- DescTools::PostHocTest(
 x = fruitflies_Model, # Your aov/lm object
@@ -432,15 +442,11 @@ align = 'lcccc',
 booktabs = TRUE,
 ) %>%
 kableExtra::kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_options = "HOLD_position")
-
-
 ```
 
 ## Special Comparisons (Dunnett's)
 
 ```{r}
-
-
 ## Dunnett's Test via DescTools
 dunnett <- DescTools::DunnettTest(
 formula = longevity ~ condition,
@@ -459,9 +465,6 @@ align = 'lcccc',
 booktabs = TRUE
 ) %>%
 kableExtra::kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_options = "HOLD_position")
-
-
-
 ```
 
 ## Post Hoc Effect Sizes
@@ -484,23 +487,15 @@ kableExtra::kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_op
 ## Connecting Letter Report
 
 ```{r}
-
 multcompView::multcompLetters4(
 object = fruitflies_Model, # Your aov/lm object
 comp = hsdfruitflies, # Your stored comparisons
 threshold = 0.1 # Your Overall Type I Error Rate
 )
-
 ```
 
 
-
-
-
 # Author Contributions
-
-
-
 
 ```{r Author Contributions, echo=FALSE, fig.pos= "H"}
 # Create a data frame with the partner names and years
@@ -517,14 +512,12 @@ Contributions <- data.frame(
   )
 )
 
-
 Contributions <- kable(Contributions,
   col.names = c("Name", "Responsibility"),
   caption = "Author Contributions and Responsibilities") %>%
   kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_options = "HOLD_position") 
 
 Contributions
-
 ```
 
 \newpage
