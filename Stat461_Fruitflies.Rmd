@@ -3,6 +3,10 @@ title: "Analysis of Longevity in Male Fruit Flies in Relation to Reproductive Ef
 author: "Olachi Mbakwe, William Bevidas, Claudia Silverstein"
 date: "2023-10-31"
 output: pdf_document
+geometry: left=1in,right=1in,top=1in,bottom=1in
+urlcolor: blue
+header-includes:
+  - \usepackage{subfig}
 ---
 
 ```{r setup, include=FALSE}
@@ -19,24 +23,19 @@ knitr::opts_chunk$set(
 
 ```{r packages, message=FALSE, warning=FALSE, include=FALSE}
 
-# Load packages
-packages <- c("tidyverse", "knitr","dplyr", "kableExtra", "hasseDiagram","psych", "car", "parameters", "emmeans", "DescTools","dunn.test", "multcompView")
+# Add additional packages by name to the following list ----
+packages <- c(
+  "tidyverse", "knitr", "kableExtra", "hasseDiagram",
+  "psych", "car", "parameters"
+  ) 
+lapply(X = packages, FUN = library, character.only = TRUE, quietly = TRUE)
 
-
-lapply(
-  X = packages,
-  FUN = library,
-  character.only = TRUE
-)
-
-
-# Set options
+# Loading Helper Files and Setting Global Options ----
 options(knitr.kable.NA = "")
-options(contrasts = c("contr.sum", "contr.poly"))
-
-
-# Load additional tools
+options("contrasts" = c("contr.sum", "contr.poly"))
 source("https://raw.github.com/neilhatfield/STAT461/master/rScripts/ANOVATools.R")
+
+source("https://raw.github.com/neilhatfield/STAT461/master/rScripts/shadowgram.R")
 
 ```
 
@@ -44,18 +43,13 @@ source("https://raw.github.com/neilhatfield/STAT461/master/rScripts/ANOVATools.R
 
 <!-- This is where you'll write the portion of your narrative which frames the context for the SRQ. This is also where you will 1) explicitly state the SRQ and 2) incorporate any additional references (if applicable) -->
 
-There have always been theories throughout history on the physiological cost of reproduction in terms of reduced lifespan[^1].
-Although it has not been determined that there is a significant impact on the longevity of human males on reproduction, two scientists, Linda Partidge and Marion Farquhar decided to test the impact on sexual reproduction of male fruit flies.
-This is because while some species do not need to have a partner to reproduce, fruit flies do, which is why there were chosen for this study.
+There have always been theories throughout history on the physiological cost of reproduction in terms of reduced lifespan[^1]. Although it has not been determined that there is a significant impact on the longevity of human males on reproduction, two scientists, Linda Partidge and Marion Farquhar decided to test the impact on sexual reproduction of male fruit flies. This is because while some species do not need to have a partner to reproduce, fruit flies do, which is why there were chosen for this study.
 
 [^1]: <https://www.nature.com/articles/294580a0.pdf>
 
-In order to make any statistical discoveries within this study, we would need to see that if a male fruit fly reproduces, their lives are cut significantly shorter than those that do not reproduce within their life.
-Although we cannot determine anything for humans through this study, we can make some inference on if sexual reproduction impacts the longevity of a living object and this could potentially begin a study on how it affects a human life time.
-While there might be ethical dilemmas involved here and other things to figure out for that part of the research, fruit flies are a good way to begin to understand the affect of sexual activity on longevity.
+In order to make any statistical discoveries within this study, we would need to see that if a male fruit fly reproduces, their lives are cut significantly shorter than those that do not reproduce within their life. Although we cannot determine anything for humans through this study, we can make some inference on if sexual reproduction impacts the longevity of a living object and this could potentially begin a study on how it affects a human life time. While there might be ethical dilemmas involved here and other things to figure out for that part of the research, fruit flies are a good way to begin to understand the affect of sexual activity on longevity.
 
-Overall, this experiment is trying to help explore whether or not if the reproduction process for male fruit flies affects their longevity?
-If there turns out to be a statistically significant impact on the fruit flies longevity, our post hoc question would include the following.
+Overall, this experiment is trying to help explore whether or not if the reproduction process for male fruit flies affects their longevity? If there turns out to be a statistically significant impact on the fruit flies longevity, our post hoc question would include the following.
 
 -   Does the amount of other flies in the area make a statistical difference?
 -   Does being in an area with virgin fruit flies have a statistical difference from being in an area with pregnant fruit flies?
@@ -75,45 +69,35 @@ levels = c("Null", "OnePreg", "OneVirgin","EightPreg","EightVirgin")
 
 # Study Design and Methods
 
-In order to address our comparative research question concerning male fruit fly longevity in relation to their reproductive conditions, we've designed a quasi-experimental study.
-This study retrospectively analyzes data collected from an experiment involving male fruit flies exposed to different reproductive scenarios.
-To collect our data, scientists randomly divided 125 male fruit flies into five groups of 25.  The longevity was quantitatively collected by the number of days the fly was alive. The final data collection is publicly available. Our primary response is the longevity of male fruit flies. This has been operationalized as the total number of days they were alive. 
+In order to address our comparative research question concerning male fruit fly longevity in relation to their reproductive conditions, we've designed a quasi-experimental study. This study retrospectively analyzes data collected from an experiment involving male fruit flies exposed to different reproductive scenarios. To collect our data, scientists randomly divided 125 male fruit flies into five groups of 25. The longevity was quantitatively collected by the number of days the fly was alive. The final data collection is publicly available. Our primary response is the longevity of male fruit flies. This has been operationalized as the total number of days they were alive.
 
 ### Data Acquisition
 
-The dataset was compiled from previous experimental trials where male fruit flies (Drosophila melanogaster) were exposed to different mating conditions.
-This data has been systematically recorded and categorized based on the reproductive condition each male was subjected to during the trial period.
+The dataset was compiled from previous experimental trials where male fruit flies (Drosophila melanogaster) were exposed to different mating conditions. This data has been systematically recorded and categorized based on the reproductive condition each male was subjected to during the trial period.
 
 ### Population and Data Collection
 
-Our population of interest is composed of male fruit flies (Drosophila melanogaster) from a controlled laboratory experiment.The dataset was compiled from previous experimental trials where male fruit flies were exposed to various mating conditions.
-This data has been systematically recorded and categorized based on the reproductive condition each male was subjected to during the trial period.
-After importing the dataset, we transformed the 'condition' variable into an ordered factor to accurately reflect the range of mating conditions encountered.
-The conditions range from the absence of females ('Null') to exposure to multiple virgin females ('EightVirgin'), chosen to simulate different degrees of sexual competition and reproductive opportunities.
-We hypothesize that these variables may significantly influence the longevity of the flies.
+Our population of interest is composed of male fruit flies (Drosophila melanogaster) from a controlled laboratory experiment.The dataset was compiled from previous experimental trials where male fruit flies were exposed to various mating conditions. This data has been systematically recorded and categorized based on the reproductive condition each male was subjected to during the trial period. After importing the dataset, we transformed the 'condition' variable into an ordered factor to accurately reflect the range of mating conditions encountered. The conditions range from the absence of females ('Null') to exposure to multiple virgin females ('EightVirgin'), chosen to simulate different degrees of sexual competition and reproductive opportunities. We hypothesize that these variables may significantly influence the longevity of the flies.
 
-Conditions Defined: 
+Conditions Defined:
 
-- 'Null': Males with no exposure to females, serving as a baseline control group. 
+-   'Null': Males with no exposure to females, serving as a baseline control group.
 
-- 'OnePreg': Males exposed to one pregnant female per day. 
+-   'OnePreg': Males exposed to one pregnant female per day.
 
-- 'OneVirgin': Males exposed to one virgin female per day.
+-   'OneVirgin': Males exposed to one virgin female per day.
 
-- 'EightPreg': Males exposed to eight pregnant females per day.
+-   'EightPreg': Males exposed to eight pregnant females per day.
 
-- 'EightVirgin': Males exposed to eight virgin females per day.
-
+-   'EightVirgin': Males exposed to eight virgin females per day.
 
 ## Sampling Method
 
-From the dataset, a stratified sampling approach was used to ensure an equal representation of flies from each reproductive condition.
-This balanced design helps in comparing the longevity across different reproductive scenarios and controlling for potential confounding variables.
+From the dataset, a stratified sampling approach was used to ensure an equal representation of flies from each reproductive condition. This balanced design helps in comparing the longevity across different reproductive scenarios and controlling for potential confounding variables.
 
 ## Analytical Approach
 
-The Hasse diagram (Figure \ref{fig:Hasse_Diagram}) for the study, indicates a hierarchical structure of the factors, from a single factor of reproduction to the specific conditions and the individual male fruit flies within those conditions.
-This suggests a nested experimental design and implies that we can explore not only the main effects of reproductive conditions but also potential interactions.
+The Hasse diagram (Figure \ref{fig:Hasse_Diagram}) for the study, indicates a hierarchical structure of the factors, from a single factor of reproduction to the specific conditions and the individual male fruit flies within those conditions. This suggests a nested experimental design and implies that we can explore not only the main effects of reproductive conditions but also potential interactions.
 
 ```{r Hasse_Diagram}
 #| fig.cap = "Hasse Diagram for Fruit Fly Longevity",
@@ -139,28 +123,48 @@ hasseDiagram::hasse(
 
 ## Hypotheses
 
-The null hypothesis for our study is that there is no statistically significant impact of reproductive condition on male fruit fly longevity.
-The alternative hypothesis is that there is a statistically significant impact.
-We express these hypotheses as:
+The null hypothesis for our study is that there is no statistically significant impact of reproductive condition on male fruit fly longevity. The alternative hypothesis is that there is a statistically significant impact. We express these hypotheses as:
 
 $$
   H_{0} : y_{ij} = \mu + \varepsilon_{ij}
-$$
+$$ 
+
 $$
   H_{A} : y_{ij} = \mu + \alpha_i + \varepsilon_{ij} 
 $$
 
-where \( y_{ij} \) represents a fly's longevity, \( \mu \) the overall mean longevity, \( \alpha_i \) the effect of being in reproductive condition \( i \), and \( \varepsilon_{ij} \) the residual effects.
+where $y_{ij}$ represents a fly's longevity, $\mu$ the overall mean longevity, $\alpha_i$ the effect of being in reproductive condition $i$, and $\varepsilon_{ij}$ the residual effects.
 
 ## Type I Error Control
 
-We have decided to set our overall Type I error rate at 6%. For multiple comparisons, we will maintain the Simultaneous Confidence Interval error rate at the same level using Tukey’s HSD. Our threshold for declaring results as statistically unusual will be set at 4%.
-
+We have decided to set our overall Type I error rate at 6%. For multiple comparisons, we will maintain the Simultaneous Confidence Interval error rate at the same level using Tukey's HSD. Our threshold for declaring results as statistically unusual will be set at 4%.
 
 # Exploration of the Data
 
+```{r shadowgram}
+#| fig.cap = "Shadowgram of Fruit Flies Longevity",
+#| fig.height = 2,
+#| fig.width = 4,
+#| fig.pos = "H"
+
+# Creating a shadowgram of scores ----
+# Note: you do not have to use shadowgrams. 
+# You can use a histogram or any other kind of data visualization.
+shadowgram(
+  dataVec = fruitflies$longevity,
+  label = "Longevity",
+  layers = 50,
+  color = "blue",
+  aStep = 4
+)
+
+```
+
+Figure \ref{fig:shadowgram} provides the shadowgram for our 125 male fruit flies longevity . In examining the shadowgram, we can that there is a dominant modal clump in the center (from 25 to 85 points) with separation in the background. While we know that we have five groups based upon condition of the fruit fly, Figure \ref{fig:shadowgram} suggests that there are significant differences in terms of performance between them.
+
 ```{r Statistics}
-# Descriptive statistics on score by year in school ----
+
+# Descriptive statistics on longevity by condition ----
 fruitfliesStats <- psych::describeBy(
 x = fruitflies$longevity,
 group = fruitflies$condition,
@@ -195,7 +199,7 @@ latex_options = c("scale_down", "HOLD_position")
 )
 ```
 
-Table \ref{tab:Statistics} displays the values of many of the descriptive statistics for each of the treatments used described above. When looking at the five number summary, it is easy to see that having eight virgin fruit flies in the same room results in a much smaller median, *Sample Arithmetic Mean (SAM)*, and generally a smaller range of values. It also looks like the treatment of having one pregnant fruit fly in the room has the highest longevity value according to the *SAM* as well as the highest median. The ranges are quite close together between the last three treatments. According to the box plots in Figure \ref{fig:boxplots}, the null treatment seems to have the highest variability and the two treatments with pregnant fruit flies both have outliers while the others do not. There also seems to be a decrease in longevity as the female fruit fly numbers increase and whether or not they were pregnant. 
+Table \ref{tab:Statistics} displays the values of many of the descriptive statistics for each of the treatments used described above. When looking at the five number summary, it is easy to see that having eight virgin fruit flies in the same room results in a much smaller median, *Sample Arithmetic Mean (SAM)*, and generally a smaller range of values. It also looks like the treatment of having one pregnant fruit fly in the room has the highest longevity value according to the *SAM* as well as the highest median. The ranges are quite close together between the last three treatments. According to the box plots in Figure \ref{fig:boxplots}, the null treatment seems to have the highest variability and the two treatments with pregnant fruit flies both have outliers while the others do not. There also seems to be a decrease in longevity as the female fruit fly numbers increase and whether or not they were pregnant.
 
 ```{r boxplots}
 #| fig.cap = "Side-by-side Box Plots of Longevity by Condition",
@@ -218,7 +222,7 @@ ggplot(
 
 ```
 
-The density plots in Figure \ref{fig:Density} help to show how the distribution of each of the treatment values looks. The null condition looks to be spread across the entire range of values from all measurements. This reflects the box plots where the null treatment had the most variability. Having 1 fruit fly that is either pregnant or not shows to be quite close together. Having 8 pregnant fruit flies seems to be pretty close to the values of having 1 fly, but having 8 virgin fruit flies looks to have much smaller values than the rest. 
+The density plots in Figure \ref{fig:Density} help to show how the distribution of each of the treatment values looks. The null condition looks to be spread across the entire range of values from all measurements. This reflects the box plots where the null treatment had the most variability. Having 1 fruit fly that is either pregnant or not shows to be quite close together. Having 8 pregnant fruit flies seems to be pretty close to the values of having 1 fly, but having 8 virgin fruit flies looks to have much smaller values than the rest.
 
 ```{r Density}
 #| fig.cap = "Densities Plots of Longevity by Condition",
@@ -235,14 +239,9 @@ fruitflies %>%
   theme(legend.position = "bottom")
 ```
 
-## Results
+# Results
 
 To answer our main research question, we will seek to use the parametric shortcut known as the ANOVA F test. There are three assumptions that our data must satisfy to use this approach: residuals follow a Gaussian distribution, homoscedasticity, and independence of observations.
-
-
-## Assumptions
-
-### model
 
 ```{r model}
 # Fit the model and parametric shortcut ----
@@ -254,89 +253,132 @@ na.action = "na.omit"
 
 ```
 
-### Gaussian Residuals
 
-```{r}
+## Assumptions
+<!-- As this subsection's title implies, you'll discuss any assessment of assumptions in this section BEFORE you share any results for the related methods. -->
+
+```{r assumptionPlots}
+#| fig.cap = "Assessing Assumptions for Song Knowledge Study",
+#| fig.subcap = c("QQ Plot", "Strip Chart"),
+#| fig.ncol = 2,
+#| out.width = "50%",
+#| fig.pos = "H",
+#| fig.show = "hold"
 
 # Assumption Assessment Visualizations ----
 ## Gaussian Residuals Assumption
 car::qqPlot(
-x = fruitflies_Model$residuals,
-distribution = "norm",
-envelope = 0.90,
-id = FALSE,
-pch = 20,
-ylab = "Residuals (points)"
+  x = fruitflies_Model$residuals,
+  distribution = "norm",
+  envelope = 0.90,
+  id = FALSE,
+  pch = 20,
+  ylab = "Residuals (points)"
 )
+
+## Strip Chart for Homoscedasticity ----
+ggplot(
+  data = data.frame(
+    residuals = fruitflies_Model$residuals,
+    fitted = fruitflies_Model$fitted.values
+  ),
+  mapping = aes(x = fitted, y = residuals)
+) +
+  geom_point(size = 2) +
+  theme_bw() +
+  xlab("Fitted values (points)") +
+  ylab("Residuals (points)")
 
 ```
 
-```{r Homoscedasticity}
+Firstly, looking at the Gaussian assumption of Figure \ref{fig:assumptionPlots}a, which shows the QQ plot for our residuals within a 90% confidence envelope, we can see that a small number of observations fall outside this envelope. However, given that we have 125 observations, these few outliers that fall outside the 90% confidence envelope are not a significant concern. Additionally, from Table \ref{tab:descStats}, all conditions except for the null condition exhibit some slight negative skewness, while the null condition appears to exhibit zero skewness. Further, all five groups have similar levels of excess kurtosis, suggesting fewer potential outliers in the data than expected for a Gaussian distribution. The consistent skewness and kurtosis issues across groups reinforce the Gaussian assumption.
 
-## Strip Chart for Homoscedasticity ----
+In Figure \ref{fig:assumptionPlots}b, the strip chart for assessing the homoscedasticity assumption presents five strips, each with 25 points. Looking at the strips we see that the length increases from left to right along the horizontal axis which suggests a very slight megaphone shape. However, since no group's length is more than twice that of another, concerns about homoscedasticity are minimal. Referring back to Table \ref{tab:descStats}, the EightPreg group had the smallest values for variation, as measured by *SASD* and *MAD*, though the differences are not substantial. The visual and statistical evidence allows us to proceed without concern for homoscedasticity.
+
+For the issue of independence of observations, the study design by Partridge and Farquhar guarantees this as each male fruit fly is isolated in its own vial, preventing interaction, and each is randomly assigned a specific reproductive condition, effectively controlling for and isolating variables that affect longevity. Thus, the design and methodology of the study ensure the independence of observations.
+
+<!-- You will need to make a decision about whether you want to proceed with the parametric or nonparametric shortcut -->
+
+Given that we have a balanced design, we will cautiously proceed with the parametric ANOVA *F* test and our planned post hoc analysis (as needed).
+
+```{r indexplot}
+#| fig.cap = "Index plot of Fruit Flies Residual",
+#| fig.height = 2,
+#| fig.width = 4,
+#| fig.pos = "H"
 
 ggplot(
 data = data.frame(
 residuals = fruitflies_Model$residuals,
-fitted = fruitflies_Model$fitted.values
+index = 1:length(fruitflies_Model$residuals)
 ),
-mapping = aes(x = fitted, y = residuals)
+mapping = aes(x = index, y = residuals)
 ) +
-geom_point(size = 2) +
-  geom_smooth(
-    formula = y ~ x,
-    method = stats::loess,
-    method.args = list(degree = 1),
-    se = FALSE,
-    linewidth = 0.5
-  ) +
-  geom_hline(
-    yintercept = mean(residuals(fruitflies_Model)),
-    color = "darkgrey",
-    linetype = "solid",
-    linewidth = 1
-  ) +
-  geom_hline(
-    yintercept = 0,
-    color = "red",
-    linetype = "dashed"
-  ) + 
-  theme_bw() +
-    labs(
-      x = "Fitted values (points)",
-      y = "Residuals (points)"
-  )
+geom_point(size = 1.5) +
+geom_line() +
+theme_bw() +
+geom_hline(
+yintercept = 0,
+linetype = "dashed",
+color = "red"
+) +
+xlab("Measurement order") +
+ylab("Residuals")
+
+
+car::durbinWatsonTest(fruitflies_Model)$dw
 
 ```
 
+The index plot for the Fruit Flies data does not exhibit any indication of a patterns. Additionally, the Durbin-Watson statistic of 2.16 falls within the acceptable range, indicating no evidence of autocorrelation among observations and supporting the assumption of independent observations for our data.
+
 ## Omnibus Results
 
-```{r ANOVATable}
+```{r parametricCase}
+
+#| fig.cap = "Modern ANOVA Table for Fruit Flies Longevity Studyl",
+#| #| fig.height = 2,
+#| fig.width = 4,
+#| fig.pos = "H"
+
 # Modern ANOVA Table ----
+
 
 parameters::model_parameters(
 model = fruitflies_Model,
 effectsize_type = c("eta", "omega", "epsilon")
+) %>%
+  dplyr::mutate(
+p = ifelse(
+test = is.na(p),
+yes = NA,
+no = pvalRound(p, digits = 4)
+)
 ) %>%
 knitr::kable(
 digits = 4,
 col.names = c(
 "Source", "SS", "df", "MS", "F", "p-value",
 "Eta Sq.", "Omega Sq.", "Epsilon Sq."),
-caption = "ANOVA Table for Fruit Flies Study",
+caption = "Modern ANOVA Table for Resin Lifetimes Study",
 booktabs = TRUE,
 align = c("l", rep("c", 8))
 ) %>%
 kableExtra::kable_classic(
 font_size = 10,
-latex_options = c("HOLD_position")
+latex_options = c("HOLD_position")) %>%
+  kableExtra::footnote(
+general = "Computer rounding has made the p-value look like zero.",
+general_title = "Note. ",
+footnote_as_chunk = TRUE
 )
 
 ```
 
-As we can see from Table \ref{tab:ANOVATable}, the condition a fruit fly is put under accounts for approximately 16.1248 times as much variation as the residuals. Under the null model that the reproduction condition does not impact the longevity of fruit flies, we would anticipate observing a value for the *F* ratio at least as large as we did ~0% of the time we repeat the study. Since our *p*-value is less than our unusualness threshold (0 < 0.04), we will reject the null hypothesis and decide to act as if the reproduction condition for fruit flies does impact the longevity of fruit flies. When looking at the values for $\eta^2$, $\omega^2$, and $\epsilon^2$, we can see that the effect sizes are significantly large since Cohen and Field's suggested rules of thumb consider a large effect size to be above 0.26 and 0.14 for their respective effect sizes. This compliments the results of the hypothesis test because having a large effect size means that there would have been a larger effect, leading to potential differences throuhgout the model.
+As we can see from Table \ref{tab:parametricCase},the condition a fruit fly is put under accounts for approximately 16.1248 times as much variation as the residuals. Under the null model that the reproduction condition does not impact the longevity of fruit flies, we would anticipate observing a value for the *F* ratio at least as large as we did \~ 0.01% of the time we repeat the study. Since our *p*-value is less than our unusualness threshold (0.0001 < 0.04), we will reject the null hypothesis and decide to act as if the reproduction condition for fruit flies does impact the longevity of fruit flies. When looking at the values for $\eta^2$, $\omega^2$, and $\epsilon^2$, we can see that the effect sizes are significantly large since Cohen and Field's suggested rules of thumb consider a large effect size to be above 0.26 and 0.14 for their respective effect sizes. This compliments the results of the hypothesis test because having a large effect size means that there would have been a larger effect, leading to potential differences throuhgout the model.
 
-```{r}
+
+```{r Point Estimates}
 # Point Estimates for Parametric Shortcut ----
 
 pointEst <- dummy.coef(fruitflies_Model)
@@ -357,47 +399,16 @@ latex_options = c("HOLD_position")
 
 ```
 
-In general, a group of fruit flies will have a larger longevity at a rate of 
-57.90 times as many days per fly; this is our estimate for baseline performance (\(\widehat{\mu_{\bullet\bullet}}\)). We can also see the factor level (treatment) effects (\(\widehat{\alpha_i}\)) estimates. For the null treatment, male fruit flies will accumulate an addition 4.06 days per fly. For the pregnant treatments, male fruit flies will accumulate an additional 10.70 days per fly if there is only 1 other female fly present whereas if there are 8 female flies, they lose approximately 0.98 days per fly. As for the virgin treatments, male fruit flies will accumulate an additional 7.30 days per fly if there is only 1 other female fruit fly present whereas if there are 8, they lost about 21.19 days per fly. 
+In general, a group of fruit flies will live, on average, approximately r round(dummy.coef(fruitflies_Model)[[1]], 2) days; this is our estimate for baseline longevity ($\widehat{\mu_{\bullet\bullet}}$).. We can also see the factor level (treatment) effects ($\widehat{\alpha_i}$) estimates. For males exposed to eight virgin females per day exhibited a reduction in longevity by `r round(dummy.coef(fruitflies_Model)$condition[6], 2)`days, whereas males exposed to one virgin female per day showed a decrease of `r round(dummy.coef(fruitflies_Model)$condition[3], 2)` days. Males exposed to one pregnant female per day experienced a reduction of `r round(dummy.coef(fruitflies_Model)$condition[4], 2)` days. In contrast, males with no female exposure, serving as our baseline control, had a point estimate effect of `r round(dummy.coef(fruitflies_Model)$condition[2], 2)`days, and males exposed to eight pregnant females per day had a reduced longevity of `r round(dummy.coef(fruitflies_Model)$condition[5], 2)` days. This analysis indicates that males in the Eight Virgin and Eight Preg conditions experienced a greater reduction in longevity compared to the baseline (*GSAM*).
 
-This suggests that when male fruit flies are put in a room with eight virgin fruit flies, they do much worse than the baseline performance. Looking at these numbers however, it might also suggest that putting them in a room with eight other fruit flies decreases their longevity, since they both do worse than the baseline performance. It seems as though the treatment of eight virgin flies performs much worse than the rest, so this is something that can be looked into during the post-hoc analysis. 
+# Post Hoc
 
-## Post Hoc Analysis
+Given our decision to reject the null hypothesis, it is appropriate to proceed with post hoc analyses.
 
-### The emmeans Approach
+For post hoc analyses, we will examine pairwise comparisons among the five conditions experienced by the fruit flies: null, one pregnant female (onepreg), one virgin female (onevirgin), eight pregnant females (eightpreg), and eight virgin females (eightvirgin).
 
-```{r}
+```{r tukeyHSD}
 
-
- # Demo Code for emmeans Post Hoc ----
-fruitfliesHPairs <- emmeans::emmeans(
-object = fruitflies_Model, # Your aov/lm object
-specs = pairwise ~ condition, # Creates all pairs of the levels of the factor listed
-adjust = "tukey", # How you want to control the error rate
-level = 0.9 # 1 - Your overall Type I Error Rate
-)
-
-
-## Make a professional looking table
-knitr::kable(
-x = fruitfliesHPairs$contrasts, # Grab the appropriate sub-object
-digits = 3,
-caption = "Pairwise Post Hoc Comparison via Tukey HSD",
-col.names = c("Pair", "Difference", "SE", "DF", "t", "p-value"),
-align = "lccccc",
-booktabs = TRUE
-) %>%
-kableExtra:: kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_options = "HOLD_position")
-
-```
-
-Using our pre-chosen unusualness threshold of 4%, we can find which pairs of values have a significant difference on each other. According to the table and using our threshold, we would reject our null hypothesis in 5 of the 10 different pairs of values. There was a significant difference between the null method and having eight virgin flies, one pregnant and eight pregnant flies, one pregnant and eight virgin flies, one virgin and eight virgin flies, and eight pregnant and eight virgin flies. 
-
-## Tukey's [& Kramer's] Honest Significant Difference
-
-```{r}
-
-### same code as the on above different ordering 
 # Post Hoc via Tukey HSD ----
 hsdfruitflies <- TukeyHSD(
 x = fruitflies_Model, # Your aov/lm object
@@ -416,112 +427,59 @@ align = 'cccc',
 booktabs = TRUE,
 ) %>%
 kableExtra::kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_options = "HOLD_position")
+
 ```
 
-## DescTools Method
+From Table \ref{tab:tukeyHSD}, the Post Hoc Tukey HSD Comparisons show that the differences in longevity between OnePreg and Null, OneVirgin and Null, and EightPreg and Null fruit flies occur with adjusted p-values of 56.3%, 94.8%, and 78.5% respectively under the null hypothesis, suggesting that these differences are not statistically significant and can be considered typical variations when no real effect is present. In contrast, the comparison between EightVirgin and Null is highly significant with an adjusted p-value of 0.000, indicating a statistically significant difference in longevity.
 
-```{r}
-# Demo Code for DescTool Pairwise Post Hoc ----
-dtPH <- DescTools::PostHocTest(
-x = fruitflies_Model, # Your aov/lm object
-method = "newmankeuls", # Your chosen method
-conf.level = 0.9 # 1 -- Your Overall Type I Error Rate
-)
-## Kable Code for DescTools
-knitr::kable(
-x = dtPH$condition, # Notice the use of the factor name
-digits = 3,
-caption = paste( # Creates a nice title; copy at will
-"Post Hoc",
-attr(dtPH, "method"),
-"Comparisons"
-),
-col.names = c("Difference", "Lower Bound",
-"Upper Bound", "Adj. p-Value"),
-align = 'lcccc',
-booktabs = TRUE,
-) %>%
-kableExtra::kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_options = "HOLD_position")
-```
+Further comparisons show that the differences between OneVirgin and OnePreg, EightPreg and OnePreg, and EightPreg and OneVirgin do not reach statistical significance, bearing adjusted p-values of 93.9%, 6.9%, and 33.8%, respectively, all exceeding the alpha threshold conventionally set at 0.05. However, the comparisons involving the EightVirgin group---specifically when compared against OnePreg, OneVirgin, and EightPreg---each demonstrate statistically significant discrepancies with an adjusted p-value of 0.000. This consistency in significance suggests a substantial effect of the EightVirgin condition on fruit fly longevity. This consistency in significance suggests a substantial effect of the EightVirgin condition on fruit fly longevity. The final comparison drawn between the EightVirgin and EightPreg groups solidifies this finding, with a significant divergence and an adjusted p-value of 0.000.
 
-## Special Comparisons (Dunnett's)
+These results indicate that while certain group differences could be due to chance, the consistently significant outcomes associated with the EightVirgin condition across several comparisons point to a meaningful influence of this particular treatment on the lifespan of the fruit flies.
 
-```{r}
-## Dunnett's Test via DescTools
-dunnett <- DescTools::DunnettTest(
-formula = longevity ~ condition,
-data = fruitflies,
-control = "Null", # Enter the level that you want to compare to
-conf.level = 0.9 # 1 -- Your Overall Type I Error Rate
-)
-## Kable Code for Dunnett's Test
-knitr::kable(
-x = dunnett$`Null`, # Note the use of special treatment level
-digits = 3,
-caption = paste("Post Hoc Comparisons--Dunnett's Test"),
-col.names = c("Difference", "Lower Bound",
-"Upper Bound", "Adj. p-Value"),
-align = 'lcccc',
-booktabs = TRUE
-) %>%
-kableExtra::kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_options = "HOLD_position")
-```
-
-## Post Hoc Effect Sizes
-
-```{r}
+```{r postHocES1}
 # Post Hoc Effect Sizes ----
 anova.PostHoc(fruitflies_Model) %>%
-knitr::kable(
-digits = 3,
-caption = "Post Hoc Comparison Effect Sizes",
-col.names = c("Pairwise Comparison","Cohen's d", "Hedge's g",
-"Prob. Superiority"),
-align = 'lccc',
-booktabs = TRUE
-) %>%
-kableExtra::kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_options = "HOLD_position")
+  knitr::kable(
+    digits = 3,
+    caption = "Post Hoc Comparison Effect Sizes",
+    col.names = c("Pairwise Comparison","Cohen's d", "Hedge's g",
+                  "Prob. Superiority"),
+    align = 'lccc',
+    booktabs = TRUE
+  ) %>%
+kableExtra::kable_classic_2(
+  "striped",
+  font_size = 12,
+  full_width = FALSE,
+  latex_options = "HOLD_position"
+  )
 
 ```
 
-## Connecting Letter Report
+# Discussions and Limitations
 
-```{r}
-multcompView::multcompLetters4(
-object = fruitflies_Model, # Your aov/lm object
-comp = hsdfruitflies, # Your stored comparisons
-threshold = 0.1 # Your Overall Type I Error Rate
-)
-```
-#Discussions and Limitations
-We explored our research question of whether or not if the reproduction process for male fruit flies impacts their longevity. From our data, we found that the reproduction process for male fruit flies does not appear to influence their longevity. 
-Our study has several limitations such as examining a niche population of just fruit flies collected in Dahomey in 1970. This can be broadened to a larger population for less limitation. Additionally, we can incorporate additional attributes to give us more insight. For example, the size of the fruit fly can be reported. 
+In examining the impact of reproductive condition on male fruit fly longevity, our study has provided valuable insights. From our data, we found that exposure to eight virgin females per day has a marked negative impact on male longevity. However, there are several limitations within our study that must be acknowledged. Firstly, there is the specificity of our study because we examined a single species of fruit fly in a controlled laboratory setting, originally collected in Dahomey in 1970. Secondly, our sample size may not have been large enough to detect subtler effects or to ensure that our findings are representative of the broader population of fruit flies. A larger sample would enhance the statistical power of the study and could potentially reveal effects that our current research was unable to observe. Additionally, the incorporation of more varied attributes could provide us with further insight.
+
+\newpage
+
+# References and Materials Consulted
+
+Partridge, L., &amp;  Farquhar, M. (1981, December 10). Sexual activity reduces lifespan of male fruitflies. Nature. Retrieved from https://www.nature.com/articles/294580a0.pdf. 
+
 
 
 # Author Contributions
 
-```{r Author Contributions, echo=FALSE, fig.pos= "H"}
-# Create a data frame with the partner names and years
-Contributions <- data.frame(
-  Name = c(
-    "Olachi Mbakwe",
-    " William Bevidas",
-    "Claudia Silverstein"
-  ),
-  Responsibilites = c(
-    "Introduction",
-    "Data Exploration",
-    "Results"
-  )
-)
+<!-- This section is where you will note who contributed to what aspects of the report/study. You can use as much detail as you wish. -->
 
-Contributions <- kable(Contributions,
-  col.names = c("Name", "Responsibility"),
-  caption = "Author Contributions and Responsibilities") %>%
-  kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_options = "HOLD_position") 
+The authors of this report would like to acknowledge their individual contributions to the report. Both authors contributed to ongoing discussions about study design and analysis.
 
-Contributions
-```
++ Olachi Mbakwe contributed to the Study Design and Methods, Exploration of the Data, analysis of data(Assumptions), coding, and writing of the report.
+
++ William Bevidas contributed to the Introduction and Background, Exploration of the Data, analysis of data(Omnibus Results), coding, and writing of the report.
+
++ Claudia Silverstein contributed to the Discussions and Limitations, analysis of data (Post Hoc), coding, and writing of the report.
+
 
 \newpage
 
