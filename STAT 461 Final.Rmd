@@ -9,6 +9,36 @@ header-includes:
   - \usepackage{subfig}
 ---
 
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(
+	echo = FALSE,
+	fig.align = "center",
+	message = FALSE,
+	warning = FALSE,
+	dpi = 300 # helps create higher quality graphics in Word
+)
+
+```
+
+```{r packages, message=FALSE, warning=FALSE, include=FALSE}
+
+# Add additional packages by name to the following list ----
+packages <- c(
+  "tidyverse", "knitr", "kableExtra", "hasseDiagram",
+  "psych", "car", "parameters"
+  ) 
+lapply(X = packages, FUN = library, character.only = TRUE, quietly = TRUE)
+
+# Loading Helper Files and Setting Global Options ----
+options(knitr.kable.NA = "")
+options("contrasts" = c("contr.sum", "contr.poly"))
+source("https://raw.github.com/neilhatfield/STAT461/master/rScripts/ANOVATools.R")
+
+source("https://raw.github.com/neilhatfield/STAT461/master/rScripts/shadowgram.R")
+
+```
+
 
 The movie industry has been around for over 100 years and along with it has come
 rating systems. There are many different types of ratings that can help define
@@ -93,13 +123,6 @@ to recognzie where the underlying bias might be in the movies.
 ```{r  Loading data}
 
 bechdel_awards <- read_csv("bechdel_awards.csv")
-
-### Set year to an ordered factor
-bechdel_awards$movies.code <- factor(
-x = bechdel_awards$movies.code,
-levels = c("FAIL", "PASS")
-)
-
 
 bechdel_awards$awards_factor <- cut(
   x = bechdel_awards$awards,
