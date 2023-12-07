@@ -100,11 +100,11 @@ x = bechdel_awards$movies.code,
 levels = c("FAIL", "PASS")
 )
 
-### Set awards to an ordered factor with specified levels
+
 bechdel_awards$awards_factor <- cut(
   x = bechdel_awards$awards,
-  breaks = c(-Inf, 1, 5, 10, 15, 20),
-  labels = c("No Award", "1-5 Awards", "6-10 Awards", "11-15 Awards", "16-20 Awards"),
+  breaks = c(-Inf, 1, 5, 10, 15),
+  labels = c("No Award", "1-5 Awards", "6-10 Awards", "11-15 Awards"),
   include.lowest = TRUE,
   right = FALSE
 )
