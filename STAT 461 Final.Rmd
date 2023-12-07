@@ -90,7 +90,6 @@ not relevant to the story. Since this test might not be extremely accurate, it
 might be hard to justify any trends but we think it is an easy and useful way 
 to recognzie where the underlying bias might be in the movies. 
 
-
 ## Previous Studies
 
 While there are no studies to our knowledge doing exactly what we are doing,
@@ -128,7 +127,8 @@ awards were given to each specific movie at that award ceremony. From there,
 the data was joined into one table, where all cases were kept from each of the
 three tables. Any cases of missing data between the three were given a value of
 0. This is because if a movie was not on another list, it was assumed that it 
-wasn't apart of that award show since each of the original lists contained all known information. 
+wasn't apart of that award show since each of the original lists contained all 
+known information. 
 
 Next, the awards are added up from each of the award ceremonies and this final
 list consists of 11,003 different movies/people who received awards along with
@@ -174,7 +174,35 @@ For this report, we will be using IMBD score as the response with the amount of
 awards as the factor at 4 levels and the Bechdel test score as the second factor
 at 2 levels. 
 
-# Bibliography
+## Addressing the Multiple Comparisons Problem
+
+Within each hypothesis test, we will use an Unusualness Thresheold equivalent to 
+0.1.
+
+# Exploratory Data Analysis
+
+# Results
+
+## Assumptions
+
+## Omnibus
+
+## Post Hoc Analysis
+
+### Comparing Bechdel Scores Given the Amount of Awards
+
+### Comparing Awards Given the Bechdel Score
+
+# Discussion
+
+## Limitations
+
+## Future Work
+
+There is potential here for this project to handle future work. First, every
+year new award shows are presented. 
+
+# References
 
 https://en.wikipedia.org/wiki/Bechdel_test#cite_note-7
 
@@ -186,6 +214,6 @@ https://help.imdb.com/article/imdb/track-movies-tv/ratings-faq/G67Y87TFYYP6TWAV#
 
 https://blogs.fu-berlin.de/abv-gender-diversity/2021/12/13/the-bechdel-test-and-gender-equality-in-the-film-industry/
 
-
+# Author Contributions
 
 
