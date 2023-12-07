@@ -90,6 +90,27 @@ not relevant to the story. Since this test might not be extremely accurate, it
 might be hard to justify any trends but we think it is an easy and useful way 
 to recognzie where the underlying bias might be in the movies. 
 
+```{r  Loading data}
+
+bechdel_awards <- read_csv("bechdel_awards.csv")
+
+### Set year to an ordered factor
+bechdel_awards$movies.code <- factor(
+x = bechdel_awards$movies.code,
+levels = c("FAIL", "PASS")
+)
+
+### Set awards to an ordered factor with specified levels
+bechdel_awards$awards_factor <- cut(
+  x = bechdel_awards$awards,
+  breaks = c(-Inf, 1, 5, 10, 15, 20),
+  labels = c("No Award", "1-5 Awards", "6-10 Awards", "11-15 Awards", "16-20 Awards"),
+  include.lowest = TRUE,
+  right = FALSE
+)
+
+```
+
 ## Previous Studies
 
 While there are no studies to our knowledge doing exactly what we are doing,
