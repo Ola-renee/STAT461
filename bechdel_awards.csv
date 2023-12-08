@@ -1,579 +1,579 @@
-"","title","awards","movies.year","movies.code","imbd_score"
-"1","A Bridge Too Far",4,1977,"FAIL",7.4
-"2","Adam",0,2009,"FAIL",7.2
-"3","Airplane!",0,1980,"FAIL",7.8
-"4","Aladdin",4,1992,"FAIL",8
-"5","Alien",3,1979,"PASS",8.5
-"6","Aliens",3,1986,"PASS",8.4
-"7","Almost Famous",4,2000,"PASS",7.9
-"8","Amadeus",15,1984,"PASS",8.3
-"9","Anastasia",1,1997,"PASS",7.1
-"10","Annie Hall",10,1977,"PASS",8.1
-"11","Apocalypse Now",7,1979,"FAIL",8.5
-"12","Apollo 13",4,1995,"PASS",7.6
-"13","Barry Lyndon",6,1975,"FAIL",8.1
-"14","Batman",1,1989,"FAIL",7.6
-"15","Batman Returns",0,1992,"FAIL",7
-"16","Beverly Hills Cop",0,1984,"FAIL",7.3
-"17","Billy Elliot",3,2000,"PASS",7.7
-"18","Blade Runner",3,1982,"FAIL",8.2
-"19","Blazing Saddles",0,1974,"FAIL",7.8
-"20","Braveheart",10,1995,"FAIL",8.4
-"21","Brazil",2,1985,"PASS",8
-"22","Carrie",0,2013,"PASS",5.9
-"23","Carrie",0,2002,"PASS",5.9
-"24","Casino Royale",0,2006,"FAIL",8
-"25","Chicken Run",0,2000,"PASS",7
-"26","Chocolat",0,2000,"PASS",7.3
-"27","Cinderella",0,1997,"PASS",7
-"28","Crocodile Dundee",1,1986,"FAIL",6.5
-"29","Dangerous Liaisons",5,1988,"PASS",7.7
-"30","Dead Poets Society",3,1989,"FAIL",8
-"31","Ed Wood",3,1994,"PASS",7.9
-"32","Edward Scissorhands",1,1990,"PASS",7.9
-"33","Erin Brockovich",3,2000,"PASS",7.3
-"34","Fame",5,1980,"PASS",5
-"35","Fatal Attraction",1,1987,"FAIL",6.9
-"36","Flash Gordon",0,1980,"FAIL",6.4
-"37","Flashdance",4,1983,"PASS",6.1
-"38","Forrest Gump",9,1994,"FAIL",8.8
-"39","Ghost",4,1990,"FAIL",7
-"40","Ghostbusters",0,1984,"FAIL",5.5
-"41","Gladiator",12,2000,"FAIL",8.5
-"42","Good Morning, Vietnam",1,1987,"FAIL",7.3
-"43","Goodfellas",5,1990,"FAIL",8.7
-"44","Groundhog Day",1,1993,"FAIL",8.1
-"45","Hamlet",5,1996,"FAIL",7.8
-"46","Henry V",2,1989,"PASS",7.7
-"47","High Fidelity",0,2000,"FAIL",7.6
-"48","Jaws",4,1975,"FAIL",8
-"49","Julia",9,1977,"PASS",7.4
-"50","Jurassic Park",5,1993,"PASS",8.1
-"51","King Kong",4,2005,"FAIL",7.2
-"52","Legend",0,1985,"FAIL",7
-"53","Little Women",4,1994,"PASS",7.3
-"54","Much Ado About Nothing",0,2012,"FAIL",7.4
-"55","My Beautiful Laundrette",0,1985,"FAIL",6.9
-"56","Network",9,1976,"PASS",8.1
-"57","Oliver Twist",0,2005,"FAIL",6.9
-"58","Platoon",8,1986,"FAIL",8.1
-"59","Poltergeist",1,1982,"PASS",7.4
-"60","Pretty Woman",1,1990,"PASS",6.9
-"61","Priest",0,2011,"FAIL",5.7
-"62","Priest",0,1994,"PASS",5.7
-"63","Pulp Fiction",4,1994,"PASS",8.9
-"64","Radio Days",2,1987,"FAIL",7.6
-"65","Raging Bull",5,1980,"FAIL",8.3
-"66","Rain Man",5,1988,"FAIL",8
-"67","Rocky",3,1976,"FAIL",8.1
-"68","Sexy Beast",0,2000,"FAIL",7.3
-"69","Shaft",2,1971,"FAIL",5.9
-"70","Speed",4,1994,"PASS",7.2
-"71","Superman",2,1978,"FAIL",7.3
-"72","Taxi Driver",1,1976,"FAIL",8.3
-"73","The Addams Family",0,1991,"PASS",6.8
-"74","The Color Purple",0,1985,"PASS",7.8
-"75","The Conversation",2,1974,"FAIL",7.9
-"76","The Crying Game",2,1992,"FAIL",7.3
-"77","The Deer Hunter",7,1978,"FAIL",8.2
-"78","The Exorcist",2,1973,"PASS",8
-"79","The French Connection",6,1971,"FAIL",7.8
-"80","The Fugitive",2,1993,"FAIL",7.8
-"81","The Godfather",4,1972,"FAIL",9.2
-"82","The Great Gatsby",7,2013,"FAIL",7.3
-"83","The Island",0,2005,"PASS",6.9
-"84","The Last Emperor",12,1987,"FAIL",7.8
-"85","The Lion King",4,1994,"FAIL",8.5
-"86","The Mask",0,1994,"FAIL",6.9
-"87","The Player",2,1992,"PASS",7.1
-"88","The Shadow",0,1994,"FAIL",6
-"89","The Three Musketeers",0,2011,"FAIL",5.8
-"90","The Usual Suspects",4,1995,"FAIL",8.6
-"91","The Village",0,2004,"PASS",6.5
-"92","Tootsie",5,1982,"FAIL",7.4
-"93","Trainspotting",1,1996,"FAIL",8.2
-"94","Alien 3",0,1992,"FAIL",6.4
-"95","American Graffiti",1,1973,"FAIL",7.5
-"96","Cast Away",1,2000,"FAIL",7.7
-"97","Death Becomes Her",2,1992,"PASS",6.4
-"98","John Carter",0,2012,"PASS",6.6
-"99","Saving Grace",0,2000,"PASS",7.5
-"100","Stardust",0,2007,"PASS",7.7
-"101","The Client",1,1994,"PASS",6.7
-"102","Total Recall",1,2012,"FAIL",7.5
-"103","Total Recall",1,1990,"FAIL",7.5
-"104","True Grit",2,2010,"PASS",7.7
-"105","True Lies",1,1994,"FAIL",7.2
-"106","Vertical Limit",0,2000,"FAIL",5.9
-"107","Waterworld",0,1995,"FAIL",6.1
-"108","12 Years a Slave",3,2013,"FAIL",8.1
-"109","127 Hours",0,2010,"FAIL",7.6
-"110","25th Hour",0,2002,"FAIL",7.7
-"111","50/50",0,2011,"FAIL",7.7
-"112","8 Mile",1,2002,"FAIL",7
-"113","A Beautiful Mind",7,2001,"FAIL",8.2
-"114","A Single Man",0,2009,"FAIL",7.6
-"115","About Schmidt",2,2002,"FAIL",7.2
-"116","Act of Valor",0,2012,"FAIL",6.5
-"117","Alice in Wonderland",2,2010,"PASS",6.5
-"118","American Beauty",7,1999,"PASS",8.4
-"119","American Hustle",2,2013,"PASS",7.3
-"120","Analyze This",0,1999,"FAIL",6.7
-"121","Animal Kingdom",0,2010,"FAIL",8.1
-"122","Anna and the King",0,1999,"FAIL",6.7
-"123","Anna Karenina",1,2012,"FAIL",6.6
-"124","Anywhere But Here",0,1999,"FAIL",6.1
-"125","Argo",4,2012,"PASS",7.7
-"126","Around the World in 80 Days",6,2004,"FAIL",5.8
-"127","As Good as It Gets",4,1997,"PASS",7.7
-"128","Atonement",2,2007,"PASS",7.8
-"129","August: Osage County",0,2013,"PASS",7.3
-"130","Austin Powers: The Spy Who Shagged Me",0,1999,"FAIL",6.6
-"131","Avatar",4,2009,"FAIL",7.9
-"132","Batman Forever",0,1995,"FAIL",5.4
-"133","Beginners",2,2010,"FAIL",7.2
-"134","Being John Malkovich",0,1999,"PASS",7.8
-"135","Beverly Hills Cop II",0,1987,"FAIL",6.4
-"136","Bewitched",0,2005,"PASS",7.6
-"137","Big Fish",0,2003,"FAIL",8
-"138","Black Swan",2,2010,"PASS",8
-"139","Blood Diamond",0,2006,"FAIL",8
-"140","Blue Jasmine",2,2013,"PASS",7.3
-"141","Blue Valentine",0,2010,"FAIL",7.4
-"142","Body Double",0,1984,"FAIL",6.8
-"143","Bolt",0,2008,"PASS",6.9
-"144","Boogie Nights",1,1997,"FAIL",7.9
-"145","Bridesmaids",0,2011,"PASS",6.8
-"146","Brokeback Mountain",6,2005,"FAIL",7.7
-"147","Broken Arrow",1,1996,"FAIL",6
-"148","Brothers",0,2009,"PASS",7.1
-"149","Buffy the Vampire Slayer",0,1992,"PASS",8.2
-"150","Burlesque",1,2010,"PASS",6.4
-"151","Burn After Reading",0,2008,"FAIL",7
-"152","Capote",2,2005,"FAIL",7.4
-"153","Captain Phillips",0,2013,"FAIL",7.9
-"154","Casino",1,1995,"FAIL",8.2
-"155","Casino Jack",0,2010,"FAIL",6.2
-"156","Cat People",0,1982,"PASS",6.1
-"157","Catch Me If You Can",0,2002,"FAIL",8
-"158","Changeling",0,2008,"PASS",7.8
-"159","Charlie and the Chocolate Factory",0,2005,"PASS",6.7
-"160","Chasing Amy",0,1997,"PASS",7.3
-"161","Chicago",8,2002,"PASS",7.2
-"162","Cinderella Man",0,2005,"FAIL",8
-"163","Close Encounters of the Third Kind",2,1977,"FAIL",7.7
-"164","Closer",2,2004,"PASS",7.3
-"165","Cloud Atlas",0,2012,"PASS",7.5
-"166","Cold Mountain",2,2003,"PASS",7.2
-"167","Collateral",0,2004,"FAIL",7.6
-"168","Conan the Barbarian",1,2011,"FAIL",6.9
-"169","Conan the Barbarian",1,1982,"FAIL",6.9
-"170","Contact",0,1997,"PASS",7.4
-"171","Country Strong",0,2010,"PASS",6.3
-"172","Crash",3,2004,"PASS",7.9
-"173","Days of Heaven",1,1978,"PASS",8
-"174","Dear John",0,2010,"FAIL",6.3
-"175","Defiance",0,2008,"PASS",7
-"176","Die Another Day",0,2002,"FAIL",6.1
-"177","District 9",0,2009,"FAIL",8
-"178","Django Unchained",4,2012,"FAIL",8.5
-"179","Doubt",0,2008,"PASS",7.5
-"180","Drive",0,2011,"FAIL",7.8
-"181","Eastern Promises",0,2007,"PASS",7.7
-"182","Easy A",0,2010,"PASS",7.1
-"183","Election",0,1999,"PASS",7.3
-"184","Elizabeth",2,1998,"PASS",7.5
-"185","Emma",1,1996,"PASS",8.2
-"186","Enchanted",0,2007,"PASS",7.1
-"187","Eyes Wide Shut",0,1999,"PASS",7.3
-"188","Family Plot",0,1976,"PASS",6.8
-"189","Fargo",4,1996,"PASS",9
-"190","Finding Neverland",1,2004,"PASS",7.8
-"191","Flight",0,2012,"FAIL",7.3
-"192","Footloose",0,2011,"PASS",6.5
-"193","Frida",3,2002,"FAIL",7.4
-"194","Frost/Nixon",0,2008,"FAIL",7.7
-"195","Frozen",2,2013,"PASS",7.6
-"196","Frozen",2,2010,"FAIL",7.6
-"197","Gangs of New York",2,2002,"FAIL",7.5
-"198","Gattaca",0,1997,"FAIL",7.8
-"199","Ghost World",0,2001,"PASS",7.4
-"200","Girl, Interrupted",2,1999,"PASS",7.3
-"201","Glengarry Glen Ross",0,1992,"FAIL",7.8
-"202","Good Will Hunting",3,1997,"FAIL",8.3
-"203","Gosford Park",2,2001,"PASS",7.3
-"204","Gran Torino",0,2008,"FAIL",8.2
-"205","Gravity",8,2013,"FAIL",7.8
-"206","Grease",0,1978,"PASS",7.2
-"207","Hairspray",0,2007,"PASS",6.7
-"208","Happiness",0,1998,"PASS",7.8
-"209","Hedwig and the Angry Inch",0,2001,"PASS",7.8
-"210","Her",2,2013,"FAIL",8
-"211","Hercules",0,1997,"PASS",6
-"212","High Anxiety",0,1977,"FAIL",6.7
-"213","Home Alone",0,1990,"FAIL",7.5
-"214","Hook",0,1991,"FAIL",6.7
-"215","House of Sand and Fog",0,2003,"PASS",7.6
-"216","Hugo",6,2011,"FAIL",7.5
-"217","I Spy",0,2002,"FAIL",5.4
-"218","Igby Goes Down",0,2002,"FAIL",7
-"219","In Bruges",1,2008,"FAIL",8
-"220","Inception",4,2010,"FAIL",8.8
-"221","Inglourious Basterds",2,2009,"FAIL",8.3
-"222","Invictus",0,2009,"FAIL",7.4
-"223","Iris",2,2011,"PASS",7.1
-"224","Jackie Brown",0,1997,"PASS",7.5
-"225","Juno",1,2007,"PASS",7.5
-"226","Kinsey",0,2004,"PASS",7.1
-"227","L.A. Confidential",3,1997,"FAIL",8.3
-"228","Legally Blonde",0,2001,"PASS",6.2
-"229","Legends of the Fall",1,1994,"PASS",7.5
-"230","Letters from Iwo Jima",1,2006,"FAIL",7.9
-"231","Liar Liar",0,1997,"FAIL",6.8
-"232","Life of Pi",5,2012,"FAIL",8
-"233","Lincoln",3,2012,"PASS",7.4
-"234","Little Children",0,2006,"PASS",7.6
-"235","Little Miss Sunshine",2,2006,"PASS",7.9
-"236","Little Shop of Horrors",0,1986,"FAIL",6.9
-"237","Little Voice",1,1998,"PASS",7
-"238","Love Actually",0,2003,"PASS",7.7
-"239","Magnolia",1,1999,"FAIL",8
-"240","Malcolm X",0,1992,"FAIL",7.7
-"241","Master and Commander: The Far Side of the World",2,2003,"FAIL",7.4
-"242","Match Point",0,2005,"PASS",7.7
-"243","Memento",0,2000,"FAIL",8.5
-"244","Memoirs of a Geisha",4,2005,"PASS",7.3
-"245","Michael Clayton",1,2007,"FAIL",7.3
-"246","Midnight Run",0,1988,"FAIL",7.6
-"247","Milk",2,2008,"FAIL",7.6
-"248","Million Dollar Baby",6,2004,"PASS",8.1
-"249","Miss Congeniality",0,2000,"PASS",6.2
-"250","Miss Potter",0,2006,"PASS",7
-"251","Mission: Impossible",2,1996,"FAIL",7.1
-"252","Mona Lisa Smile",0,2003,"PASS",6.4
-"253","Moneyball",0,2011,"FAIL",7.6
-"254","Monster",2,2003,"PASS",7.3
-"255","Moulin Rouge!",2,2001,"PASS",7.6
-"256","Mrs. Doubtfire",2,1993,"PASS",6.9
-"257","Mulan",0,1998,"FAIL",7.5
-"258","Munich",0,2005,"FAIL",7.6
-"259","My Big Fat Greek Wedding",0,2002,"PASS",6.6
-"260","Mystic River",4,2003,"PASS",8
-"261","Nebraska",0,2013,"PASS",7.8
-"262","Nine",0,2009,"FAIL",5.8
-"263","No Country for Old Men",6,2007,"FAIL",8.1
-"264","North Country",0,2005,"PASS",7.3
-"265","Notting Hill",0,1999,"PASS",7
-"266","O Brother, Where Art Thou?",1,2000,"FAIL",7.8
-"267","Pearl Harbor",1,2001,"FAIL",6.1
-"268","Peggy Sue Got Married",0,1986,"PASS",6.3
-"269","Pieces of April",0,1993,"PASS",7.1
-"270","Pineapple Express",0,2008,"FAIL",7
-"271","Pirates of the Caribbean: The Curse of the Black Pearl",0,2003,"FAIL",8.1
-"272","Pocahontas",3,1995,"PASS",6.6
-"273","Primary Colors",0,1998,"PASS",6.7
-"274","Private Benjamin",0,1980,"PASS",6.1
-"275","Rabbit Hole",0,2010,"PASS",7
-"276","Rabbit-Proof Fence",0,2002,"PASS",7.5
-"277","Rachel Getting Married",0,2008,"PASS",6.7
-"278","Raiders of the Lost Ark",5,1981,"FAIL",8.5
-"279","Ray",3,2004,"FAIL",7.7
-"280","Revolutionary Road",1,2008,"PASS",7.3
-"281","Robin Hood: Prince of Thieves",0,1991,"FAIL",6.9
-"282","Rush",0,2013,"FAIL",8.1
-"283","Rushmore",0,1998,"FAIL",7.7
-"284","Saving Mr. Banks",0,2013,"PASS",7.5
-"285","Saving Private Ryan",6,1998,"FAIL",8.6
-"286","Selena",0,1997,"PASS",6.7
-"287","Sense and Sensibility",2,1995,"PASS",7.7
-"288","Sex, Lies, and Videotape",0,1989,"FAIL",7.2
-"289","Shakespeare in Love",9,1998,"PASS",7.2
-"290","Shame",0,2011,"FAIL",7.3
-"291","Shattered Glass",0,2003,"FAIL",7.2
-"292","Sherlock Holmes",1,2009,"FAIL",7.6
-"293","Sherrybaby",0,2006,"FAIL",6.6
-"294","Shrek 2",0,2004,"PASS",7.2
-"295","Sideways",2,2004,"PASS",7.5
-"296","Silent Movie",0,1976,"FAIL",6.7
-"297","Silver Linings Playbook",2,2012,"PASS",7.8
-"298","Skyfall",3,2012,"FAIL",7.8
-"299","Slumdog Millionaire",11,2008,"FAIL",8
-"300","Somewhere in Time",0,1980,"FAIL",7.3
-"301","Spanglish",0,2004,"PASS",6.5
-"302","Spirit: Stallion of the Cimarron",0,2002,"FAIL",7
-"303","Star Trek: The Motion Picture",0,1979,"FAIL",6.4
-"304","Star Wars: Episode V - The Empire Strikes Back",0,1980,"FAIL",8.8
-"305","Stepmom",0,1998,"PASS",6.7
-"306","Stranger Than Fiction",0,2006,"PASS",7.6
-"307","Sunshine",0,2007,"FAIL",7.3
-"308","Tangled",0,2010,"PASS",7.8
-"309","That Thing You Do!",0,1996,"PASS",6.9
-"310","The Artist",7,2011,"FAIL",8
-"311","The Aviator",7,2004,"FAIL",7.5
-"312","The Book Thief",0,2013,"PASS",7.6
-"313","The Curious Case of Benjamin Button",3,2008,"FAIL",7.8
-"314","The English Patient",10,1996,"PASS",7.4
-"315","The Fountain",0,2006,"FAIL",7.3
-"316","The Girlfriend Experience",0,2009,"FAIL",7.3
-"317","The Help",2,2011,"PASS",8.1
-"318","The Hours",2,2002,"PASS",7.6
-"319","The Hunchback of Notre Dame",0,1996,"FAIL",6.9
-"320","The Hunger Games",0,2012,"PASS",7.3
-"321","The Hunger Games: Catching Fire",0,2013,"PASS",7.6
-"322","The Informant!",0,2009,"FAIL",6.5
-"323","The Kite Runner",0,2007,"FAIL",7.6
-"324","The Last Samurai",0,2003,"FAIL",7.7
-"325","The Lord of the Rings: The Fellowship of the Ring",4,2001,"FAIL",8.8
-"326","The Lord of the Rings: The Return of the King",14,2003,"FAIL",8.9
-"327","The Mirror Has Two Faces",1,1996,"PASS",6.5
-"328","The Missing",0,2003,"PASS",8.1
-"329","The Painted Veil",1,2006,"FAIL",7.5
-"330","The Phantom of the Opera",0,2004,"FAIL",7.4
-"331","The Polar Express",0,2004,"FAIL",6.6
-"332","The Prince of Egypt",1,1998,"FAIL",7
-"333","The Pursuit of Happyness",0,2006,"FAIL",8
-"334","The Social Network",6,2010,"FAIL",7.7
-"335","The Talented Mr. Ripley",0,1999,"FAIL",7.3
-"336","The Truman Show",3,1998,"FAIL",8.1
-"337","The Wrestler",2,2008,"FAIL",7.9
-"338","There Will Be Blood",3,2007,"FAIL",8.1
-"339","Thirteen",0,2003,"PASS",6.8
-"340","Titanic",15,1997,"PASS",7.7
-"341","Top Gun",2,1986,"FAIL",6.9
-"342","Toy Story",0,1995,"FAIL",8.3
-"343","Toy Story 2",0,1999,"FAIL",7.9
-"344","Training Day",1,2001,"FAIL",7.7
-"345","Transamerica",1,2005,"PASS",7.4
-"346","Tropic Thunder",0,2008,"FAIL",7
-"347","Twins",0,1988,"FAIL",6
-"348","Up",4,2009,"FAIL",8.3
-"349","Vanilla Sky",0,2001,"FAIL",6.9
-"350","Vera Drake",0,2004,"PASS",7.7
-"351","Vicky Cristina Barcelona",1,2008,"PASS",7.2
-"352","Volver",0,2006,"PASS",7.6
-"353","Wall Street: Money Never Sleeps",0,2010,"FAIL",6.3
-"354","War Horse",0,2011,"FAIL",7.2
-"355","What Women Want",0,2000,"FAIL",6.4
-"356","Young Adult",0,2011,"PASS",6.3
-"357","Young Frankenstein",0,1974,"FAIL",8
-"358","Yours, Mine and Ours",0,2005,"PASS",7.2
-"359","1776",0,1972,"FAIL",7.6
-"360","3:10 to Yuma",0,2007,"FAIL",7.8
-"361","9",0,2009,"FAIL",7.1
-"362","A Few Good Men",0,1992,"FAIL",7.6
-"363","A Serious Man",0,2009,"FAIL",7
-"364","A Very Long Engagement",0,2004,"PASS",7.7
-"365","Across the Universe",0,2007,"PASS",7.4
-"366","Air Force One",0,1997,"FAIL",6.4
-"367","Ajami",0,2009,"FAIL",7.4
-"368","American History X",0,1998,"FAIL",8.6
-"369","Amour",1,2012,"FAIL",7.9
-"370","An Education",0,2009,"PASS",7.3
-"371","Another Year",0,2010,"PASS",7.3
-"372","Armageddon",0,1998,"FAIL",6.6
-"373","Australia",0,2008,"FAIL",6.6
-"374","Back to the Future",1,1985,"FAIL",8.5
-"375","Back to the Future Part II",0,1989,"PASS",7.8
-"376","Batman Begins",0,2005,"FAIL",8.3
-"377","Beasts of the Southern Wild",0,2012,"FAIL",7.3
-"378","Before Sunset",0,2004,"FAIL",8
-"379","Beloved",0,1998,"PASS",5.9
-"380","Biutiful",0,2010,"FAIL",7.5
-"381","Black Hawk Down",2,2001,"FAIL",7.7
-"382","Brave",1,2012,"PASS",7.2
-"383","Bright Star",0,2009,"PASS",7
-"384","Cars",0,2006,"FAIL",7.2
-"385","Children of Men",0,2006,"PASS",7.9
-"386","Cliffhanger",0,1993,"FAIL",6.4
-"387","Con Air",0,1997,"FAIL",6.8
-"388","Coraline",0,2009,"PASS",7.7
-"389","Dancer in the Dark",0,2000,"PASS",8
-"390","Das Boot",0,1981,"FAIL",8.4
-"391","Despicable Me 2",0,2013,"PASS",7.5
-"392","Die Hard",0,1988,"PASS",8.2
-"393","Diner",0,1982,"FAIL",7.2
-"394","Dune",6,2000,"PASS",6.6
-"395","Dune",6,1984,"FAIL",6.6
-"396","Eternal Sunshine of the Spotless Mind",1,2004,"FAIL",8.3
-"397","Evolution",0,2001,"PASS",6.4
-"398","Fantastic Mr. Fox",0,2009,"FAIL",7.8
-"399","Far from Heaven",0,2002,"PASS",7.4
-"400","Fight Club",0,1999,"FAIL",8.8
-"401","Finding Nemo",1,2003,"FAIL",8.2
-"402","Flatliners",0,1990,"PASS",6.6
-"403","Frankenweenie",0,2012,"FAIL",7
-"404","Frozen River",0,2008,"PASS",7.2
-"405","Girl with a Pearl Earring",0,2003,"PASS",7
-"406","Going the Distance",0,2010,"PASS",6.3
-"407","Good Night, and Good Luck.",0,2005,"FAIL",7.5
-"408","Harry Potter and the Goblet of Fire",0,2005,"FAIL",7.6
-"409","Harry Potter and the Half-Blood Prince",0,2009,"PASS",7.5
-"410","Hero",0,1992,"FAIL",7.9
-"411","Hollow Man",0,2000,"PASS",5.7
-"412","How to Train Your Dragon",0,2010,"PASS",8.2
-"413","I Am Love",0,2010,"PASS",7
-"414","I, Robot",0,2004,"FAIL",7.1
-"415","Ice Age",0,2002,"FAIL",7.6
-"416","Independence Day",1,1996,"PASS",6.9
-"417","Indiana Jones and the Last Crusade",1,1989,"FAIL",8.3
-"418","Indiana Jones and the Temple of Doom",1,1984,"FAIL",7.6
-"419","Into the Wild",0,2007,"FAIL",8.2
-"420","Iron Man",0,2008,"FAIL",7.9
-"421","Iron Man 2",0,2010,"PASS",7
-"422","Iron Man 3",0,2013,"FAIL",7.2
-"423","Journey to the Center of the Earth",0,2008,"FAIL",5.8
-"424","Kung Fu Panda",0,2008,"FAIL",7.6
-"425","Kung Fu Panda 2",0,2011,"PASS",7.3
-"426","Ladyhawke",0,1985,"FAIL",7
-"427","Margin Call",0,2011,"FAIL",7.1
-"428","Maria Full of Grace",0,2004,"PASS",7.5
-"429","Marie Antoinette",1,2006,"PASS",6.4
-"430","Meet the Parents",0,2000,"FAIL",7
-"431","Men in Black",1,1997,"FAIL",7.3
-"432","Midnight in Paris",1,2011,"PASS",7.7
-"433","Minority Report",0,2002,"FAIL",7.7
-"434","Mirror Mirror",0,2012,"FAIL",5.6
-"435","Monster House",0,2006,"PASS",6.6
-"436","Monsters, Inc.",1,2001,"FAIL",8.1
-"437","Moonraker",0,1979,"FAIL",6.3
-"438","Moonrise Kingdom",0,2012,"PASS",7.8
-"439","Morning Glory",1,2010,"PASS",6.5
-"440","My Cousin Vinny",1,1992,"FAIL",7.5
-"441","Notes on a Scandal",0,2006,"PASS",7.4
-"442","Nowhere in Africa",1,2001,"PASS",7.7
-"443","Once",1,2006,"FAIL",7.9
-"444","Out of Sight",0,1998,"FAIL",7
-"445","ParaNorman",0,2012,"FAIL",7
-"446","Persepolis",0,2007,"PASS",8
-"447","Poseidon",0,2006,"FAIL",5.6
-"448","Predator",0,1987,"FAIL",7.8
-"449","Prisoners",0,2013,"PASS",8.1
-"450","Puss in Boots",0,2011,"FAIL",6.7
-"451","Rango",1,2011,"FAIL",7.2
-"452","Ratatouille",1,2007,"FAIL",8
-"453","Real Steel",0,2011,"FAIL",7.1
-"454","Remember Me",0,2010,"PASS",7.2
-"455","Requiem for a Dream",0,2000,"PASS",8.4
-"456","Return to Oz",0,1985,"PASS",6.7
-"457","Rio",0,2011,"FAIL",7
-"458","Rise of the Planet of the Apes",0,2011,"FAIL",7.6
-"459","Robin Hood",0,2010,"FAIL",6.7
-"460","RoboCop",1,1987,"FAIL",6.2
-"461","Salt",0,2010,"PASS",6.4
-"462","Scrooged",0,1988,"PASS",7
-"463","Shark Tale",0,2004,"FAIL",6
-"464","Shrek",1,2001,"FAIL",7.9
-"465","Sleepy Hollow",1,1999,"PASS",7.5
-"466","Snow White and the Huntsman",0,2012,"PASS",6.1
-"467","Spider-Man",0,2002,"FAIL",7.3
-"468","Spider-Man 2",1,2004,"FAIL",7.3
-"469","Splash",0,1984,"FAIL",6.2
-"470","Star Trek",1,2009,"PASS",8
-"471","Star Trek Into Darkness",0,2013,"FAIL",7.8
-"472","Star Trek: First Contact",0,1996,"PASS",7.6
-"473","Starship Troopers",0,1997,"PASS",7.2
-"474","Straw Dogs",0,2011,"PASS",5.8
-"475","Straw Dogs",0,1971,"FAIL",5.8
-"476","Stuart Little",0,1999,"FAIL",5.9
-"477","Superman Returns",0,2006,"FAIL",6.1
-"478","Ted",0,2012,"FAIL",7
-"479","The Abyss",1,1989,"PASS",7.6
-"480","The Adventures of Tintin",0,2011,"FAIL",7.4
-"481","The Age of Innocence",1,1993,"PASS",7.2
-"482","The American President",0,1995,"PASS",6.8
-"483","The Amityville Horror",0,2005,"PASS",6
-"484","The Amityville Horror",0,1979,"PASS",6
-"485","The Best Little Whorehouse in Texas",0,1982,"PASS",5.8
-"486","The Blind Side",1,2009,"FAIL",7.7
-"487","The Box",1,2009,"PASS",5.6
-"488","The Bridges of Madison County",0,1995,"PASS",7.5
-"489","The Cell",0,2000,"FAIL",6.3
-"490","The Chronicles of Narnia: The Lion, the Witch and the Wardrobe",1,2005,"PASS",6.9
-"491","The Clan of the Cave Bear",0,1986,"PASS",5.3
-"492","The Constant Gardener",1,2005,"PASS",7.5
-"493","The Croods",0,2013,"FAIL",7.3
-"494","The Dark Knight",2,2008,"FAIL",9
-"495","The Departed",4,2006,"FAIL",8.5
-"496","The Devil Wears Prada",0,2006,"PASS",6.8
-"497","The Family",0,2013,"FAIL",7.5
-"498","The Fifth Element",0,1997,"FAIL",7.7
-"499","The Fighter",2,2010,"FAIL",7.9
-"500","The First Wives Club",0,1996,"PASS",6.2
-"501","The Girl with the Dragon Tattoo",1,2011,"FAIL",7.8
-"502","The Girl with the Dragon Tattoo",1,2009,"FAIL",7.8
-"503","The Golden Compass",1,2007,"PASS",6.1
-"504","The Green Mile",0,1999,"FAIL",8.5
-"505","The Hobbit: An Unexpected Journey",0,2012,"FAIL",7.9
-"506","The Hobbit: The Desolation of Smaug",0,2013,"FAIL",7.9
-"507","The Hunt for Red October",1,1990,"FAIL",7.6
-"508","The Hurt Locker",6,2008,"FAIL",7.6
-"509","The Illusionist",0,2010,"FAIL",7.6
-"510","The Illusionist",0,2006,"FAIL",7.6
-"511","The Imaginarium of Doctor Parnassus",0,2009,"FAIL",6.8
-"512","The Impossible",0,2012,"FAIL",7.6
-"513","The Incredibles",2,2004,"PASS",8
-"514","The Iron Lady",2,2011,"PASS",6.4
-"515","The Karate Kid",0,2010,"FAIL",7.2
-"516","The Karate Kid",0,1984,"PASS",7.2
-"517","The Kids Are All Right",0,2010,"PASS",7.1
-"518","The Last Station",0,2009,"PASS",7
-"519","The Last Temptation of Christ",0,1988,"FAIL",7.6
-"520","The Lone Ranger",0,2013,"FAIL",6.5
-"521","The Lord of the Rings: The Two Towers",2,2002,"FAIL",8.7
-"522","The Lost World: Jurassic Park",0,1997,"FAIL",6.5
-"523","The Lovely Bones",0,2009,"PASS",6.7
-"524","The Man in the Iron Mask",0,1998,"FAIL",6.4
-"525","The Mask of Zorro",0,1998,"FAIL",6.7
-"526","The Master",0,2012,"FAIL",7.1
-"527","The Matrix",4,1999,"PASS",8.7
-"528","The Messenger",0,2009,"FAIL",7.2
-"529","The Muppets",1,2011,"FAIL",7.1
-"530","The New World",0,2005,"FAIL",6.7
-"531","The Patriot",1,2000,"FAIL",7.1
-"532","The Pirates! Band of Misfits",0,2012,"FAIL",6.7
-"533","The Prestige",0,2006,"FAIL",8.5
-"534","The Princess and the Frog",0,2009,"PASS",7.1
-"535","The Princess Bride",0,1987,"FAIL",8.1
-"536","The Queen",1,2006,"FAIL",7.3
-"537","The Quiet American",0,2002,"FAIL",7.1
-"538","The Reader",1,2008,"FAIL",7.6
-"539","The Remains of the Day",0,1993,"FAIL",7.9
-"540","The Rock",0,1996,"FAIL",7.4
-"541","The Royal Tenenbaums",0,2001,"PASS",7.6
-"542","The Savages",0,2007,"PASS",7.2
-"543","The Secret of Kells",0,2009,"FAIL",7.7
-"544","The Shawshank Redemption",0,1994,"FAIL",9.3
-"545","The Silence of the Lambs",5,1991,"PASS",8.6
-"546","The Sixth Sense",0,1999,"FAIL",8.1
-"547","The Squid and the Whale",0,2005,"FAIL",7.4
-"548","The Sting",7,1973,"FAIL",8.3
-"549","The Tempest",0,2010,"PASS",5.4
-"550","The Thin Red Line",0,1998,"FAIL",7.6
-"551","The Town",0,2010,"FAIL",7.6
-"552","The Tree of Life",0,2011,"FAIL",6.7
-"553","The Wolf of Wall Street",0,2013,"FAIL",8.2
-"554","The Wolfman",1,2010,"FAIL",5.8
-"555","The Young Victoria",1,2009,"PASS",7.3
-"556","Tinker Tailor Soldier Spy",0,2011,"FAIL",7.1
-"557","Topsy-Turvy",2,1999,"PASS",7.4
-"558","Toy Story 3",2,2010,"FAIL",8.3
-"559","Transformers",0,2007,"FAIL",7.1
-"560","Transformers: Dark of the Moon",0,2011,"PASS",6.3
-"561","Transformers: Revenge of the Fallen",0,2009,"PASS",6
-"562","Treasure Planet",0,2002,"FAIL",7.1
-"563","Troy",0,2004,"FAIL",7.2
-"564","Twister",0,1996,"PASS",6.3
-"565","Underworld",1,2003,"FAIL",7
-"566","Unstoppable",0,2010,"FAIL",6.8
-"567","Up in the Air",0,2009,"FAIL",7.4
-"568","Velvet Goldmine",0,1998,"FAIL",7
-"569","Walk the Line",1,2005,"PASS",7.9
-"570","Waltz with Bashir",0,2008,"FAIL",8
-"571","Wanted",0,2008,"FAIL",6.7
-"572","War of the Worlds",0,2005,"FAIL",6.5
-"573","WarGames",0,1983,"FAIL",7.1
-"574","Warrior",0,2011,"FAIL",8.2
-"575","Water",0,2005,"PASS",7.8
-"576","Whale Rider",0,2002,"PASS",7.6
-"577","Wreck-It Ralph",0,2012,"PASS",7.8
-"578","Zero Dark Thirty",1,2012,"PASS",7.4
+"","...1","title","awards","movies.year","movies.code","imbd_score","awards_factor","imbd_score2"
+"1",1,"A Bridge Too Far",4,1977,"FAIL",7.4,"1-5 Awards",405.224
+"2",2,"Adam",0,2009,"FAIL",7.2,"No Award",373.248
+"3",3,"Airplane!",0,1980,"FAIL",7.8,"No Award",474.552
+"4",4,"Aladdin",4,1992,"FAIL",8,"1-5 Awards",512
+"5",5,"Alien",3,1979,"PASS",8.5,"1-5 Awards",614.125
+"6",6,"Aliens",3,1986,"PASS",8.4,"1-5 Awards",592.704
+"7",7,"Almost Famous",4,2000,"PASS",7.9,"1-5 Awards",493.039
+"8",8,"Amadeus",15,1984,"PASS",8.3,"11-15 Awards",571.787
+"9",9,"Anastasia",1,1997,"PASS",7.1,"1-5 Awards",357.911
+"10",10,"Annie Hall",10,1977,"PASS",8.1,"11-15 Awards",531.441
+"11",11,"Apocalypse Now",7,1979,"FAIL",8.5,"6-10 Awards",614.125
+"12",12,"Apollo 13",4,1995,"PASS",7.6,"1-5 Awards",438.976
+"13",13,"Barry Lyndon",6,1975,"FAIL",8.1,"6-10 Awards",531.441
+"14",14,"Batman",1,1989,"FAIL",7.6,"1-5 Awards",438.976
+"15",15,"Batman Returns",0,1992,"FAIL",7,"No Award",343
+"16",16,"Beverly Hills Cop",0,1984,"FAIL",7.3,"No Award",389.017
+"17",17,"Billy Elliot",3,2000,"PASS",7.7,"1-5 Awards",456.533
+"18",18,"Blade Runner",3,1982,"FAIL",8.2,"1-5 Awards",551.368
+"19",19,"Blazing Saddles",0,1974,"FAIL",7.8,"No Award",474.552
+"20",20,"Braveheart",10,1995,"FAIL",8.4,"11-15 Awards",592.704
+"21",21,"Brazil",2,1985,"PASS",8,"1-5 Awards",512
+"22",22,"Carrie",0,2013,"PASS",5.9,"No Award",205.379
+"23",23,"Carrie",0,2002,"PASS",5.9,"No Award",205.379
+"24",24,"Casino Royale",0,2006,"FAIL",8,"No Award",512
+"25",25,"Chicken Run",0,2000,"PASS",7,"No Award",343
+"26",26,"Chocolat",0,2000,"PASS",7.3,"No Award",389.017
+"27",27,"Cinderella",0,1997,"PASS",7,"No Award",343
+"28",28,"Crocodile Dundee",1,1986,"FAIL",6.5,"1-5 Awards",274.625
+"29",29,"Dangerous Liaisons",5,1988,"PASS",7.7,"6-10 Awards",456.533
+"30",30,"Dead Poets Society",3,1989,"FAIL",8,"1-5 Awards",512
+"31",31,"Ed Wood",3,1994,"PASS",7.9,"1-5 Awards",493.039
+"32",32,"Edward Scissorhands",1,1990,"PASS",7.9,"1-5 Awards",493.039
+"33",33,"Erin Brockovich",3,2000,"PASS",7.3,"1-5 Awards",389.017
+"34",34,"Fame",5,1980,"PASS",5,"6-10 Awards",125
+"35",35,"Fatal Attraction",1,1987,"FAIL",6.9,"1-5 Awards",328.509
+"36",36,"Flash Gordon",0,1980,"FAIL",6.4,"No Award",262.144
+"37",37,"Flashdance",4,1983,"PASS",6.1,"1-5 Awards",226.981
+"38",38,"Forrest Gump",9,1994,"FAIL",8.8,"6-10 Awards",681.472
+"39",39,"Ghost",4,1990,"FAIL",7,"1-5 Awards",343
+"40",40,"Ghostbusters",0,1984,"FAIL",5.5,"No Award",166.375
+"41",41,"Gladiator",12,2000,"FAIL",8.5,"11-15 Awards",614.125
+"42",42,"Good Morning, Vietnam",1,1987,"FAIL",7.3,"1-5 Awards",389.017
+"43",43,"Goodfellas",5,1990,"FAIL",8.7,"6-10 Awards",658.503
+"44",44,"Groundhog Day",1,1993,"FAIL",8.1,"1-5 Awards",531.441
+"45",45,"Hamlet",5,1996,"FAIL",7.8,"6-10 Awards",474.552
+"46",46,"Henry V",2,1989,"PASS",7.7,"1-5 Awards",456.533
+"47",47,"High Fidelity",0,2000,"FAIL",7.6,"No Award",438.976
+"48",48,"Jaws",4,1975,"FAIL",8,"1-5 Awards",512
+"49",49,"Julia",9,1977,"PASS",7.4,"6-10 Awards",405.224
+"50",50,"Jurassic Park",5,1993,"PASS",8.1,"6-10 Awards",531.441
+"51",51,"King Kong",4,2005,"FAIL",7.2,"1-5 Awards",373.248
+"52",52,"Legend",0,1985,"FAIL",7,"No Award",343
+"53",53,"Little Women",4,1994,"PASS",7.3,"1-5 Awards",389.017
+"54",54,"Much Ado About Nothing",0,2012,"FAIL",7.4,"No Award",405.224
+"55",55,"My Beautiful Laundrette",0,1985,"FAIL",6.9,"No Award",328.509
+"56",56,"Network",9,1976,"PASS",8.1,"6-10 Awards",531.441
+"57",57,"Oliver Twist",0,2005,"FAIL",6.9,"No Award",328.509
+"58",58,"Platoon",8,1986,"FAIL",8.1,"6-10 Awards",531.441
+"59",59,"Poltergeist",1,1982,"PASS",7.4,"1-5 Awards",405.224
+"60",60,"Pretty Woman",1,1990,"PASS",6.9,"1-5 Awards",328.509
+"61",61,"Priest",0,2011,"FAIL",5.7,"No Award",185.193
+"62",62,"Priest",0,1994,"PASS",5.7,"No Award",185.193
+"63",63,"Pulp Fiction",4,1994,"PASS",8.9,"1-5 Awards",704.969
+"64",64,"Radio Days",2,1987,"FAIL",7.6,"1-5 Awards",438.976
+"65",65,"Raging Bull",5,1980,"FAIL",8.3,"6-10 Awards",571.787
+"66",66,"Rain Man",5,1988,"FAIL",8,"6-10 Awards",512
+"67",67,"Rocky",3,1976,"FAIL",8.1,"1-5 Awards",531.441
+"68",68,"Sexy Beast",0,2000,"FAIL",7.3,"No Award",389.017
+"69",69,"Shaft",2,1971,"FAIL",5.9,"1-5 Awards",205.379
+"70",70,"Speed",4,1994,"PASS",7.2,"1-5 Awards",373.248
+"71",71,"Superman",2,1978,"FAIL",7.3,"1-5 Awards",389.017
+"72",72,"Taxi Driver",1,1976,"FAIL",8.3,"1-5 Awards",571.787
+"73",73,"The Addams Family",0,1991,"PASS",6.8,"No Award",314.432
+"74",74,"The Color Purple",0,1985,"PASS",7.8,"No Award",474.552
+"75",75,"The Conversation",2,1974,"FAIL",7.9,"1-5 Awards",493.039
+"76",76,"The Crying Game",2,1992,"FAIL",7.3,"1-5 Awards",389.017
+"77",77,"The Deer Hunter",7,1978,"FAIL",8.2,"6-10 Awards",551.368
+"78",78,"The Exorcist",2,1973,"PASS",8,"1-5 Awards",512
+"79",79,"The French Connection",6,1971,"FAIL",7.8,"6-10 Awards",474.552
+"80",80,"The Fugitive",2,1993,"FAIL",7.8,"1-5 Awards",474.552
+"81",81,"The Godfather",4,1972,"FAIL",9.2,"1-5 Awards",778.688
+"82",82,"The Great Gatsby",7,2013,"FAIL",7.3,"6-10 Awards",389.017
+"83",83,"The Island",0,2005,"PASS",6.9,"No Award",328.509
+"84",84,"The Last Emperor",12,1987,"FAIL",7.8,"11-15 Awards",474.552
+"85",85,"The Lion King",4,1994,"FAIL",8.5,"1-5 Awards",614.125
+"86",86,"The Mask",0,1994,"FAIL",6.9,"No Award",328.509
+"87",87,"The Player",2,1992,"PASS",7.1,"1-5 Awards",357.911
+"88",88,"The Shadow",0,1994,"FAIL",6,"No Award",216
+"89",89,"The Three Musketeers",0,2011,"FAIL",5.8,"No Award",195.112
+"90",90,"The Usual Suspects",4,1995,"FAIL",8.6,"1-5 Awards",636.056
+"91",91,"The Village",0,2004,"PASS",6.5,"No Award",274.625
+"92",92,"Tootsie",5,1982,"FAIL",7.4,"6-10 Awards",405.224
+"93",93,"Trainspotting",1,1996,"FAIL",8.2,"1-5 Awards",551.368
+"94",94,"Alien 3",0,1992,"FAIL",6.4,"No Award",262.144
+"95",95,"American Graffiti",1,1973,"FAIL",7.5,"1-5 Awards",421.875
+"96",96,"Cast Away",1,2000,"FAIL",7.7,"1-5 Awards",456.533
+"97",97,"Death Becomes Her",2,1992,"PASS",6.4,"1-5 Awards",262.144
+"98",98,"John Carter",0,2012,"PASS",6.6,"No Award",287.496
+"99",99,"Saving Grace",0,2000,"PASS",7.5,"No Award",421.875
+"100",100,"Stardust",0,2007,"PASS",7.7,"No Award",456.533
+"101",101,"The Client",1,1994,"PASS",6.7,"1-5 Awards",300.763
+"102",102,"Total Recall",1,2012,"FAIL",7.5,"1-5 Awards",421.875
+"103",103,"Total Recall",1,1990,"FAIL",7.5,"1-5 Awards",421.875
+"104",104,"True Grit",2,2010,"PASS",7.7,"1-5 Awards",456.533
+"105",105,"True Lies",1,1994,"FAIL",7.2,"1-5 Awards",373.248
+"106",106,"Vertical Limit",0,2000,"FAIL",5.9,"No Award",205.379
+"107",107,"Waterworld",0,1995,"FAIL",6.1,"No Award",226.981
+"108",108,"12 Years a Slave",3,2013,"FAIL",8.1,"1-5 Awards",531.441
+"109",109,"127 Hours",0,2010,"FAIL",7.6,"No Award",438.976
+"110",110,"25th Hour",0,2002,"FAIL",7.7,"No Award",456.533
+"111",111,"50/50",0,2011,"FAIL",7.7,"No Award",456.533
+"112",112,"8 Mile",1,2002,"FAIL",7,"1-5 Awards",343
+"113",113,"A Beautiful Mind",7,2001,"FAIL",8.2,"6-10 Awards",551.368
+"114",114,"A Single Man",0,2009,"FAIL",7.6,"No Award",438.976
+"115",115,"About Schmidt",2,2002,"FAIL",7.2,"1-5 Awards",373.248
+"116",116,"Act of Valor",0,2012,"FAIL",6.5,"No Award",274.625
+"117",117,"Alice in Wonderland",2,2010,"PASS",6.5,"1-5 Awards",274.625
+"118",118,"American Beauty",7,1999,"PASS",8.4,"6-10 Awards",592.704
+"119",119,"American Hustle",2,2013,"PASS",7.3,"1-5 Awards",389.017
+"120",120,"Analyze This",0,1999,"FAIL",6.7,"No Award",300.763
+"121",121,"Animal Kingdom",0,2010,"FAIL",8.1,"No Award",531.441
+"122",122,"Anna and the King",0,1999,"FAIL",6.7,"No Award",300.763
+"123",123,"Anna Karenina",1,2012,"FAIL",6.6,"1-5 Awards",287.496
+"124",124,"Anywhere But Here",0,1999,"FAIL",6.1,"No Award",226.981
+"125",125,"Argo",4,2012,"PASS",7.7,"1-5 Awards",456.533
+"126",126,"Around the World in 80 Days",6,2004,"FAIL",5.8,"6-10 Awards",195.112
+"127",127,"As Good as It Gets",4,1997,"PASS",7.7,"1-5 Awards",456.533
+"128",128,"Atonement",2,2007,"PASS",7.8,"1-5 Awards",474.552
+"129",129,"August: Osage County",0,2013,"PASS",7.3,"No Award",389.017
+"130",130,"Austin Powers: The Spy Who Shagged Me",0,1999,"FAIL",6.6,"No Award",287.496
+"131",131,"Avatar",4,2009,"FAIL",7.9,"1-5 Awards",493.039
+"132",132,"Batman Forever",0,1995,"FAIL",5.4,"No Award",157.464
+"133",133,"Beginners",2,2010,"FAIL",7.2,"1-5 Awards",373.248
+"134",134,"Being John Malkovich",0,1999,"PASS",7.8,"No Award",474.552
+"135",135,"Beverly Hills Cop II",0,1987,"FAIL",6.4,"No Award",262.144
+"136",136,"Bewitched",0,2005,"PASS",7.6,"No Award",438.976
+"137",137,"Big Fish",0,2003,"FAIL",8,"No Award",512
+"138",138,"Black Swan",2,2010,"PASS",8,"1-5 Awards",512
+"139",139,"Blood Diamond",0,2006,"FAIL",8,"No Award",512
+"140",140,"Blue Jasmine",2,2013,"PASS",7.3,"1-5 Awards",389.017
+"141",141,"Blue Valentine",0,2010,"FAIL",7.4,"No Award",405.224
+"142",142,"Body Double",0,1984,"FAIL",6.8,"No Award",314.432
+"143",143,"Bolt",0,2008,"PASS",6.9,"No Award",328.509
+"144",144,"Boogie Nights",1,1997,"FAIL",7.9,"1-5 Awards",493.039
+"145",145,"Bridesmaids",0,2011,"PASS",6.8,"No Award",314.432
+"146",146,"Brokeback Mountain",6,2005,"FAIL",7.7,"6-10 Awards",456.533
+"147",147,"Broken Arrow",1,1996,"FAIL",6,"1-5 Awards",216
+"148",148,"Brothers",0,2009,"PASS",7.1,"No Award",357.911
+"149",149,"Buffy the Vampire Slayer",0,1992,"PASS",8.2,"No Award",551.368
+"150",150,"Burlesque",1,2010,"PASS",6.4,"1-5 Awards",262.144
+"151",151,"Burn After Reading",0,2008,"FAIL",7,"No Award",343
+"152",152,"Capote",2,2005,"FAIL",7.4,"1-5 Awards",405.224
+"153",153,"Captain Phillips",0,2013,"FAIL",7.9,"No Award",493.039
+"154",154,"Casino",1,1995,"FAIL",8.2,"1-5 Awards",551.368
+"155",155,"Casino Jack",0,2010,"FAIL",6.2,"No Award",238.328
+"156",156,"Cat People",0,1982,"PASS",6.1,"No Award",226.981
+"157",157,"Catch Me If You Can",0,2002,"FAIL",8,"No Award",512
+"158",158,"Changeling",0,2008,"PASS",7.8,"No Award",474.552
+"159",159,"Charlie and the Chocolate Factory",0,2005,"PASS",6.7,"No Award",300.763
+"160",160,"Chasing Amy",0,1997,"PASS",7.3,"No Award",389.017
+"161",161,"Chicago",8,2002,"PASS",7.2,"6-10 Awards",373.248
+"162",162,"Cinderella Man",0,2005,"FAIL",8,"No Award",512
+"163",163,"Close Encounters of the Third Kind",2,1977,"FAIL",7.7,"1-5 Awards",456.533
+"164",164,"Closer",2,2004,"PASS",7.3,"1-5 Awards",389.017
+"165",165,"Cloud Atlas",0,2012,"PASS",7.5,"No Award",421.875
+"166",166,"Cold Mountain",2,2003,"PASS",7.2,"1-5 Awards",373.248
+"167",167,"Collateral",0,2004,"FAIL",7.6,"No Award",438.976
+"168",168,"Conan the Barbarian",1,2011,"FAIL",6.9,"1-5 Awards",328.509
+"169",169,"Conan the Barbarian",1,1982,"FAIL",6.9,"1-5 Awards",328.509
+"170",170,"Contact",0,1997,"PASS",7.4,"No Award",405.224
+"171",171,"Country Strong",0,2010,"PASS",6.3,"No Award",250.047
+"172",172,"Crash",3,2004,"PASS",7.9,"1-5 Awards",493.039
+"173",173,"Days of Heaven",1,1978,"PASS",8,"1-5 Awards",512
+"174",174,"Dear John",0,2010,"FAIL",6.3,"No Award",250.047
+"175",175,"Defiance",0,2008,"PASS",7,"No Award",343
+"176",176,"Die Another Day",0,2002,"FAIL",6.1,"No Award",226.981
+"177",177,"District 9",0,2009,"FAIL",8,"No Award",512
+"178",178,"Django Unchained",4,2012,"FAIL",8.5,"1-5 Awards",614.125
+"179",179,"Doubt",0,2008,"PASS",7.5,"No Award",421.875
+"180",180,"Drive",0,2011,"FAIL",7.8,"No Award",474.552
+"181",181,"Eastern Promises",0,2007,"PASS",7.7,"No Award",456.533
+"182",182,"Easy A",0,2010,"PASS",7.1,"No Award",357.911
+"183",183,"Election",0,1999,"PASS",7.3,"No Award",389.017
+"184",184,"Elizabeth",2,1998,"PASS",7.5,"1-5 Awards",421.875
+"185",185,"Emma",1,1996,"PASS",8.2,"1-5 Awards",551.368
+"186",186,"Enchanted",0,2007,"PASS",7.1,"No Award",357.911
+"187",187,"Eyes Wide Shut",0,1999,"PASS",7.3,"No Award",389.017
+"188",188,"Family Plot",0,1976,"PASS",6.8,"No Award",314.432
+"189",189,"Fargo",4,1996,"PASS",9,"1-5 Awards",729
+"190",190,"Finding Neverland",1,2004,"PASS",7.8,"1-5 Awards",474.552
+"191",191,"Flight",0,2012,"FAIL",7.3,"No Award",389.017
+"192",192,"Footloose",0,2011,"PASS",6.5,"No Award",274.625
+"193",193,"Frida",3,2002,"FAIL",7.4,"1-5 Awards",405.224
+"194",194,"Frost/Nixon",0,2008,"FAIL",7.7,"No Award",456.533
+"195",195,"Frozen",2,2013,"PASS",7.6,"1-5 Awards",438.976
+"196",196,"Frozen",2,2010,"FAIL",7.6,"1-5 Awards",438.976
+"197",197,"Gangs of New York",2,2002,"FAIL",7.5,"1-5 Awards",421.875
+"198",198,"Gattaca",0,1997,"FAIL",7.8,"No Award",474.552
+"199",199,"Ghost World",0,2001,"PASS",7.4,"No Award",405.224
+"200",200,"Girl, Interrupted",2,1999,"PASS",7.3,"1-5 Awards",389.017
+"201",201,"Glengarry Glen Ross",0,1992,"FAIL",7.8,"No Award",474.552
+"202",202,"Good Will Hunting",3,1997,"FAIL",8.3,"1-5 Awards",571.787
+"203",203,"Gosford Park",2,2001,"PASS",7.3,"1-5 Awards",389.017
+"204",204,"Gran Torino",0,2008,"FAIL",8.2,"No Award",551.368
+"205",205,"Gravity",8,2013,"FAIL",7.8,"6-10 Awards",474.552
+"206",206,"Grease",0,1978,"PASS",7.2,"No Award",373.248
+"207",207,"Hairspray",0,2007,"PASS",6.7,"No Award",300.763
+"208",208,"Happiness",0,1998,"PASS",7.8,"No Award",474.552
+"209",209,"Hedwig and the Angry Inch",0,2001,"PASS",7.8,"No Award",474.552
+"210",210,"Her",2,2013,"FAIL",8,"1-5 Awards",512
+"211",211,"Hercules",0,1997,"PASS",6,"No Award",216
+"212",212,"High Anxiety",0,1977,"FAIL",6.7,"No Award",300.763
+"213",213,"Home Alone",0,1990,"FAIL",7.5,"No Award",421.875
+"214",214,"Hook",0,1991,"FAIL",6.7,"No Award",300.763
+"215",215,"House of Sand and Fog",0,2003,"PASS",7.6,"No Award",438.976
+"216",216,"Hugo",6,2011,"FAIL",7.5,"6-10 Awards",421.875
+"217",217,"I Spy",0,2002,"FAIL",5.4,"No Award",157.464
+"218",218,"Igby Goes Down",0,2002,"FAIL",7,"No Award",343
+"219",219,"In Bruges",1,2008,"FAIL",8,"1-5 Awards",512
+"220",220,"Inception",4,2010,"FAIL",8.8,"1-5 Awards",681.472
+"221",221,"Inglourious Basterds",2,2009,"FAIL",8.3,"1-5 Awards",571.787
+"222",222,"Invictus",0,2009,"FAIL",7.4,"No Award",405.224
+"223",223,"Iris",2,2011,"PASS",7.1,"1-5 Awards",357.911
+"224",224,"Jackie Brown",0,1997,"PASS",7.5,"No Award",421.875
+"225",225,"Juno",1,2007,"PASS",7.5,"1-5 Awards",421.875
+"226",226,"Kinsey",0,2004,"PASS",7.1,"No Award",357.911
+"227",227,"L.A. Confidential",3,1997,"FAIL",8.3,"1-5 Awards",571.787
+"228",228,"Legally Blonde",0,2001,"PASS",6.2,"No Award",238.328
+"229",229,"Legends of the Fall",1,1994,"PASS",7.5,"1-5 Awards",421.875
+"230",230,"Letters from Iwo Jima",1,2006,"FAIL",7.9,"1-5 Awards",493.039
+"231",231,"Liar Liar",0,1997,"FAIL",6.8,"No Award",314.432
+"232",232,"Life of Pi",5,2012,"FAIL",8,"6-10 Awards",512
+"233",233,"Lincoln",3,2012,"PASS",7.4,"1-5 Awards",405.224
+"234",234,"Little Children",0,2006,"PASS",7.6,"No Award",438.976
+"235",235,"Little Miss Sunshine",2,2006,"PASS",7.9,"1-5 Awards",493.039
+"236",236,"Little Shop of Horrors",0,1986,"FAIL",6.9,"No Award",328.509
+"237",237,"Little Voice",1,1998,"PASS",7,"1-5 Awards",343
+"238",238,"Love Actually",0,2003,"PASS",7.7,"No Award",456.533
+"239",239,"Magnolia",1,1999,"FAIL",8,"1-5 Awards",512
+"240",240,"Malcolm X",0,1992,"FAIL",7.7,"No Award",456.533
+"241",241,"Master and Commander: The Far Side of the World",2,2003,"FAIL",7.4,"1-5 Awards",405.224
+"242",242,"Match Point",0,2005,"PASS",7.7,"No Award",456.533
+"243",243,"Memento",0,2000,"FAIL",8.5,"No Award",614.125
+"244",244,"Memoirs of a Geisha",4,2005,"PASS",7.3,"1-5 Awards",389.017
+"245",245,"Michael Clayton",1,2007,"FAIL",7.3,"1-5 Awards",389.017
+"246",246,"Midnight Run",0,1988,"FAIL",7.6,"No Award",438.976
+"247",247,"Milk",2,2008,"FAIL",7.6,"1-5 Awards",438.976
+"248",248,"Million Dollar Baby",6,2004,"PASS",8.1,"6-10 Awards",531.441
+"249",249,"Miss Congeniality",0,2000,"PASS",6.2,"No Award",238.328
+"250",250,"Miss Potter",0,2006,"PASS",7,"No Award",343
+"251",251,"Mission: Impossible",2,1996,"FAIL",7.1,"1-5 Awards",357.911
+"252",252,"Mona Lisa Smile",0,2003,"PASS",6.4,"No Award",262.144
+"253",253,"Moneyball",0,2011,"FAIL",7.6,"No Award",438.976
+"254",254,"Monster",2,2003,"PASS",7.3,"1-5 Awards",389.017
+"255",255,"Moulin Rouge!",2,2001,"PASS",7.6,"1-5 Awards",438.976
+"256",256,"Mrs. Doubtfire",2,1993,"PASS",6.9,"1-5 Awards",328.509
+"257",257,"Mulan",0,1998,"FAIL",7.5,"No Award",421.875
+"258",258,"Munich",0,2005,"FAIL",7.6,"No Award",438.976
+"259",259,"My Big Fat Greek Wedding",0,2002,"PASS",6.6,"No Award",287.496
+"260",260,"Mystic River",4,2003,"PASS",8,"1-5 Awards",512
+"261",261,"Nebraska",0,2013,"PASS",7.8,"No Award",474.552
+"262",262,"Nine",0,2009,"FAIL",5.8,"No Award",195.112
+"263",263,"No Country for Old Men",6,2007,"FAIL",8.1,"6-10 Awards",531.441
+"264",264,"North Country",0,2005,"PASS",7.3,"No Award",389.017
+"265",265,"Notting Hill",0,1999,"PASS",7,"No Award",343
+"266",266,"O Brother, Where Art Thou?",1,2000,"FAIL",7.8,"1-5 Awards",474.552
+"267",267,"Pearl Harbor",1,2001,"FAIL",6.1,"1-5 Awards",226.981
+"268",268,"Peggy Sue Got Married",0,1986,"PASS",6.3,"No Award",250.047
+"269",269,"Pieces of April",0,1993,"PASS",7.1,"No Award",357.911
+"270",270,"Pineapple Express",0,2008,"FAIL",7,"No Award",343
+"271",271,"Pirates of the Caribbean: The Curse of the Black Pearl",0,2003,"FAIL",8.1,"No Award",531.441
+"272",272,"Pocahontas",3,1995,"PASS",6.6,"1-5 Awards",287.496
+"273",273,"Primary Colors",0,1998,"PASS",6.7,"No Award",300.763
+"274",274,"Private Benjamin",0,1980,"PASS",6.1,"No Award",226.981
+"275",275,"Rabbit Hole",0,2010,"PASS",7,"No Award",343
+"276",276,"Rabbit-Proof Fence",0,2002,"PASS",7.5,"No Award",421.875
+"277",277,"Rachel Getting Married",0,2008,"PASS",6.7,"No Award",300.763
+"278",278,"Raiders of the Lost Ark",5,1981,"FAIL",8.5,"6-10 Awards",614.125
+"279",279,"Ray",3,2004,"FAIL",7.7,"1-5 Awards",456.533
+"280",280,"Revolutionary Road",1,2008,"PASS",7.3,"1-5 Awards",389.017
+"281",281,"Robin Hood: Prince of Thieves",0,1991,"FAIL",6.9,"No Award",328.509
+"282",282,"Rush",0,2013,"FAIL",8.1,"No Award",531.441
+"283",283,"Rushmore",0,1998,"FAIL",7.7,"No Award",456.533
+"284",284,"Saving Mr. Banks",0,2013,"PASS",7.5,"No Award",421.875
+"285",285,"Saving Private Ryan",6,1998,"FAIL",8.6,"6-10 Awards",636.056
+"286",286,"Selena",0,1997,"PASS",6.7,"No Award",300.763
+"287",287,"Sense and Sensibility",2,1995,"PASS",7.7,"1-5 Awards",456.533
+"288",288,"Sex, Lies, and Videotape",0,1989,"FAIL",7.2,"No Award",373.248
+"289",289,"Shakespeare in Love",9,1998,"PASS",7.2,"6-10 Awards",373.248
+"290",290,"Shame",0,2011,"FAIL",7.3,"No Award",389.017
+"291",291,"Shattered Glass",0,2003,"FAIL",7.2,"No Award",373.248
+"292",292,"Sherlock Holmes",1,2009,"FAIL",7.6,"1-5 Awards",438.976
+"293",293,"Sherrybaby",0,2006,"FAIL",6.6,"No Award",287.496
+"294",294,"Shrek 2",0,2004,"PASS",7.2,"No Award",373.248
+"295",295,"Sideways",2,2004,"PASS",7.5,"1-5 Awards",421.875
+"296",296,"Silent Movie",0,1976,"FAIL",6.7,"No Award",300.763
+"297",297,"Silver Linings Playbook",2,2012,"PASS",7.8,"1-5 Awards",474.552
+"298",298,"Skyfall",3,2012,"FAIL",7.8,"1-5 Awards",474.552
+"299",299,"Slumdog Millionaire",11,2008,"FAIL",8,"11-15 Awards",512
+"300",300,"Somewhere in Time",0,1980,"FAIL",7.3,"No Award",389.017
+"301",301,"Spanglish",0,2004,"PASS",6.5,"No Award",274.625
+"302",302,"Spirit: Stallion of the Cimarron",0,2002,"FAIL",7,"No Award",343
+"303",303,"Star Trek: The Motion Picture",0,1979,"FAIL",6.4,"No Award",262.144
+"304",304,"Star Wars: Episode V - The Empire Strikes Back",0,1980,"FAIL",8.8,"No Award",681.472
+"305",305,"Stepmom",0,1998,"PASS",6.7,"No Award",300.763
+"306",306,"Stranger Than Fiction",0,2006,"PASS",7.6,"No Award",438.976
+"307",307,"Sunshine",0,2007,"FAIL",7.3,"No Award",389.017
+"308",308,"Tangled",0,2010,"PASS",7.8,"No Award",474.552
+"309",309,"That Thing You Do!",0,1996,"PASS",6.9,"No Award",328.509
+"310",310,"The Artist",7,2011,"FAIL",8,"6-10 Awards",512
+"311",311,"The Aviator",7,2004,"FAIL",7.5,"6-10 Awards",421.875
+"312",312,"The Book Thief",0,2013,"PASS",7.6,"No Award",438.976
+"313",313,"The Curious Case of Benjamin Button",3,2008,"FAIL",7.8,"1-5 Awards",474.552
+"314",314,"The English Patient",10,1996,"PASS",7.4,"11-15 Awards",405.224
+"315",315,"The Fountain",0,2006,"FAIL",7.3,"No Award",389.017
+"316",316,"The Girlfriend Experience",0,2009,"FAIL",7.3,"No Award",389.017
+"317",317,"The Help",2,2011,"PASS",8.1,"1-5 Awards",531.441
+"318",318,"The Hours",2,2002,"PASS",7.6,"1-5 Awards",438.976
+"319",319,"The Hunchback of Notre Dame",0,1996,"FAIL",6.9,"No Award",328.509
+"320",320,"The Hunger Games",0,2012,"PASS",7.3,"No Award",389.017
+"321",321,"The Hunger Games: Catching Fire",0,2013,"PASS",7.6,"No Award",438.976
+"322",322,"The Informant!",0,2009,"FAIL",6.5,"No Award",274.625
+"323",323,"The Kite Runner",0,2007,"FAIL",7.6,"No Award",438.976
+"324",324,"The Last Samurai",0,2003,"FAIL",7.7,"No Award",456.533
+"325",325,"The Lord of the Rings: The Fellowship of the Ring",4,2001,"FAIL",8.8,"1-5 Awards",681.472
+"326",326,"The Lord of the Rings: The Return of the King",14,2003,"FAIL",8.9,"11-15 Awards",704.969
+"327",327,"The Mirror Has Two Faces",1,1996,"PASS",6.5,"1-5 Awards",274.625
+"328",328,"The Missing",0,2003,"PASS",8.1,"No Award",531.441
+"329",329,"The Painted Veil",1,2006,"FAIL",7.5,"1-5 Awards",421.875
+"330",330,"The Phantom of the Opera",0,2004,"FAIL",7.4,"No Award",405.224
+"331",331,"The Polar Express",0,2004,"FAIL",6.6,"No Award",287.496
+"332",332,"The Prince of Egypt",1,1998,"FAIL",7,"1-5 Awards",343
+"333",333,"The Pursuit of Happyness",0,2006,"FAIL",8,"No Award",512
+"334",334,"The Social Network",6,2010,"FAIL",7.7,"6-10 Awards",456.533
+"335",335,"The Talented Mr. Ripley",0,1999,"FAIL",7.3,"No Award",389.017
+"336",336,"The Truman Show",3,1998,"FAIL",8.1,"1-5 Awards",531.441
+"337",337,"The Wrestler",2,2008,"FAIL",7.9,"1-5 Awards",493.039
+"338",338,"There Will Be Blood",3,2007,"FAIL",8.1,"1-5 Awards",531.441
+"339",339,"Thirteen",0,2003,"PASS",6.8,"No Award",314.432
+"340",340,"Titanic",15,1997,"PASS",7.7,"11-15 Awards",456.533
+"341",341,"Top Gun",2,1986,"FAIL",6.9,"1-5 Awards",328.509
+"342",342,"Toy Story",0,1995,"FAIL",8.3,"No Award",571.787
+"343",343,"Toy Story 2",0,1999,"FAIL",7.9,"No Award",493.039
+"344",344,"Training Day",1,2001,"FAIL",7.7,"1-5 Awards",456.533
+"345",345,"Transamerica",1,2005,"PASS",7.4,"1-5 Awards",405.224
+"346",346,"Tropic Thunder",0,2008,"FAIL",7,"No Award",343
+"347",347,"Twins",0,1988,"FAIL",6,"No Award",216
+"348",348,"Up",4,2009,"FAIL",8.3,"1-5 Awards",571.787
+"349",349,"Vanilla Sky",0,2001,"FAIL",6.9,"No Award",328.509
+"350",350,"Vera Drake",0,2004,"PASS",7.7,"No Award",456.533
+"351",351,"Vicky Cristina Barcelona",1,2008,"PASS",7.2,"1-5 Awards",373.248
+"352",352,"Volver",0,2006,"PASS",7.6,"No Award",438.976
+"353",353,"Wall Street: Money Never Sleeps",0,2010,"FAIL",6.3,"No Award",250.047
+"354",354,"War Horse",0,2011,"FAIL",7.2,"No Award",373.248
+"355",355,"What Women Want",0,2000,"FAIL",6.4,"No Award",262.144
+"356",356,"Young Adult",0,2011,"PASS",6.3,"No Award",250.047
+"357",357,"Young Frankenstein",0,1974,"FAIL",8,"No Award",512
+"358",358,"Yours, Mine and Ours",0,2005,"PASS",7.2,"No Award",373.248
+"359",359,"1776",0,1972,"FAIL",7.6,"No Award",438.976
+"360",360,"3:10 to Yuma",0,2007,"FAIL",7.8,"No Award",474.552
+"361",361,"9",0,2009,"FAIL",7.1,"No Award",357.911
+"362",362,"A Few Good Men",0,1992,"FAIL",7.6,"No Award",438.976
+"363",363,"A Serious Man",0,2009,"FAIL",7,"No Award",343
+"364",364,"A Very Long Engagement",0,2004,"PASS",7.7,"No Award",456.533
+"365",365,"Across the Universe",0,2007,"PASS",7.4,"No Award",405.224
+"366",366,"Air Force One",0,1997,"FAIL",6.4,"No Award",262.144
+"367",367,"Ajami",0,2009,"FAIL",7.4,"No Award",405.224
+"368",368,"American History X",0,1998,"FAIL",8.6,"No Award",636.056
+"369",369,"Amour",1,2012,"FAIL",7.9,"1-5 Awards",493.039
+"370",370,"An Education",0,2009,"PASS",7.3,"No Award",389.017
+"371",371,"Another Year",0,2010,"PASS",7.3,"No Award",389.017
+"372",372,"Armageddon",0,1998,"FAIL",6.6,"No Award",287.496
+"373",373,"Australia",0,2008,"FAIL",6.6,"No Award",287.496
+"374",374,"Back to the Future",1,1985,"FAIL",8.5,"1-5 Awards",614.125
+"375",375,"Back to the Future Part II",0,1989,"PASS",7.8,"No Award",474.552
+"376",376,"Batman Begins",0,2005,"FAIL",8.3,"No Award",571.787
+"377",377,"Beasts of the Southern Wild",0,2012,"FAIL",7.3,"No Award",389.017
+"378",378,"Before Sunset",0,2004,"FAIL",8,"No Award",512
+"379",379,"Beloved",0,1998,"PASS",5.9,"No Award",205.379
+"380",380,"Biutiful",0,2010,"FAIL",7.5,"No Award",421.875
+"381",381,"Black Hawk Down",2,2001,"FAIL",7.7,"1-5 Awards",456.533
+"382",382,"Brave",1,2012,"PASS",7.2,"1-5 Awards",373.248
+"383",383,"Bright Star",0,2009,"PASS",7,"No Award",343
+"384",384,"Cars",0,2006,"FAIL",7.2,"No Award",373.248
+"385",385,"Children of Men",0,2006,"PASS",7.9,"No Award",493.039
+"386",386,"Cliffhanger",0,1993,"FAIL",6.4,"No Award",262.144
+"387",387,"Con Air",0,1997,"FAIL",6.8,"No Award",314.432
+"388",388,"Coraline",0,2009,"PASS",7.7,"No Award",456.533
+"389",389,"Dancer in the Dark",0,2000,"PASS",8,"No Award",512
+"390",390,"Das Boot",0,1981,"FAIL",8.4,"No Award",592.704
+"391",391,"Despicable Me 2",0,2013,"PASS",7.5,"No Award",421.875
+"392",392,"Die Hard",0,1988,"PASS",8.2,"No Award",551.368
+"393",393,"Diner",0,1982,"FAIL",7.2,"No Award",373.248
+"394",394,"Dune",6,2000,"PASS",6.6,"6-10 Awards",287.496
+"395",395,"Dune",6,1984,"FAIL",6.6,"6-10 Awards",287.496
+"396",396,"Eternal Sunshine of the Spotless Mind",1,2004,"FAIL",8.3,"1-5 Awards",571.787
+"397",397,"Evolution",0,2001,"PASS",6.4,"No Award",262.144
+"398",398,"Fantastic Mr. Fox",0,2009,"FAIL",7.8,"No Award",474.552
+"399",399,"Far from Heaven",0,2002,"PASS",7.4,"No Award",405.224
+"400",400,"Fight Club",0,1999,"FAIL",8.8,"No Award",681.472
+"401",401,"Finding Nemo",1,2003,"FAIL",8.2,"1-5 Awards",551.368
+"402",402,"Flatliners",0,1990,"PASS",6.6,"No Award",287.496
+"403",403,"Frankenweenie",0,2012,"FAIL",7,"No Award",343
+"404",404,"Frozen River",0,2008,"PASS",7.2,"No Award",373.248
+"405",405,"Girl with a Pearl Earring",0,2003,"PASS",7,"No Award",343
+"406",406,"Going the Distance",0,2010,"PASS",6.3,"No Award",250.047
+"407",407,"Good Night, and Good Luck.",0,2005,"FAIL",7.5,"No Award",421.875
+"408",408,"Harry Potter and the Goblet of Fire",0,2005,"FAIL",7.6,"No Award",438.976
+"409",409,"Harry Potter and the Half-Blood Prince",0,2009,"PASS",7.5,"No Award",421.875
+"410",410,"Hero",0,1992,"FAIL",7.9,"No Award",493.039
+"411",411,"Hollow Man",0,2000,"PASS",5.7,"No Award",185.193
+"412",412,"How to Train Your Dragon",0,2010,"PASS",8.2,"No Award",551.368
+"413",413,"I Am Love",0,2010,"PASS",7,"No Award",343
+"414",414,"I, Robot",0,2004,"FAIL",7.1,"No Award",357.911
+"415",415,"Ice Age",0,2002,"FAIL",7.6,"No Award",438.976
+"416",416,"Independence Day",1,1996,"PASS",6.9,"1-5 Awards",328.509
+"417",417,"Indiana Jones and the Last Crusade",1,1989,"FAIL",8.3,"1-5 Awards",571.787
+"418",418,"Indiana Jones and the Temple of Doom",1,1984,"FAIL",7.6,"1-5 Awards",438.976
+"419",419,"Into the Wild",0,2007,"FAIL",8.2,"No Award",551.368
+"420",420,"Iron Man",0,2008,"FAIL",7.9,"No Award",493.039
+"421",421,"Iron Man 2",0,2010,"PASS",7,"No Award",343
+"422",422,"Iron Man 3",0,2013,"FAIL",7.2,"No Award",373.248
+"423",423,"Journey to the Center of the Earth",0,2008,"FAIL",5.8,"No Award",195.112
+"424",424,"Kung Fu Panda",0,2008,"FAIL",7.6,"No Award",438.976
+"425",425,"Kung Fu Panda 2",0,2011,"PASS",7.3,"No Award",389.017
+"426",426,"Ladyhawke",0,1985,"FAIL",7,"No Award",343
+"427",427,"Margin Call",0,2011,"FAIL",7.1,"No Award",357.911
+"428",428,"Maria Full of Grace",0,2004,"PASS",7.5,"No Award",421.875
+"429",429,"Marie Antoinette",1,2006,"PASS",6.4,"1-5 Awards",262.144
+"430",430,"Meet the Parents",0,2000,"FAIL",7,"No Award",343
+"431",431,"Men in Black",1,1997,"FAIL",7.3,"1-5 Awards",389.017
+"432",432,"Midnight in Paris",1,2011,"PASS",7.7,"1-5 Awards",456.533
+"433",433,"Minority Report",0,2002,"FAIL",7.7,"No Award",456.533
+"434",434,"Mirror Mirror",0,2012,"FAIL",5.6,"No Award",175.616
+"435",435,"Monster House",0,2006,"PASS",6.6,"No Award",287.496
+"436",436,"Monsters, Inc.",1,2001,"FAIL",8.1,"1-5 Awards",531.441
+"437",437,"Moonraker",0,1979,"FAIL",6.3,"No Award",250.047
+"438",438,"Moonrise Kingdom",0,2012,"PASS",7.8,"No Award",474.552
+"439",439,"Morning Glory",1,2010,"PASS",6.5,"1-5 Awards",274.625
+"440",440,"My Cousin Vinny",1,1992,"FAIL",7.5,"1-5 Awards",421.875
+"441",441,"Notes on a Scandal",0,2006,"PASS",7.4,"No Award",405.224
+"442",442,"Nowhere in Africa",1,2001,"PASS",7.7,"1-5 Awards",456.533
+"443",443,"Once",1,2006,"FAIL",7.9,"1-5 Awards",493.039
+"444",444,"Out of Sight",0,1998,"FAIL",7,"No Award",343
+"445",445,"ParaNorman",0,2012,"FAIL",7,"No Award",343
+"446",446,"Persepolis",0,2007,"PASS",8,"No Award",512
+"447",447,"Poseidon",0,2006,"FAIL",5.6,"No Award",175.616
+"448",448,"Predator",0,1987,"FAIL",7.8,"No Award",474.552
+"449",449,"Prisoners",0,2013,"PASS",8.1,"No Award",531.441
+"450",450,"Puss in Boots",0,2011,"FAIL",6.7,"No Award",300.763
+"451",451,"Rango",1,2011,"FAIL",7.2,"1-5 Awards",373.248
+"452",452,"Ratatouille",1,2007,"FAIL",8,"1-5 Awards",512
+"453",453,"Real Steel",0,2011,"FAIL",7.1,"No Award",357.911
+"454",454,"Remember Me",0,2010,"PASS",7.2,"No Award",373.248
+"455",455,"Requiem for a Dream",0,2000,"PASS",8.4,"No Award",592.704
+"456",456,"Return to Oz",0,1985,"PASS",6.7,"No Award",300.763
+"457",457,"Rio",0,2011,"FAIL",7,"No Award",343
+"458",458,"Rise of the Planet of the Apes",0,2011,"FAIL",7.6,"No Award",438.976
+"459",459,"Robin Hood",0,2010,"FAIL",6.7,"No Award",300.763
+"460",460,"RoboCop",1,1987,"FAIL",6.2,"1-5 Awards",238.328
+"461",461,"Salt",0,2010,"PASS",6.4,"No Award",262.144
+"462",462,"Scrooged",0,1988,"PASS",7,"No Award",343
+"463",463,"Shark Tale",0,2004,"FAIL",6,"No Award",216
+"464",464,"Shrek",1,2001,"FAIL",7.9,"1-5 Awards",493.039
+"465",465,"Sleepy Hollow",1,1999,"PASS",7.5,"1-5 Awards",421.875
+"466",466,"Snow White and the Huntsman",0,2012,"PASS",6.1,"No Award",226.981
+"467",467,"Spider-Man",0,2002,"FAIL",7.3,"No Award",389.017
+"468",468,"Spider-Man 2",1,2004,"FAIL",7.3,"1-5 Awards",389.017
+"469",469,"Splash",0,1984,"FAIL",6.2,"No Award",238.328
+"470",470,"Star Trek",1,2009,"PASS",8,"1-5 Awards",512
+"471",471,"Star Trek Into Darkness",0,2013,"FAIL",7.8,"No Award",474.552
+"472",472,"Star Trek: First Contact",0,1996,"PASS",7.6,"No Award",438.976
+"473",473,"Starship Troopers",0,1997,"PASS",7.2,"No Award",373.248
+"474",474,"Straw Dogs",0,2011,"PASS",5.8,"No Award",195.112
+"475",475,"Straw Dogs",0,1971,"FAIL",5.8,"No Award",195.112
+"476",476,"Stuart Little",0,1999,"FAIL",5.9,"No Award",205.379
+"477",477,"Superman Returns",0,2006,"FAIL",6.1,"No Award",226.981
+"478",478,"Ted",0,2012,"FAIL",7,"No Award",343
+"479",479,"The Abyss",1,1989,"PASS",7.6,"1-5 Awards",438.976
+"480",480,"The Adventures of Tintin",0,2011,"FAIL",7.4,"No Award",405.224
+"481",481,"The Age of Innocence",1,1993,"PASS",7.2,"1-5 Awards",373.248
+"482",482,"The American President",0,1995,"PASS",6.8,"No Award",314.432
+"483",483,"The Amityville Horror",0,2005,"PASS",6,"No Award",216
+"484",484,"The Amityville Horror",0,1979,"PASS",6,"No Award",216
+"485",485,"The Best Little Whorehouse in Texas",0,1982,"PASS",5.8,"No Award",195.112
+"486",486,"The Blind Side",1,2009,"FAIL",7.7,"1-5 Awards",456.533
+"487",487,"The Box",1,2009,"PASS",5.6,"1-5 Awards",175.616
+"488",488,"The Bridges of Madison County",0,1995,"PASS",7.5,"No Award",421.875
+"489",489,"The Cell",0,2000,"FAIL",6.3,"No Award",250.047
+"490",490,"The Chronicles of Narnia: The Lion, the Witch and the Wardrobe",1,2005,"PASS",6.9,"1-5 Awards",328.509
+"491",491,"The Clan of the Cave Bear",0,1986,"PASS",5.3,"No Award",148.877
+"492",492,"The Constant Gardener",1,2005,"PASS",7.5,"1-5 Awards",421.875
+"493",493,"The Croods",0,2013,"FAIL",7.3,"No Award",389.017
+"494",494,"The Dark Knight",2,2008,"FAIL",9,"1-5 Awards",729
+"495",495,"The Departed",4,2006,"FAIL",8.5,"1-5 Awards",614.125
+"496",496,"The Devil Wears Prada",0,2006,"PASS",6.8,"No Award",314.432
+"497",497,"The Family",0,2013,"FAIL",7.5,"No Award",421.875
+"498",498,"The Fifth Element",0,1997,"FAIL",7.7,"No Award",456.533
+"499",499,"The Fighter",2,2010,"FAIL",7.9,"1-5 Awards",493.039
+"500",500,"The First Wives Club",0,1996,"PASS",6.2,"No Award",238.328
+"501",501,"The Girl with the Dragon Tattoo",1,2011,"FAIL",7.8,"1-5 Awards",474.552
+"502",502,"The Girl with the Dragon Tattoo",1,2009,"FAIL",7.8,"1-5 Awards",474.552
+"503",503,"The Golden Compass",1,2007,"PASS",6.1,"1-5 Awards",226.981
+"504",504,"The Green Mile",0,1999,"FAIL",8.5,"No Award",614.125
+"505",505,"The Hobbit: An Unexpected Journey",0,2012,"FAIL",7.9,"No Award",493.039
+"506",506,"The Hobbit: The Desolation of Smaug",0,2013,"FAIL",7.9,"No Award",493.039
+"507",507,"The Hunt for Red October",1,1990,"FAIL",7.6,"1-5 Awards",438.976
+"508",508,"The Hurt Locker",6,2008,"FAIL",7.6,"6-10 Awards",438.976
+"509",509,"The Illusionist",0,2010,"FAIL",7.6,"No Award",438.976
+"510",510,"The Illusionist",0,2006,"FAIL",7.6,"No Award",438.976
+"511",511,"The Imaginarium of Doctor Parnassus",0,2009,"FAIL",6.8,"No Award",314.432
+"512",512,"The Impossible",0,2012,"FAIL",7.6,"No Award",438.976
+"513",513,"The Incredibles",2,2004,"PASS",8,"1-5 Awards",512
+"514",514,"The Iron Lady",2,2011,"PASS",6.4,"1-5 Awards",262.144
+"515",515,"The Karate Kid",0,2010,"FAIL",7.2,"No Award",373.248
+"516",516,"The Karate Kid",0,1984,"PASS",7.2,"No Award",373.248
+"517",517,"The Kids Are All Right",0,2010,"PASS",7.1,"No Award",357.911
+"518",518,"The Last Station",0,2009,"PASS",7,"No Award",343
+"519",519,"The Last Temptation of Christ",0,1988,"FAIL",7.6,"No Award",438.976
+"520",520,"The Lone Ranger",0,2013,"FAIL",6.5,"No Award",274.625
+"521",521,"The Lord of the Rings: The Two Towers",2,2002,"FAIL",8.7,"1-5 Awards",658.503
+"522",522,"The Lost World: Jurassic Park",0,1997,"FAIL",6.5,"No Award",274.625
+"523",523,"The Lovely Bones",0,2009,"PASS",6.7,"No Award",300.763
+"524",524,"The Man in the Iron Mask",0,1998,"FAIL",6.4,"No Award",262.144
+"525",525,"The Mask of Zorro",0,1998,"FAIL",6.7,"No Award",300.763
+"526",526,"The Master",0,2012,"FAIL",7.1,"No Award",357.911
+"527",527,"The Matrix",4,1999,"PASS",8.7,"1-5 Awards",658.503
+"528",528,"The Messenger",0,2009,"FAIL",7.2,"No Award",373.248
+"529",529,"The Muppets",1,2011,"FAIL",7.1,"1-5 Awards",357.911
+"530",530,"The New World",0,2005,"FAIL",6.7,"No Award",300.763
+"531",531,"The Patriot",1,2000,"FAIL",7.1,"1-5 Awards",357.911
+"532",532,"The Pirates! Band of Misfits",0,2012,"FAIL",6.7,"No Award",300.763
+"533",533,"The Prestige",0,2006,"FAIL",8.5,"No Award",614.125
+"534",534,"The Princess and the Frog",0,2009,"PASS",7.1,"No Award",357.911
+"535",535,"The Princess Bride",0,1987,"FAIL",8.1,"No Award",531.441
+"536",536,"The Queen",1,2006,"FAIL",7.3,"1-5 Awards",389.017
+"537",537,"The Quiet American",0,2002,"FAIL",7.1,"No Award",357.911
+"538",538,"The Reader",1,2008,"FAIL",7.6,"1-5 Awards",438.976
+"539",539,"The Remains of the Day",0,1993,"FAIL",7.9,"No Award",493.039
+"540",540,"The Rock",0,1996,"FAIL",7.4,"No Award",405.224
+"541",541,"The Royal Tenenbaums",0,2001,"PASS",7.6,"No Award",438.976
+"542",542,"The Savages",0,2007,"PASS",7.2,"No Award",373.248
+"543",543,"The Secret of Kells",0,2009,"FAIL",7.7,"No Award",456.533
+"544",544,"The Shawshank Redemption",0,1994,"FAIL",9.3,"No Award",804.357
+"545",545,"The Silence of the Lambs",5,1991,"PASS",8.6,"6-10 Awards",636.056
+"546",546,"The Sixth Sense",0,1999,"FAIL",8.1,"No Award",531.441
+"547",547,"The Squid and the Whale",0,2005,"FAIL",7.4,"No Award",405.224
+"548",548,"The Sting",7,1973,"FAIL",8.3,"6-10 Awards",571.787
+"549",549,"The Tempest",0,2010,"PASS",5.4,"No Award",157.464
+"550",550,"The Thin Red Line",0,1998,"FAIL",7.6,"No Award",438.976
+"551",551,"The Town",0,2010,"FAIL",7.6,"No Award",438.976
+"552",552,"The Tree of Life",0,2011,"FAIL",6.7,"No Award",300.763
+"553",553,"The Wolf of Wall Street",0,2013,"FAIL",8.2,"No Award",551.368
+"554",554,"The Wolfman",1,2010,"FAIL",5.8,"1-5 Awards",195.112
+"555",555,"The Young Victoria",1,2009,"PASS",7.3,"1-5 Awards",389.017
+"556",556,"Tinker Tailor Soldier Spy",0,2011,"FAIL",7.1,"No Award",357.911
+"557",557,"Topsy-Turvy",2,1999,"PASS",7.4,"1-5 Awards",405.224
+"558",558,"Toy Story 3",2,2010,"FAIL",8.3,"1-5 Awards",571.787
+"559",559,"Transformers",0,2007,"FAIL",7.1,"No Award",357.911
+"560",560,"Transformers: Dark of the Moon",0,2011,"PASS",6.3,"No Award",250.047
+"561",561,"Transformers: Revenge of the Fallen",0,2009,"PASS",6,"No Award",216
+"562",562,"Treasure Planet",0,2002,"FAIL",7.1,"No Award",357.911
+"563",563,"Troy",0,2004,"FAIL",7.2,"No Award",373.248
+"564",564,"Twister",0,1996,"PASS",6.3,"No Award",250.047
+"565",565,"Underworld",1,2003,"FAIL",7,"1-5 Awards",343
+"566",566,"Unstoppable",0,2010,"FAIL",6.8,"No Award",314.432
+"567",567,"Up in the Air",0,2009,"FAIL",7.4,"No Award",405.224
+"568",568,"Velvet Goldmine",0,1998,"FAIL",7,"No Award",343
+"569",569,"Walk the Line",1,2005,"PASS",7.9,"1-5 Awards",493.039
+"570",570,"Waltz with Bashir",0,2008,"FAIL",8,"No Award",512
+"571",571,"Wanted",0,2008,"FAIL",6.7,"No Award",300.763
+"572",572,"War of the Worlds",0,2005,"FAIL",6.5,"No Award",274.625
+"573",573,"WarGames",0,1983,"FAIL",7.1,"No Award",357.911
+"574",574,"Warrior",0,2011,"FAIL",8.2,"No Award",551.368
+"575",575,"Water",0,2005,"PASS",7.8,"No Award",474.552
+"576",576,"Whale Rider",0,2002,"PASS",7.6,"No Award",438.976
+"577",577,"Wreck-It Ralph",0,2012,"PASS",7.8,"No Award",474.552
+"578",578,"Zero Dark Thirty",1,2012,"PASS",7.4,"1-5 Awards",405.224
