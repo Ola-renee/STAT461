@@ -468,7 +468,7 @@ This visualization helps to contextualize the relationship between the film indu
 #| fig.pos="H"
 bechdel_awards %>%
   drop_na(awards_factor) %>%
-  ggplot(mapping = aes(x = ≈, fill = awards_factor)) +
+  ggplot(mapping = aes(x = imbd_score, fill = awards_factor)) +
   geom_density(na.rm = TRUE, alpha = 0.5) +
   theme_bw() +
   scale_fill_manual(values = c("blue", "red", "green", "purple", "orange")) + # Make sure to adjust the colors accordingly
@@ -670,24 +670,7 @@ footnote_as_chunk = TRUE
 )
 
 ```
-```{r}
-# Point Estimates for Parametric Shortcut ----
 
-pointEst <- dummy.coef(imbd_model)
-pointEst <- unlist(pointEst)
-data.frame("Estimate" = pointEst) %>%
-knitr::kable(
-digits = 2,
-caption = "Point Estimates from the Fruit Flies Study",
-format = "latex",
-booktabs = TRUE,
-align = "c"
-) %>%
-kableExtra::kable_classic(
-font_size = 12,
-latex_options = c("HOLD_position")
-)
-```
 
 
 
