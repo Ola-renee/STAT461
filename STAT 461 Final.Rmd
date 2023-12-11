@@ -124,15 +124,13 @@ to recognzie where the underlying bias might be in the movies.
 
 bechdel_awards <- read_csv("bechdel_awards.csv")
 
-bechdel_awards$awards_factor <- cut(
-  x = bechdel_awards$awards,
-  breaks = c(-Inf, 1, 5, 10, 15),
-  labels = c("No Award", "1-5 Awards", "6-10 Awards", "11-15 Awards"),
-  include.lowest = TRUE,
-  right = FALSE
+bechdel_awards$movies.code <- factor(
+x = bechdel_awards$movies.code,
+levels = c("FAIL", "PASS")
 )
 
 ```
+
 
 ## Previous Studies
 
@@ -223,15 +221,543 @@ at 2 levels.
 Within each hypothesis test, we will use an Unusualness Thresheold equivalent to 
 0.1.
 
-# Exploratory Data Analysis
+# Exploratory of the Data
 
-# Results
 
-## Assumptions
+## Exploration 1: Awards Distribution
+When we watch movies, awards are a way to tell us which ones are exceptional. 
+But how often do movies get these awards? 
+```{r awards-histogram}
+#| fig.cap="Histogram of Awards Distribution",
+#| fig.width = 6,
+#| fig.height = 3,
+#| fig.pos = "H"
+#| fig.align='center'
 
-## Omnibus
+# Create a histogram of the awards distribution
+ggplot(bechdel_awards, aes(x = awards)) +
+  geom_histogram(binwidth = 1, fill = "blue", color = "black") +
+  labs(title = "Histogram of Awards Distribution",
+       x = "Number of Awards",
+       y = "Frequency") +
+  theme_minimal()
+```
+
+The histogram above provides a clear picture of how awards are distributed among movies. We can immediately see that a significant number of movies don't receive any awards. As we look for movies with more awards, they become less and less common. In fact, it's quite rare for movies to receive a large number of awards. To make our analysis easier to understand, we've grouped the movies based on the number of awards they've received. This helps us see patterns and compare different sets of movies. 
+
+Given the observed distribution, the awards have been categorized into the following levels for analysis:
+- **No Award**: Movies that have not received any awards.
+- **Few Awards**: Movies that have received 1 to 2 awards.
+- **Some Awards**: Movies that have received 3 to 6 awards.
+- **Many Awards**: Movies that have received 7 to 10 awards.
+- **Numerous Awards**: Movies that have received 11 or more awards.
+
+```{r number of awards}
+bechdel_awards$awards_factor <- cut(
+  x = bechdel_awards$awards,
+  breaks = c(-Inf, 0, 2, 6,10,Inf),
+  labels = c("No Award", "1-2 Awards", "3-6 Awards", "7-10 Awards","11+ Awards"),
+   include.lowest = TRUE)
+  
+# Categorizing the number of awards into simpler groups
+bechdel_awards$awards_factor <- cut(
+  x = bechdel_awards$awards,
+  breaks = c(-Inf, 0, 2, 6, 10, Inf),
+  labels = c("No Award", "A Few Awards", "Some Awards", "Many Awards", "A Lot of Awards"),
+  include.lowest = TRUE
+)
+
+```
+
+
+## Exploration 2: IMBD Scores of Movies
+```{r imbd_score_distribution,}
+#| fig.cap="Histogram showing the distribution of IMBD scores for movies", 
+#| fig.align='center'
+
+# Distribution of IMBD scores
+hist(bechdel_awards$imbd_score, main = "Distribution of IMBD Scores", xlab = "IMBD Score")
+```
+The histogram above shows us the frequency of movies across different IMBD score ranges.
+From it we can see that most movies in the data set have scores around the 7 to 8. There are fewer movies with very high scores (close to 9) or lower scores (around 5 or 6) this means most movies have average scores, and fewer movies are rated as very good or bad.
+
+We'll keep this in mind as we analyze how scores relate to awards and the representation of women in these films.
+
+
+## Exploration 3: IMBD Scores and the Bechdel Test
+```{r imbd_bechedel_boxplot}
+#| fig.cap = "Box Plots of IMBD Scores by Bechdel Test Result",
+#| fig.width = 6,
+#| fig.height = 3,
+#| fig.pos = "H"
+
+ggplot(
+  data = bechdel_awards,
+  mapping = aes(x = movies.code, y = imbd_score, fill = movies.code)
+) +
+  geom_boxplot() +
+  theme_bw() +
+   labs(title = "IMBD Scores by Bechdel Test Result")+
+  xlab("Bechdel Test Result") +
+  ylab("IMBD Score") +
+  theme(
+    legend.position = "none",
+    text = element_text(size = 12)
+  )
+```
+
+From the box plot above The median IMBD score for movies that pass the Bechdel test seems to be slightly higher than for those that fail. There is a wide range of scores for both categories, but the 'Pass' category has a slightly tighter interquartile range, indicating that scores are more concentrated around the median. Lastly there are a few outliers in both categories, indicating some movies scored much lower or higher than the typical range.
+
+
+This visual suggests that, on average, movies that pass the Bechdel test might be more favorably reviewed, but the difference is not stark. It's a reminder that while the Bechdel test can signal something about the content of a movie, it's not a definitive measure of quality or viewer satisfaction.
+
+## Exploration 4: The Impact of Awards on IMBD Scores
+The box plot below segments movies according to the number of awards they've received and displays their range of IMBD scores within each category.
+
+we turn our attention to the relationship between the number of awards a movie has won and its IMBD score. IMBD scores, which range from 1 to 10, reflect the average viewer's rating of a film, and we're curious to see if winning awards correlates with higher ratings.
+
+```{r imbd_awards_boxplot}
+#| fig.cap="Box plot showing IMBD Scores by Awards Factor", 
+#| fig.width=6, 
+#| fig.height=3, 
+#| fig.pos="H"
+ggplot(
+  data = bechdel_awards,
+  mapping = aes(x = awards_factor, y = imbd_score, fill = awards_factor)
+) +
+  geom_boxplot() +
+  theme_bw() +
+   labs(title = "IMBD Scores by Awards Factor")+
+  xlab("Awards Factor") +
+  ylab("IMBD Score") +
+  theme(
+    legend.position = "none",
+    text = element_text(size = 12)
+  )
+```
+From the box plot, we see that Movies that have not won any awards tend to have a wider range of IMBD scores, with a number of outliers indicating variability in viewer ratings. As the number of awards increases, the median IMBD score appears to increase slightly, suggesting that movies with more awards might be more favorably viewed by the audience.
+Interestingly, the highest award category (11+ awards) does not necessarily have the highest median score, indicating that a large number of awards does not always correspond to the highest viewer ratings.
+
+This visualization suggests that while there may be a positive relationship between the number of awards and IMBD scores, it is not a strict one-to-one correlation. Other factors not captured by award counts may also play a significant role in determining a movie's IMBD score.
+
+
+## Exploration 5: IMBD Scores by Bechdel Test Result and Awards Factor
+We have created a box plot that lays out IMBD scores based on whether movies pass or fail the Bechdel test, as well as how many awards they have won. This dual comparison provides a more nuanced view of the data.
+
+```{r imbd_bechedel_awards_boxplot}
+#|fig.cap="Box plot showing IMBD Scores by Bechdel Test Result and Awards Factor",
+#| fig.width=6, 
+#| fig.height=3,
+#|fig.pos="H"
+# Boxplot of IMBD scores by Bechdel test result with awards factor
+ggplot(bechdel_awards, aes(x = movies.code, y = imbd_score, fill = awards_factor)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(title = "IMBD Scores by Bechdel Test Result and Awards Factor",
+       x = "Bechdel Test Result",
+       y = "IMBD Score",
+       fill = "Awards Factor") +
+  scale_fill_brewer(palette = "Set3")
+```
+Across both Bechdel test results, movies with no awards have a wider range of IMBD scores, indicating variability in how viewers rate them. For movies that pass the Bechdel test, as the number of awards increases, there seems to be a slight trend towards higher IMBD scores. Interestingly, movies that fail the Bechdel test show a less clear pattern between awards and IMBD scores, suggesting that other factors might influence the viewer ratings of these films.
+
+This visual analysis allows us to observe that while awards seem to be associated with higher IMBD scores for movies passing the Bechdel test, the story isn't as straightforward for movies that fail it. It hints at the complex relationship between movie ratings, gender representation, and critical acclaim.
+
+
+## Exploration 6: Interaction Between Awards and Bechdel Test Results
+The interaction plot below helps us visualize whether the relationship between the number of awards and IMBD scores is different for movies that pass the Bechdel test compared to those that fail.
+```{r imbd_bechedel_interaction_plot}
+#|fig.cap="Interaction plot showing the relationship between IMBD Scores, Bechdel Test Result, and Awards Factor",
+#| fig.width=6, 
+#| fig.height=3, 
+#| fig.pos="H"
+# Interaction plot for Bechdel test result and awards factor
+interaction.plot(bechdel_awards$awards_factor, bechdel_awards$movies.code, bechdel_awards$imbd_score, 
+                 main = "Interaction Plot", xlab = "Awards Factor", ylab = "Average IMBD Score", 
+                 trace.label = "Bechdel Test", fixed = TRUE)
+```
+Movies that pass the Bechdel test (solid line) generally have higher average IMBD scores than those that fail (dashed line) across all awards categories. The influence of awards on IMBD scores appears to be more pronounced for movies that pass the Bechdel test, particularly in the '3-6 Awards' and '11+ Awards' categories.There seems to be a notable increase in average IMBD scores for movies that pass the Bechdel test as the number of awards goes from '7-10' to '11+' awards, which is less evident for movies that fail the test.
+
+This pattern indicates a potential synergistic effect, where both awards and positive Bechdel test results may be associated with higher viewer ratings. However, it also suggests that the Bechdel test alone does not explain all the variability in IMBD scores, and winning awards is an important factor regardless of Bechdel test outcome.
+
+This interaction suggests that awards and positive representation of women (as measured by the Bechdel test) might collectively influence audience appreciation of movies. The interaction effect, particularly pronounced in films with a high number of awards, indicates that these two factors may not be independent in their impact on IMBD scores.
+
+
+
+## Exploration 7: Visualizing the Influence of Awards and Bechdel Test Results
+
+The following heat map allows us to see at a glance how the average IMBD scores differ across movies that pass or fail the Bechdel test and how many awards they've won.
+```{r imbd_heatmap}
+#|fig.cap="Heat map showing the average IMBD Scores by Bechdel Test Result and Awards Factor",
+#| fig.width=6,
+#| fig.height=3,
+#| fig.pos="H"
+
+bechdel_awards %>%
+  group_by(movies.code, awards_factor) %>%
+  summarise(average_score = mean(imbd_score, na.rm = TRUE), .groups = 'drop') %>%
+  ggplot(aes(x = movies.code, y = awards_factor, fill = average_score)) +
+  geom_tile() +
+  scale_fill_viridis_c() +
+  labs(x = "Bechdel Test Result", y = "Awards Factor", fill = "Average IMBD Score") +
+  theme_minimal()
+
+
+```
+This visualization helps us understand that there is a positive association between movies that fail the Bechdel test, receive a higher number of awards, and achieve higher IMBD scores. This pattern highlights the potential impact of gender representation and critical acclaim on audience ratings.
+
+
+## Exploration 8: Distribution of Movies by Bechdel Test and Awards
+
+```{r movie_distribution_by_bechdel_and_awards}
+#| fig.cap="Bar chart showing the number of movies by Bechdel Test Result and Awards Factor", 
+#| fig.width=6, 
+#| fig.height=3, 
+#| fig.pos="H"
+ggplot(bechdel_awards, aes(x = awards_factor, fill = movies.code)) +
+  geom_bar(position = "dodge") +
+  scale_fill_manual(values = c("red", "blue")) +
+  labs(title = "Number of Movies by Bechdel Test Result and Awards Factor", x = "Awards Factor", y = "Count", fill = "Bechdel Test Result") +
+  theme_minimal()
+
+```
+It suggests that movies which fail the Bechdel test might be more likely to receive awards, or conversely, that movies with more awards tend to fail the Bechdel test more often.
+
+
+## Exploration 9: Plot of IMBD Scores by Awards Factor and Bechdel Test
+```{r imbd_score_ridge_plot}
+#| fig.cap="Ridge plot showing IMBD Score Distributions Across Awards Factor", 
+#| fig.width=6,
+#|  fig.height=3, 
+#|  fig.pos="H"
+library(ggridges)
+ggplot(bechdel_awards, aes(x = imbd_score, y = awards_factor, fill = movies.code)) +
+  geom_density_ridges() +
+  scale_fill_manual(values = c("red", "blue")) +
+  labs(title = "IMBD Score Distributions Across Awards Factor", x = "IMBD Score", y = "Awards Factor", fill = "Bechdel Test Result") +
+  theme_ridges()
+
+
+```
+The comparison between movies that fail and pass the Bechdel test shows different distribution shapes, with failing movies showing a tighter concentration of higher scores, especially in the higher awards categories.For movies with no awards, the distribution of scores is wider, suggesting a greater diversity in audience ratings regardless of the Bechdel test result.
+
+## Exploration 10: Awards Over Time by Bechdel Test Result
+```{r total_awards_by_year_and_bechdel}
+#| fig.cap="Stacked bar chart showing the total number of awards by year and Bechdel Test Result", 
+#| fig.width=6, 
+#| fig.height=3, 
+#| fig.pos="H"
+ggplot(bechdel_awards, aes(x = movies.year, y = awards, fill = movies.code)) +
+  geom_bar(stat = "identity", position = "stack") +
+  facet_wrap(~movies.code) +
+  theme_minimal() +
+  labs(x = "Year", y = "Total Awards", fill = "Bechdel Test Result")
+
+```
+
+Movies that fail the Bechdel test have, in several years, received a higher total number of awards compared to those that pass. This could be indicative of historical trends in the film industry's recognition practices.
+
+This visualization helps to contextualize the relationship between the film industry's award patterns and the representation of women over time. It suggests that while there has been a historical gap in recognition, there may be a trend towards more equitable recognition for movies that provide better representation of women, as indicated by their passing of the Bechdel test.
+
+
+## Exploration 11: IMBD Score Distributions by Awards Factor
+```{r imbd_score_density_awards} 
+#| fig.cap="Density plot of IMBD scores across awards categories", 
+#| fig.width=6, 
+#| fig.height=3, 
+#| fig.pos="H"
+bechdel_awards %>%
+  drop_na(awards_factor) %>%
+  ggplot(mapping = aes(x = ≈, fill = awards_factor)) +
+  geom_density(na.rm = TRUE, alpha = 0.5) +
+  theme_bw() +
+  scale_fill_manual(values = c("blue", "red", "green", "purple", "orange")) + # Make sure to adjust the colors accordingly
+  xlab("Longevity") +
+  theme(legend.position = "bottom")
+```
+The distributions show how the IMBD scores are spread within each awards category.
+We can see that some awards categories, such as '7+ Awards', tend to have a higher density around higher IMBD scores, suggesting that movies with more awards may be rated more favorably.
+The overlap between the distributions of different awards categories indicates that while there may be a trend, the number of awards is not the sole determinant of IMBD scores.
+
+## Exploration 12:  Shadowgram Visualization of IMBD Scores
+```{r imbd_scores_shadowgram}
+#| fig.cap = "Shadowgram of IMBD Scores",
+#| fig.height = 2,
+#| fig.width = 4,
+#| fig.pos = "H"
+
+# Assuming the 'shadowgram' function is available in your R environment
+# and 'bechdel_awards' is your dataset with an 'imbd_score' column
+shadowgram(
+  dataVec = bechdel_awards$imbd_score,
+  label = "IMBD Scores",
+  layers = 5,
+  color = "blue",
+  aStep = 4
+)
+
+```
+
+The visualization shows a multi-layered perspective of the IMBD scores, with peaks at certain scores suggesting common ratings given by viewers.The spread of the scores across different layers indicates the diversity in the viewers' ratings, with some scores being much more common than others.
+
+## Exploration 13: Descriptive Statistics of IMBD Scores by Bechdel Test Result
+
+```{r bechdel_summary_stats}
+#| fig.cap = "Summary Statistics for IMBD Scores by Bechdel Test Result",
+#| fig.height = 4,
+#| fig.width = 6,
+#| fig.pos = "H"
+
+# Descriptive statistics on IMBD scores by Bechdel test result
+bechdel_stats <- psych::describeBy(
+  x = bechdel_awards$imbd_score,
+  group = bechdel_awards$movies.code,
+  na.rm = TRUE,
+  skew = TRUE,
+  ranges = TRUE,
+  quant = c(0.25, 0.75),
+  IQR = FALSE,
+  mat = TRUE
+)
+
+bechdel_stats %>%
+  tibble::remove_rownames() %>%
+  tibble::column_to_rownames(var = "group1") %>%  # Use the actual grouping column name here
+  dplyr::select(
+    n, min, Q0.25, median, Q0.75, max, mad, mean, sd, skew, kurtosis
+  ) %>%
+  knitr::kable(
+    caption = "Summary Statistics for IMBD Scores by Bechdel Test Result",
+    digits = 3,
+    format.args = list(big.mark = ","),
+    align = rep('c', 11),
+    col.names = c("n", "Min", "Q1", "Median", "Q3", "Max", "MAD", "SAM", "SASD", "Sample Skew", "Sample Ex. Kurtosis"),
+    booktabs = TRUE
+  ) %>%
+  kableExtra::kable_classic_2(
+    font_size = 12,
+    latex_options = c("scale_down", "HOLD_position")
+  )
+
+
+```
+From Table 13, we discern that movies failing the Bechdel test have a marginally higher median IMBD score, a subtle yet intriguing finding. The median score, an indicator less sensitive to outliers, suggests that movies with less female presence or those that do not emphasize female-centric conversations are not necessarily disadvantaged in terms of viewer ratings. However, the range of IMBD scores (from minimum to maximum) for Bechdel-failing movies is broader, indicating a more varied reception amongst viewers.
+
+Conversely, movies that pass the Bechdel test exhibit a slightly lower median, suggesting that a focus on female representation does not always correlate with higher ratings. Nonetheless, the more concentrated interquartile range (Q1 to Q3) for Bechdel-passing films implies a consistency in scoring, perhaps indicating a more uniform viewer appreciation.
+
+The skewness of both distributions leans negatively, hinting at a longer tail of lower scores. Yet, it is the excess kurtosis where we notice a stark contrast: Bechdel-failing films have a negative excess kurtosis, implying fewer outliers than a normal distribution, whereas Bechdel-passing films show a positive excess kurtosis, indicating a presence of outlier scores that are unusually high
+
+
+
+
+
+# Results 
+
+```{r model_fit}
+# Fit the model for ANOVA ----
+imbd_model <- aov(
+  formula = imbd_score ~ movies.code * awards_factor,
+  data = bechdel_awards,
+  na.action = "na.omit"
+)
+```
+
+
+## Assumptions 
+
+
+```{r}
+# Assumption Assessment Visualizations ----
+## Gaussian Residuals Assumption
+car::qqPlot(
+  x = imbd_model$residuals,
+  distribution = "norm",
+  envelope = 0.99,
+  id = FALSE,
+  pch = 20,
+  ylab = "Residuals (points)"
+)
+
+## Strip Chart for Homoscedasticity ----
+ggplot(
+  data = data.frame(
+    residuals = imbd_model$residuals,
+    fitted = imbd_model$fitted.values
+  ),
+  mapping = aes(x = fitted, y = residuals)
+) +
+  geom_point(size = 2) +
+  theme_bw() +
+  xlab("Fitted values (points)") +
+  ylab("Residuals (points)")
+
+## Checking for homoscedasticity
+plot(imbd_model$fitted.values, imbd_model$residuals)
+abline(h = 0, col = "red")
+```
+
+
+```{r indexplot}
+#| fig.cap = "Index plot of  Residual",
+#| fig.height = 2,
+#| fig.width = 4,
+#| fig.pos = "H"
+
+ggplot(
+data = data.frame(
+residuals = imbd_model$residuals,
+index = 1:length(imbd_model$residuals)
+),
+mapping = aes(x = index, y = residuals)
+) +
+geom_point(size = 1.5) +
+geom_line() +
+theme_bw() +
+geom_hline(
+yintercept = 0,
+linetype = "dashed",
+color = "red"
+) +
+xlab("Measurement order") +
+ylab("Residuals")
+
+
+car::durbinWatsonTest(imbd_model)$dw
+
+```
+
+
+
+
+## Omnibus - 
+```{r parametricCase}
+
+#| fig.cap = "Modern ANOVA Table for Study",
+#| #| fig.height = 2,
+#| fig.width = 4,
+#| fig.pos = "H"
+
+# Modern ANOVA Table ----
+
+
+parameters::model_parameters(
+model = imbd_model,
+effectsize_type = c("eta", "omega", "epsilon")
+) %>%
+  dplyr::mutate(
+p = ifelse(
+test = is.na(p),
+yes = NA,
+no = pvalRound(p, digits = 4)
+)
+) %>%
+knitr::kable(
+digits = 4,
+col.names = c(
+"Source", "SS", "df", "MS", "F", "p-value",
+"Eta Sq.", "Omega Sq.", "Epsilon Sq."),
+caption = "Modern ANOVA Table for Study",
+booktabs = TRUE,
+align = c("l", rep("c", 8))
+) %>%
+kableExtra::kable_classic(
+font_size = 10,
+latex_options = c("HOLD_position")) %>%
+  kableExtra::footnote(
+general = "Computer rounding has made the p-value look like zero.",
+general_title = "Note. ",
+footnote_as_chunk = TRUE
+)
+
+```
+```{r}
+# Point Estimates for Parametric Shortcut ----
+
+pointEst <- dummy.coef(imbd_model)
+pointEst <- unlist(pointEst)
+data.frame("Estimate" = pointEst) %>%
+knitr::kable(
+digits = 2,
+caption = "Point Estimates from the Fruit Flies Study",
+format = "latex",
+booktabs = TRUE,
+align = "c"
+) %>%
+kableExtra::kable_classic(
+font_size = 12,
+latex_options = c("HOLD_position")
+)
+```
+
+
+
+```{r tukeyHSD}
+
+# Post Hoc via Tukey HSD ----
+hsd <- TukeyHSD(
+x = imbd_model, # Your aov/lm object
+conf.level = 0.99 # 1 -- Your overall Type I Error level
+)
+
+
+## Kable Code for Tukey HSD
+knitr::kable(
+x = hsd$movies.code, # Notice the factor's name
+digits = 3,
+caption = "Post Hoc Tukey HSD Comparisons",
+col.names = c("Difference", "Lower Bound",
+"Upper Bound", "Adj. p-Value"),
+align = 'cccc',
+booktabs = TRUE,
+) %>%
+kableExtra::kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_options = "HOLD_position")
+
+```
+
+
 
 ## Post Hoc Analysis
+
+```{r tukeyHSD_all_factors}
+# Perform Tukey HSD test for all factors and their interaction in the model
+hsd <- TukeyHSD(imbd_model, conf.level = 0.99)
+
+# Convert the Tukey HSD results to data frames
+hsd_movies_code <- as.data.frame(hsd$`movies.code`) # Ensure the factor name matches your model
+hsd_awards_factor <- as.data.frame(hsd$`awards_factor`) # Ensure the factor name matches your model
+# If you have a significant interaction, you can include it as well
+# hsd_interaction <- as.data.frame(hsd$`movies.code:awards_factor`) # Use the actual interaction term name
+
+# Combine the results into one data frame
+hsd_combined <- rbind(
+  cbind(hsd_movies_code, Factor = "movies.code"),
+  cbind(hsd_awards_factor, Factor = "awards_factor")
+  # Include interaction if necessary
+  # cbind(hsd_interaction, Factor = "movies.code:awards_factor")
+)
+
+# Make sure to update the column names if they differ in your TukeyHSD output
+names(hsd_combined) <- c("Difference", "Lower Bound","Upper Bound", "Adj. p-Value")
+
+## Kable Code for Combined Tukey HSD Results
+knitr::kable(
+  x = hsd_combined,
+  digits = 3,
+  caption = "Post Hoc Tukey HSD Comparisons Across All Factors",
+  col.names = c("Comparison", "Difference", "Lower Bound", "Upper Bound", "Adj. p-Value", "Factor"),
+  align = 'cccccc',
+  booktabs = TRUE
+) %>%
+kableExtra::kable_styling(
+  "striped",
+  font_size = 12,
+  full_width = FALSE,
+  latex_options = "HOLD_position"
+)
+
+
+```
+
 
 ### Comparing Bechdel Scores Given the Amount of Awards
 
