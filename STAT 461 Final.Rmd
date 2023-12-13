@@ -39,6 +39,9 @@ source("https://raw.github.com/neilhatfield/STAT461/master/rScripts/shadowgram.R
 
 ```
 
+#
+
+# Background and Introduction
 
 The movie industry has been around for over 100 years and along with it has come
 rating systems. There are many different types of ratings that can help define
@@ -64,8 +67,6 @@ share the results of analysis. Finally, we will close with discussion of results
 
 - Does failing the Bechdel test lead to a higher IMBD score?
 - Does winning more awards lead to a higher IMBD score?
-
-# Background
 
 ## IMBD Scores
 
@@ -196,7 +197,7 @@ and make use of ANOVA methods, in particular a full factorial (two-way) ANOVA mo
 
 Our response is a continuous variable because it ca
 
-```{r,echo=FALSE,fig.width=4,fig.height=5,fig.align='center'}
+```{r,echo=FALSE,fig.width=3,fig.height=3,fig.align='center'}
 # Hasse Diagram
 modelLabels <- c("1 Rating Movies 1", "3 Bechdel Score 2", "3 Awards 2", "9 Bechdel Score × Awards 4", "578 Movies 569")
 modelMatrix <- matrix(
@@ -231,7 +232,7 @@ But how often do movies get these awards?
 #| fig.cap="Histogram of Awards Distribution",
 #| fig.width = 6,
 #| fig.height = 3,
-#| fig.pos = "H"
+#| fig.pos = "H",
 #| fig.align='center'
 
 # Create a histogram of the awards distribution
@@ -548,9 +549,6 @@ Conversely, movies that pass the Bechdel test exhibit a slightly lower median, s
 The skewness of both distributions leans negatively, hinting at a longer tail of lower scores. Yet, it is the excess kurtosis where we notice a stark contrast: Bechdel-failing films have a negative excess kurtosis, implying fewer outliers than a normal distribution, whereas Bechdel-passing films show a positive excess kurtosis, indicating a presence of outlier scores that are unusually high
 
 
-
-
-
 # Results 
 
 ```{r model_fit}
@@ -565,19 +563,32 @@ imbd_model <- aov(
 
 ## Assumptions 
 
+In order to test the assumptions for using a parametric test, we are going to look
+at the normality and the homoscedasticity. Since the scores given on IMBD's website
+are completely random of when they were given, we do not need to look at the 
+measurement order. We could look at the measurement order with respect to the
+year that it came out, but that wouldn't make sense when looking at IMBD scores,
+since a lot of these movies came out long before people began giving scores. 
 
-```{r}
+```{r, normality}
 # Assumption Assessment Visualizations ----
 ## Gaussian Residuals Assumption
 car::qqPlot(
   x = imbd_model$residuals,
   distribution = "norm",
-  envelope = 0.99,
+  envelope = 0.90,
   id = FALSE,
   pch = 20,
   ylab = "Residuals (points)"
 )
+```
 
+Looking at this first assumption of normality, it appears that there are many points
+over the 90% envelope. This happens mainly on the lower end, but it is still enough
+to consider this assumption not met. This will have to be looked into, but first
+we need to assess the equal variance assumption.
+
+```{r,eqvar,fig.height=3,fig.width=7}
 ## Strip Chart for Homoscedasticity ----
 ggplot(
   data = data.frame(
@@ -590,44 +601,68 @@ ggplot(
   theme_bw() +
   xlab("Fitted values (points)") +
   ylab("Residuals (points)")
+```
+This assumption would be on the edge of being met. The main concern here are the 
+three strips that have less than 4 points. Since these are here, it is hard to asses 
+whether or not the assumption is met, but since there is no fanning or funneling
+throughout the entire strip chart, we think it is safe to assume this assumption
+is met and we can continue, keeping in mind the possiblility of this being incorrect.
 
-## Checking for homoscedasticity
-plot(imbd_model$fitted.values, imbd_model$residuals)
-abline(h = 0, col = "red")
+### Transformations
+
+Some of the possible transformations that we looked into did not help. These
+included squaring, square rooting, and logging the response variable. While searching
+for other possible ways to help, we found that cubing the response was the best.
+Here, we are going to reconsider both assumptions made and use this transformation
+for the rest of the paper. 
+
+```{r model_fit2}
+# Fit the model for ANOVA ----
+bechdel_awards$imbd_score3 <- (bechdel_awards$imbd_score)^3
+imbd_model <- aov(
+  formula = imbd_score3 ~ movies.code * awards_factor,
+  data = bechdel_awards,
+  na.action = "na.omit"
+)
 ```
 
+```{r}
+# Assumption Assessment Visualizations ----
+## Gaussian Residuals Assumption
+car::qqPlot(
+  x = imbd_model$residuals,
+  distribution = "norm",
+  envelope = 0.90,
+  id = FALSE,
+  pch = 20,
+  ylab = "Residuals (points)"
+)
+```
 
-```{r indexplot}
-#| fig.cap = "Index plot of  Residual",
-#| fig.height = 2,
-#| fig.width = 4,
-#| fig.pos = "H"
+After applying the transformation, it is easy to see that it worked. Now, mostly
+all the points are within the envelope, and since we have so many there is no need
+to worry about these going over. With this transformation, the normality assumption
+is met. 
 
+```{r,fig.height=3,fig.width=7}
+## Strip Chart for Homoscedasticity ----
 ggplot(
-data = data.frame(
-residuals = imbd_model$residuals,
-index = 1:length(imbd_model$residuals)
-),
-mapping = aes(x = index, y = residuals)
+  data = data.frame(
+    residuals = imbd_model$residuals,
+    fitted = imbd_model$fitted.values
+  ),
+  mapping = aes(x = fitted, y = residuals)
 ) +
-geom_point(size = 1.5) +
-geom_line() +
-theme_bw() +
-geom_hline(
-yintercept = 0,
-linetype = "dashed",
-color = "red"
-) +
-xlab("Measurement order") +
-ylab("Residuals")
-
-
-car::durbinWatsonTest(imbd_model)$dw
-
+  geom_point(size = 2) +
+  theme_bw() +
+  xlab("Fitted values (points)") +
+  ylab("Residuals (points)")
 ```
-
-
-
+Looking at the homoscedasticity of the residuals, it looks almost the same as before. We
+still show caution with the three strips of points that are smaller, but we believe
+it is safe to continue on with the assumption being met points swap places Since the two assumptions
+are now met, we can use this transformed that to now look at the Omnibus report and
+begin to answer our research questions. 
 
 ## Omnibus - 
 ```{r parametricCase}
@@ -638,7 +673,6 @@ car::durbinWatsonTest(imbd_model)$dw
 #| fig.pos = "H"
 
 # Modern ANOVA Table ----
-
 
 parameters::model_parameters(
 model = imbd_model,
@@ -675,35 +709,33 @@ footnote_as_chunk = TRUE
 
 
 ```{r tukeyHSD}
-
 # Post Hoc via Tukey HSD ----
 hsd <- TukeyHSD(
-x = imbd_model, # Your aov/lm object
-conf.level = 0.99 # 1 -- Your overall Type I Error level
+  x = imbd_model, # Your aov/lm object
+  conf.level = 0.90 # 1 -- Your overall Type I Error level
 )
 
 
 ## Kable Code for Tukey HSD
 knitr::kable(
-x = hsd$movies.code, # Notice the factor's name
-digits = 3,
-caption = "Post Hoc Tukey HSD Comparisons",
-col.names = c("Difference", "Lower Bound",
-"Upper Bound", "Adj. p-Value"),
-align = 'cccc',
-booktabs = TRUE,
+  x = hsd$movies.code, # Notice the factor's name
+  digits = 3,
+  caption = "Post Hoc Tukey HSD Comparisons",
+  col.names = c("Difference", "Lower Bound",
+  "Upper Bound", "Adj. p-Value"),
+  align = 'cccc',
+  booktabs = TRUE,
 ) %>%
-kableExtra::kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_options = "HOLD_position")
+  kableExtra::kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_options = "HOLD_position")
 
 ```
-
 
 
 ## Post Hoc Analysis
 
 ```{r tukeyHSD_all_factors}
 # Perform Tukey HSD test for all factors and their interaction in the model
-hsd <- TukeyHSD(imbd_model, conf.level = 0.99)
+hsd <- TukeyHSD(imbd_model, conf.level = 0.90)
 
 # Convert the Tukey HSD results to data frames
 hsd_movies_code <- as.data.frame(hsd$`movies.code`) # Ensure the factor name matches your model
@@ -727,7 +759,7 @@ knitr::kable(
   x = hsd_combined,
   digits = 3,
   caption = "Post Hoc Tukey HSD Comparisons Across All Factors",
-  col.names = c("Comparison", "Difference", "Lower Bound", "Upper Bound", "Adj. p-Value", "Factor"),
+  col.names = c("Difference", "Lower Bound", "Upper Bound", "Adj. p-Value", "Factor"),
   align = 'cccccc',
   booktabs = TRUE
 ) %>%
