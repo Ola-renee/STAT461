@@ -43,7 +43,7 @@ source("https://raw.github.com/neilhatfield/STAT461/master/rScripts/shadowgram.R
 
 
 
-# Background and Introduction
+# Introduction and Background
 
 The movie industry has been around for over 100 years and along with it has come
 rating systems. There are many different types of ratings that can help define
@@ -68,8 +68,8 @@ methods we used to collect our data. We will then describe the collected data an
 share the results of analysis. Finally, we will close with discussion of results and 
 some post-hoc analysis questions if there is a significant impact such as:
 
-- Given the number of awards, does failing the Bechdel test lead to a higher IMBD score?
-- Given the Bechdel test score, does winning more awards lead to a higher IMBD score?
+- Given the number of awards, is failing the Bechdel test associated with a higher IMBD score?
+- Given the Bechdel test score, is winning more awards associated with a higher IMBD score?
 
 ## IMBD Scores
 
@@ -151,6 +151,8 @@ both. There were a few controversial calls, but overall this simple test showed
 that 22 out of the 30 movies were correctly representative based on the 
 author's personal feelings. 
 
+\vspace{5cm}
+
 # Data Collection
 
 The overall goal of collecting data is to get a data set that contains the primary
@@ -187,6 +189,16 @@ with the IMBD score data set. This leaves us with a data set consisting of
 578 observations that include the movie, the number of awards won, the year it 
 came out, its Bechdel test score, and its IMBD score. 
 
+While the data is a subset of the population (all movies) and we also did not pick
+this data set directly, we never used randomization to pick the movies or the 
+treatments and because of this our study will be an observational study. This means 
+that we cannot make any statements about causation, but we can depict an association 
+between each of the factors and the response. Although we have minimum control
+over the measurement units, we are able to account for some bias unlike if we were
+running an experiment. As a note, our measurement units are movies, and since these
+movies have the treatments that are already given, the experimental units are
+the same as the measurement units. 
+
 The final item to use for analysis is dealing with the amount of awards. Since
 there are between 0 and 15 awards, we are going to use categories to simplify the
 levels of this factors. We decided to use none, low, medium, and high to determine
@@ -211,14 +223,16 @@ instead of 15 (no awards, a few awards, some awards, many awards, and a lot of a
 From the Hasse diagram, we can see the two factors (both fixed)
 and their interaction. Our sample size from the population of movies is 578, so there
 are many degrees of freedom to estimate all main effects, interaction, and error terms. 
-All of this points to useing ANOVA methods to answer our research questions. For 
+All of this points to using ANOVA methods to answer our research questions. For 
 this study, we will be making use of a two-way ANOVA model. This makes sense to 
 use because we have two factors of interest and we want to explore the potential
 interaction between them. This is more appropriate than a one-way model as we can 
 distinguish between the main effects and interaction terms. Also, since the two
-factors are not attributes of the movies themselves, just outcomes caused by the
+factors are not attributes of the movies themselves and just outcomes caused by the
 movie, we cannot use either of these as a block, so a block design would also not
-be of interest here.
+be of interest here. If we were to use a block design, we could have chosen a variable
+such as budget that would be intended to block out the effect of more expensive
+movies winning more awards. 
 
 ```{r Hasse,echo=FALSE,fig.width=3,fig.height=3,fig.align='center'}
 modelLabels <- c("1 Rating Movies 1", "2 Bechdel Score 1", "5 Awards 4", "10 Bechdel Score × Awards 4", "578 Movies 568")
@@ -234,13 +248,33 @@ hasseDiagram::hasse(
 )
 ```
 
+## Hypothesis
+
+The null hypothesis for our study is that there is no statistically significant 
+impact on IMBD scores of movies. The alternative hypothesis is that there is a 
+statistically significant impact on the IMBD of movies. We express these hypotheses as:
+
+\[
+H_0 :y_{ijk} = \mu_{..} + \epsilon_{ijk}
+\]
+\[
+H_A :y_{ijk} = \mu_{..} + \alpha_i + \beta_j + \alpha\beta_{ij} + \epsilon_{ijk}
+\]
+
+This equation along with the Hasse diagram both represent the two-way ANOVA model
+for our study. The $\mu_{..}$ representes the baseline effect of obtaining a score 
+on IMBD, $\alpha_i$ represents the main effect of the Bechdel test score, $\beta_j$
+represents the main effect of the amount of awards, and $\alpha\beta_{ij}$ is the
+interaction between Bechdel score and awards. The error term given as $\epsilon_{ijk}$,
+represents the variability within each of the individual movies as well as any
+outside sources that are not accounted for in the model.
+
 ## Addressing the Multiple Comparisons Problem
 
 Within each hypothesis test, we will use an Unusualness Thresheold equivalent to 
 0.1.
 
-# Exploratory of the Data
-
+# Exploratory Data Analysis
 
 ## Exploration 1: Awards Distribution
 When we watch movies, awards are a way to tell us which ones are exceptional. 
@@ -593,7 +627,7 @@ since a lot of these movies came out long before people began giving scores.
 car::qqPlot(
   x = imbd_model$residuals,
   distribution = "norm",
-  envelope = 0.90,
+  envelope = 0.99,
   id = FALSE,
   pch = 20,
   ylab = "Residuals (points)"
@@ -649,7 +683,7 @@ imbd_model <- aov(
 car::qqPlot(
   x = imbd_model$residuals,
   distribution = "norm",
-  envelope = 0.90,
+  envelope = 0.99,
   id = FALSE,
   pch = 20,
   ylab = "Residuals (points)"
@@ -730,7 +764,7 @@ footnote_as_chunk = TRUE
 # Post Hoc via Tukey HSD ----
 hsd <- TukeyHSD(
   x = imbd_model, # Your aov/lm object
-  conf.level = 0.90 # 1 -- Your overall Type I Error level
+  conf.level = 0.99 # 1 -- Your overall Type I Error level
 )
 
 
@@ -753,7 +787,7 @@ knitr::kable(
 
 ```{r tukeyHSD_all_factors}
 # Perform Tukey HSD test for all factors and their interaction in the model
-hsd <- TukeyHSD(imbd_model, conf.level = 0.90)
+hsd <- TukeyHSD(imbd_model, conf.level = 0.99)
 
 # Convert the Tukey HSD results to data frames
 hsd_movies_code <- as.data.frame(hsd$`movies.code`) # Ensure the factor name matches your model
