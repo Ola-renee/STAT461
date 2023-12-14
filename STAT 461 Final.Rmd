@@ -26,7 +26,7 @@ knitr::opts_chunk$set(
 # Add additional packages by name to the following list ----
 packages <- c(
   "tidyverse", "knitr", "kableExtra", "hasseDiagram",
-  "psych", "car", "parameters"
+  "psych", "car", "parameters",'emmeans'
   ) 
 lapply(X = packages, FUN = library, character.only = TRUE, quietly = TRUE)
 
@@ -68,8 +68,8 @@ methods we used to collect our data. We will then describe the collected data an
 share the results of analysis. Finally, we will close with discussion of results and 
 some post-hoc analysis questions if there is a significant impact such as:
 
-- Given the number of awards, is failing the Bechdel test associated with a higher IMBD score?
-- Given the Bechdel test score, is winning more awards associated with a higher IMBD score?
+- Is failing the Bechdel test associated with a higher IMBD score?
+- Is winning a lot of awards associated with a higher IMBD score?
 
 ## IMBD Scores
 
@@ -627,7 +627,7 @@ since a lot of these movies came out long before people began giving scores.
 car::qqPlot(
   x = imbd_model$residuals,
   distribution = "norm",
-  envelope = 0.99,
+  envelope = 0.9,
   id = FALSE,
   pch = 20,
   ylab = "Residuals (points)"
@@ -683,17 +683,18 @@ imbd_model <- aov(
 car::qqPlot(
   x = imbd_model$residuals,
   distribution = "norm",
-  envelope = 0.99,
+  envelope = 0.9,
   id = FALSE,
   pch = 20,
   ylab = "Residuals (points)"
 )
 ```
 
-After applying the transformation, it is easy to see that it worked. Now, mostly
-all the points are within the envelope, and since we have so many there is no need
-to worry about these going over. With this transformation, the normality assumption
-is met. 
+After applying the transformation, it is hard to tell but it worked. We did not
+want to dedicate an entire page to this qq plot to see, but after expanding
+the plot outside of the paper, we easily saw that only some of the points
+were outside of the envelope. This is a much bigger improvement from before, and
+we can now say that the normality assumption is met. 
 
 ```{r,fig.height=3,fig.width=7}
 ## Strip Chart for Homoscedasticity ----
@@ -717,7 +718,7 @@ begin to answer our research questions.
 
 ## Omnibus
 
-```{r parametricCase}
+```{r parametricCase,fig.align='center'}
 
 #| fig.cap = "Modern ANOVA Table for Study",
 #| #| fig.height = 2,
@@ -758,86 +759,159 @@ footnote_as_chunk = TRUE
 ```
 
 
-
-
-```{r tukeyHSD}
-# Post Hoc via Tukey HSD ----
-hsd <- TukeyHSD(
-  x = imbd_model, # Your aov/lm object
-  conf.level = 0.99 # 1 -- Your overall Type I Error level
-)
-
-
-## Kable Code for Tukey HSD
-knitr::kable(
-  x = hsd$movies.code, # Notice the factor's name
-  digits = 3,
-  caption = "Post Hoc Tukey HSD Comparisons",
-  col.names = c("Difference", "Lower Bound",
-  "Upper Bound", "Adj. p-Value"),
-  align = 'cccc',
-  booktabs = TRUE,
-) %>%
-  kableExtra::kable_classic_2("striped",font_size = 12,full_width = FALSE,latex_options = "HOLD_position")
-
-```
-
-
 ## Post Hoc Analysis
 
-```{r tukeyHSD_all_factors}
-# Perform Tukey HSD test for all factors and their interaction in the model
-hsd <- TukeyHSD(imbd_model, conf.level = 0.99)
+For the post-hoc analysis, we will be looking at the comparisons between the
+individual main effects, and answer our two questions from the beginning:
 
-# Convert the Tukey HSD results to data frames
-hsd_movies_code <- as.data.frame(hsd$`movies.code`) # Ensure the factor name matches your model
-hsd_awards_factor <- as.data.frame(hsd$`awards_factor`) # Ensure the factor name matches your model
-# If you have a significant interaction, you can include it as well
-# hsd_interaction <- as.data.frame(hsd$`movies.code:awards_factor`) # Use the actual interaction term name
+- Is failing the Bechdel test associated with a higher IMBD score?
+- Is winning a lot of awards associated with a higher IMBD score?
 
-# Combine the results into one data frame
-hsd_combined <- rbind(
-  cbind(hsd_movies_code, Factor = "movies.code"),
-  cbind(hsd_awards_factor, Factor = "awards_factor")
-  # Include interaction if necessary
-  # cbind(hsd_interaction, Factor = "movies.code:awards_factor")
+### Individual Main effect Comparisons
+
+```{r,fig.align='center'}
+IMBDPostHoc <- emmeans::emmeans(
+  object = imbd_model,
+  specs = pairwise ~ movies.code, # Notice the use of the |
+  adjust = "BH",
+  level = 0.9
 )
 
-# Make sure to update the column names if they differ in your TukeyHSD output
-names(hsd_combined) <- c("Difference", "Lower Bound","Upper Bound", "Adj. p-Value")
+IMBDEffects <- as.data.frame(
+    eff_size(
+    object = IMBDPostHoc,
+    sigma = sigma(imbd_model),
+    edf = df.residual(imbd_model)
+    )
+) %>%
+dplyr::mutate( # The eff_size command places the pairs inside parentheses
+contrast = gsub(pattern = "[()]", replacement = "", x = contrast),
+ps = probSup(effect.size),
+.after = effect.size
+) %>%
+dplyr::select(contrast, effect.size, ps)
 
-## Kable Code for Combined Tukey HSD Results
+### Build table
+as.data.frame(IMBDPostHoc$contrasts) %>%
+left_join(
+  y = IMBDEffects,
+  by = join_by(contrast == contrast)
+) %>%
 knitr::kable(
-  x = hsd_combined,
-  digits = 3,
-  caption = "Post Hoc Tukey HSD Comparisons Across All Factors",
-  col.names = c("Difference", "Lower Bound", "Upper Bound", "Adj. p-Value", "Factor"),
-  align = 'cccccc',
-  booktabs = TRUE
+digits = 3,
+caption = "Post Hoc Comparisons for Main Effect Plate Material",
+col.names = c("Pair", "Difference", "SE", "DF", "t", "p-value", "Cohen's d",
+"Prob. of Superiority"),
+align = "lccccccc",
+booktabs = TRUE
 ) %>%
 kableExtra::kable_styling(
-  "striped",
-  font_size = 12,
-  full_width = FALSE,
-  latex_options = "HOLD_position"
+bootstrap_options = c("condensed", "boardered"),
+font_size = 10,
+latex_options = c("HOLD_position")
 )
-
-
 ```
 
+To begin, we want to first look at the p-value given and compare it directly with
+the unusualness threshold we decided from before of 0.1. The p-value came out to
+0.024, which is below the threshold level. Since it is below, this means that
+we must reject the null hypothesis that there is no difference in the Bechdel test
+scores and act as if there is a difference in IMBD scores when looking at the
+Bechdel test score. As mentioned before, we can not make any causal statements
+about failing or passing the Bechdel test leading to better or worse scores, but
+we can say that there is a significant statistical difference between IMBD scores
+depending on if you fail or pass the Bechdel test. We can also take a look at 
+Cohen's d and claim that there are 0.471 standard deviations between these two groups. 
+This is not a lot of distance between the two, but with a p-value being so low,
+there must be a small variance for both tests. The probability of superiority explains
+what percent of the time a randomly selected number of the first group will have
+a higher numeric value of the response than a randomly selescted member of the second.
+In our case, this value is 0.63, meaning that 63% of the time a random value is chosen
+from movies that fail the Bechdel test, their IMBD score will be higher than a 
+randomly selected value from movies that pass. This backs up our question because
+it shows that a large percent of the time a movie fails (shows less representation
+of women), they have a higher IMBD score.
 
-### Comparing Bechdel Scores Given the Amount of Awards
 
-### Comparing Awards Given the Bechdel Score
+```{r,fig.align='center'}
+IMBDPostHoc <- emmeans::emmeans(
+  object = imbd_model,
+  specs = pairwise ~ awards_factor,
+  adjust = "BH",
+  level = 0.9
+)
+
+IMBDEffects <- as.data.frame(
+    eff_size(
+    object = IMBDPostHoc,
+    sigma = sigma(imbd_model),
+    edf = df.residual(imbd_model)
+    )
+) %>%
+dplyr::mutate( # The eff_size command places the pairs inside parentheses
+contrast = gsub(pattern = "[()]", replacement = "", x = contrast),
+ps = probSup(effect.size),
+.after = effect.size
+) %>%
+dplyr::select(contrast, effect.size, ps)
+
+### Build table
+as.data.frame(IMBDPostHoc$contrasts) %>%
+left_join(
+  y = IMBDEffects,
+  by = join_by(contrast == contrast)
+) %>%
+knitr::kable(
+digits = 3,
+caption = "Post Hoc Comparisons for Main Effect Plate Material",
+col.names = c("Pair", "Difference", "SE", "DF", "t", "p-value", "Cohen's d",
+"Prob. of Superiority"),
+align = "lccccccc",
+booktabs = TRUE
+) %>%
+kableExtra::kable_styling(
+bootstrap_options = c("condensed", "boardered"),
+font_size = 10,
+latex_options = c("HOLD_position")
+)
+```
+
+A similar breakdown can be used to look at the number of awards received. While 
+looking at every p-value for movies that received no awards, they are all 0.
+This would indicate that we reject the null hypothesis that there is no statistical 
+difference between getting no awards and getting any of the other types, and act
+as if there is a difference between them. We can tell that movies that get no 
+awards tend to have less IMBD scores because each of the cohen's d values are less
+than 0 (meaning no awards are that many standard deviation below its respective
+counterpart) and the probability of superiority is less than 50%, meaning for every
+random movie that has no awards is far less likely to have a higher IMBD score
+than those that have any awards at all. 
+
+There are only 3 cases of failing to reject the null hypotheses and having no statistical
+difference between the two, and these are for some and many awards, some and a lot 
+of awards, and many and a lot of awards. This could be due to the lack of data 
+points in each of these categories, but it is quite interesting to see that movies
+who get over 3 awards tend to have similar IMBD scores. 
 
 # Discussion
 
-## Limitations
+There does appear to be a correlation of passing the Bechdel test and getting a 
+higher score on IMBD. There also appears to be a correlation between getting no awards
+and having a lower IMBD score. As a reinstatement, since we are working with an 
+observational study, we cannot make any claims about the Bechdel test or the 
+number of awards causing IMBD scores to be what they are. We can however state 
+that there was a statistical difference between the Bechdel test scores and 
+also the number of awards received. It was interesting to see that the Omnibus
+results stated that the interaction term had no statistical evidence of the IMBD
+scores being different, yet there was a difference in the extremes of the factors
+(passing with no awards and failing with a lot of awards). 
 
-## Future Work
+## Limitations and Future Work
 
-There is potential here for this project to handle future work. First, every
-year new award shows are presented. 
+-New movies/awards
+-Genres
+-Years
+-Other measures of ratings
 
 # References
 
