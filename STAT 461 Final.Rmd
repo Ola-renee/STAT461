@@ -826,7 +826,7 @@ left_join(
 ) %>%
 knitr::kable(
 digits = 3,
-caption = "Post Hoc Comparisons for Main Effect Plate Material",
+caption = "Post Hoc Comparisons for Main Effect Awards",
 col.names = c("Pair", "Difference", "SE", "DF", "t", "p-value", "Cohen's d",
 "Prob. of Superiority"),
 align = "lccccccc",
