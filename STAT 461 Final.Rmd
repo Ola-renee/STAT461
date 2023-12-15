@@ -39,9 +39,18 @@ source("https://raw.github.com/neilhatfield/STAT461/master/rScripts/shadowgram.R
 
 ```
 
-# Abstract
+# Executive Summary
 
-
+To understand the relationship of the factors of a movies Bechdel test score and 
+the amount of respective awards given to how they perform on IMBD scoring websites,
+we have conducted an observational study to assist in understanding these relationships.
+Using the 2 given levels of Bechdel test scores (Pass/Fail) and 5 different levels
+of amount of awards given (None, A Few, Some, Many, A Lot), we found that the main
+effect of the Bechdel test score as well as the amount of awards had a statistical
+significant impact on the score on IMBD's website. Additional post hoc analysis revealed
+that when a movie passes the Bechdel test, they tend to get a lower IMBD score. 
+We were also able to find out that when a movie recieves less than 2 awards, they 
+also tend to get a lower IMBD score.
 
 # Introduction and Background
 
@@ -198,13 +207,6 @@ over the measurement units, we are able to account for some bias unlike if we we
 running an experiment. As a note, our measurement units are movies, and since these
 movies have the treatments that are already given, the experimental units are
 the same as the measurement units. 
-
-The final item to use for analysis is dealing with the amount of awards. Since
-there are between 0 and 15 awards, we are going to use categories to simplify the
-levels of this factors. We decided to use none, low, medium, and high to determine
-the amount of awards given to the movies. None is defined as 0 awards, low is 
-between 1 and 5 awards, medium is between 6 and 10 awards, and high is between
-11 and 15 awards. 
 
 # Analytical Methods
 
@@ -908,10 +910,35 @@ scores being different, yet there was a difference in the extremes of the factor
 
 ## Limitations and Future Work
 
--New movies/awards
--Genres
--Years
--Other measures of ratings
+In this section, we will discuss specific limitations to our project and how this
+could be incorporated into future work.
+
+To start, our data set only consisted of movies between the years 1971 and 2013
+due to how the combined data sets just happened to line up. There are probably movies
+not on this list that would be able to get included, especially from recent times.
+It would be an interesting question to see how over time, these difference in Bechdel
+test scores could matter more or less. This type of futre work could be making a
+data set that is able to have all movies from 1900 all the way to present day and 
+see the impacts that different years make, and how additional years impact over time.
+
+I second limitation consists of including two factors or potential blocks. First, 
+we did not take into consideration any type of genre throughout. It is possible 
+that the type of movie also impacts the IMBD score, and this would be interesting
+to see what genres tend to do better. The second is the year it came out. There is
+potential here for this to be used as a factor, but also as a block. Obviously, 
+movies from the 1960s will probably have less representation of women than those
+in the 2010s, so using this as a block could have potential to block out the 
+impacts that the year might have on the Bechdel test score. 
+
+The final limitation has to do with our response. We used IMBD score because we
+thought it would be able to represent the populations interests the best. However,
+there are many other ways to score a movie. Rotten tomatoes is probably the biggest
+out there, but this is dependent mainly on critics ratings, and the percentage
+you see is typically what percentage of critics who rated the movie rated it 
+above 3.5. This seems biased mainly towards critics and not a good representation 
+of the score, but nonetheless it would be interesting to use this as a response,
+or even as a factor. Another potential score could be Letterboxd scores, as they
+represent a much larger population of people. 
 
 # References
 
