@@ -46,7 +46,7 @@ the amount of respective awards given to how they perform on IMBD scoring websit
 we have conducted an observational study to assist in understanding these relationships.
 Using the 2 given levels of Bechdel test scores (Pass/Fail) and 5 different levels
 of amount of awards given (None, A Few, Some, Many, A Lot), we found that the main
-effect of the Bechdel test score as well as the amount of awards had a statistical
+effect of the Bechdel test score as well as the amount of awards had a statistically
 significant impact on the score on IMBD's website. Additional post hoc analysis revealed
 that when a movie passes the Bechdel test, they tend to get a lower IMBD score. 
 We were also able to find out that when a movie recieves less than 2 awards, they 
@@ -63,7 +63,7 @@ do better or worse and might even be able to explain some bias in these votes.
 One of the ways to measure a movies diversity is through the Bechdel test. There
 is also potential for bias in movies that have won awards at award shows.  
 
-We are investing a way to determine bias in IMBD scores through the use of the 
+We are investigating a way to determine bias in IMBD scores through the use of the 
 Bechdel test and award winning movies. We have multiple research questions that
 we would like to answer:
 
@@ -85,7 +85,7 @@ some post-hoc analysis questions if there is a significant impact such as:
 The way IMBD scores are calculated is by taking the votes from registered IMBD
 users who voted on specific titles in the IMBD database using their account. 
 Each person gets one vote per movie. Instead of taking the arithmetic mean,
-they use a weighted average based on the votes given and the rating can 
+they use a weighted mean based on the votes given and the rating can 
 sometimes be influenced on unusual voting activity. Their method for calculating
 the final score is not disclosed but they claim that it works the best in
 keeping the scores reliable. These scores are helpful in helping people to
@@ -113,9 +113,9 @@ entire film, to try and find the underlying bias.
 ## The Bechdel Test
 
 The Bechdel test was created by cartoonist Alison Bechdel from one of their 1985
-cartoons and is a measure of the representation of women in film and other
-fiction. It was meant to call attention to gender inequality in fiction (not
-just movies). The rules to pass a test are simple:
+cartoons and it is described as a measure of the representation of women in film 
+and other fiction. It was meant to call attention to gender inequality in fiction 
+(not just movies). The rules to pass a test are simple:
 
 - The movie has to have at least two women in it
 - These women must talk to each other
@@ -125,11 +125,8 @@ It doesn't seem too hard to pass the film, yet there are many movies out there
 that fail. This test is able to break open movies and point out where some
 underlying bias is that might not have been noticed before. There can however,
 also be skewed results within test. For instance, *The Lord of the Rings: The Two Towers* 
-actually passes the test, but only because there is a 5 second clip of a mother
-talking to her daughter. Yes there were two women talking and there is some
-debate on whether or not it was about a man (the daughter asks where her father
-is), but it doesn't mean the film deserved to pass as these two characters are
-not relevant to the story. Since this test might not be extremely accurate, it
+actually passes the test, but only because there is a 5 second clip of a woman
+talking to a little girl. Since this test might not be extremely accurate, it
 might be hard to justify any trends but we think it is an easy and useful way 
 to recognzie where the underlying bias might be in the movies. 
 
@@ -150,17 +147,14 @@ levels = c("FAIL", "PASS")
 While there are no studies to our knowledge doing exactly what we are doing,
 some people have used the Bechdel test in studies. In a 2021 paper written by
 Nelli Abdullaeva titled *The issues of an oversimplified analysis in assessing the representation of women in cinema*, they discuss how passing the Bechdel 
-test doesn't necessarily mean it is a good movie or it gives an adequate
+test doesn't necessarily mean it is a good movie or that it gives an adequate
 representation of women in film. They compared Bechdel test scores with their 
-own personal feelings on how the representation of women and compared the two. 
-They found that 15 of the 30 movies they looked at passed both the Bechdel 
-test, and the personal evaluation. Two movies failed the test but passed the 
-evaluation, three passed but failed the personal evaluation, and seven failed 
-both. There were a few controversial calls, but overall this simple test showed
-that 22 out of the 30 movies were correctly representative based on the 
-author's personal feelings. 
-
-\vspace{5cm}
+own personal feelings of the films representation of women. They found that 15 of 
+the 30 movies they looked at passed both the Bechdel test, and the personal evaluation. 
+Two movies failed the test but passed the evaluation, three passed but failed the 
+personal evaluation, and seven failed both. There were a few controversial calls, 
+but overall this simple test showed that 22 out of the 30 movies were correctly 
+representative based on the author's personal feelings. 
 
 # Data Collection
 
@@ -180,15 +174,14 @@ to work with in this study.
 
 The first step in making a data set to use is finding out how many awards each 
 movie won. For each row of data, if the award is True then it got 1 award and 
-if is False it got 0. This counts for all types of awards, as long as it
+if is False it got 0. This counts for all types of awards, as long as it is
 the entire film getting the award and not an actor or actress. Then for each
 awards data set, we aggregated the rows and added up the awards to get how many
 awards were given to each specific movie at that award ceremony. From there,
-the data was joined into one table, where all cases were kept from each of the
+each list was joined into one table, where all cases were kept from each of the
 three tables. Any cases of missing data between the three were given a value of
-0. This is because if a movie was not on another list, it was assumed that it 
-wasn't apart of that award show since each of the original lists contained all 
-known information. 
+0. This is because if a movie was not on another list, it was not apart of that 
+award and therefore receieved 0 awards.-
 
 Next, the awards are added up from each of the award ceremonies and this final
 list consists of 11,003 different movies/people who received awards along with
@@ -215,14 +208,14 @@ and make use of ANOVA methods, in particular a full factorial (two-way) ANOVA mo
 
 ## Appropriateness of ANOVA
 
-Our response variable is the arithmetic mean score given to a movie according
+Our response variable is the weighted arithmetic mean score given to a movie according
 to the IMBD website, so this would be a continuous response. We also have two factors:
 the Bechdel test score and the amount of awards won. The Bechdel test score is 
 categorical with two levels (True or False). The amount of awards won is
 also categorical and we decided to simplify the model to make it have 5 levels
 instead of 15 (no awards, a few awards, some awards, many awards, and a lot of awards).
 
-From the Hasse diagram, we can see the two factors (both fixed)
+From the Hasse diagram in Figure \ref{fig:Hasse}, we can see the two factors (both fixed)
 and their interaction. Our sample size from the population of movies is 578, so there
 are many degrees of freedom to estimate all main effects, interaction, and error terms. 
 All of this points to using ANOVA methods to answer our research questions. For 
@@ -236,7 +229,7 @@ be of interest here. If we were to use a block design, we could have chosen a va
 such as budget that would be intended to block out the effect of more expensive
 movies winning more awards. 
 
-```{r Hasse,echo=FALSE,fig.width=3,fig.height=3,fig.align='center'}
+```{r Hasse,echo=FALSE,fig.width=3,fig.height=3,fig.align='center',fig.cap='Hasse Diagram'}
 modelLabels <- c("1 Rating Movies 1", "2 Bechdel Score 1", "5 Awards 4", "10 Bechdel Score × Awards 4", "578 Movies 568")
 modelMatrix <- matrix(
   data = c(FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE, FALSE),
@@ -297,9 +290,10 @@ ggplot(bechdel_awards, aes(x = awards)) +
   theme_minimal()
 ```
 
-The histogram above provides a clear picture of how awards are distributed among movies. We can immediately see that a significant number of movies don't receive any awards. As we look for movies with more awards, they become less and less common. In fact, it's quite rare for movies to receive a large number of awards. To make our analysis easier to understand, we've grouped the movies based on the number of awards they've received. This helps us see patterns and compare different sets of movies. 
+The histogram in Figure \ref{fig:awards-histogram} above provides a clear picture of how awards are distributed among movies. We can immediately see that a significant number of movies don't receive any awards. As we look for movies with more awards, they become less and less common. In fact, it's quite rare for movies to receive a large number of awards. To make our analysis easier to understand, we've grouped the movies based on the number of awards they've received. This helps us see patterns and compare different sets of movies. 
 
 Given the observed distribution, the awards have been categorized into the following levels for analysis:
+
 - **No Award**: Movies that have not received any awards.
 - **Few Awards**: Movies that have received 1 to 2 awards.
 - **Some Awards**: Movies that have received 3 to 6 awards.
@@ -332,8 +326,7 @@ bechdel_awards$awards_factor <- cut(
 # Distribution of IMBD scores
 hist(bechdel_awards$imbd_score, main = "Distribution of IMBD Scores", xlab = "IMBD Score")
 ```
-The histogram above shows us the frequency of movies across different IMBD score ranges.
-From it we can see that most movies in the data set have scores around the 7 to 8. There are fewer movies with very high scores (close to 9) or lower scores (around 5 or 6) this means most movies have average scores, and fewer movies are rated as very good or bad.
+The histogram in Figure \ref{fig:imbd_score_distribution} shows us the frequency of movies across different IMBD score ranges. From it we can see that most movies in the data set have scores around 7 to 8. There are fewer movies with very high scores (close to 9) or lower scores (around 5 or 6) this means most movies have median scores, and fewer movies are rated as very good or bad.
 
 We'll keep this in mind as we analyze how scores relate to awards and the representation of women in these films.
 
@@ -360,13 +353,13 @@ ggplot(
   )
 ```
 
-From the box plot above The median IMBD score for movies that pass the Bechdel test seems to be slightly higher than for those that fail. There is a wide range of scores for both categories, but the 'Pass' category has a slightly tighter interquartile range, indicating that scores are more concentrated around the median. Lastly there are a few outliers in both categories, indicating some movies scored much lower or higher than the typical range.
+From the box plot in Figure \ref{fig:imbd_bechedel_boxplot}, the median IMBD score for movies that pass the Bechdel test seems to be slightly lower than for those that fail. There is a wide range of scores for both categories, but the 'Pass' category has a slightly tighter interquartile range, indicating that scores are more concentrated around the median. Lastly there are a few outliers in both categories, indicating some movies scored much lower or higher than the typical range.
 
 
-This visual suggests that, on average, movies that pass the Bechdel test might be more favorably reviewed, but the difference is not stark. It's a reminder that while the Bechdel test can signal something about the content of a movie, it's not a definitive measure of quality or viewer satisfaction.
+This visual suggests that movies that fail the Bechdel test might be more favorably reviewed, but the difference is not stark. It's a reminder that while the Bechdel test can signal something about the content of a movie, it's not a definitive measure of quality or viewer satisfaction.
 
 ## Exploration 4: The Impact of Awards on IMBD Scores
-The box plot below segments movies according to the number of awards they've received and displays their range of IMBD scores within each category.
+The box plot in Figure \ref{fig:imbd_awards_boxplot} segments movies according to the number of awards they've received and displays their range of IMBD scores within each category.
 
 we turn our attention to the relationship between the number of awards a movie has won and its IMBD score. IMBD scores, which range from 1 to 10, reflect the average viewer's rating of a film, and we're curious to see if winning awards correlates with higher ratings.
 
@@ -396,13 +389,13 @@ This visualization suggests that while there may be a positive relationship betw
 
 
 ## Exploration 5: IMBD Scores by Bechdel Test Result and Awards Factor
-We have created a box plot that lays out IMBD scores based on whether movies pass or fail the Bechdel test, as well as how many awards they have won. This dual comparison provides a more nuanced view of the data.
+We have created a box plot in Figure \ref{fig:imbd_bechedel_awards_boxplot} that lays out IMBD scores based on whether movies pass or fail the Bechdel test, as well as how many awards they have won. This dual comparison provides a more nuanced view of the data.
 
 ```{r imbd_bechedel_awards_boxplot}
-#|fig.cap="Box plot showing IMBD Scores by Bechdel Test Result and Awards Factor",
+#| fig.cap="Box plot showing IMBD Scores by Bechdel Test Result and Awards Factor",
 #| fig.width=6, 
 #| fig.height=3,
-#|fig.pos="H"
+#| fig.pos="H"
 # Boxplot of IMBD scores by Bechdel test result with awards factor
 ggplot(bechdel_awards, aes(x = movies.code, y = imbd_score, fill = awards_factor)) +
   geom_boxplot() +
@@ -413,16 +406,16 @@ ggplot(bechdel_awards, aes(x = movies.code, y = imbd_score, fill = awards_factor
        fill = "Awards Factor") +
   scale_fill_brewer(palette = "Set3")
 ```
-Across both Bechdel test results, movies with no awards have a wider range of IMBD scores, indicating variability in how viewers rate them. For movies that pass the Bechdel test, as the number of awards increases, there seems to be a slight trend towards higher IMBD scores. Interestingly, movies that fail the Bechdel test show a less clear pattern between awards and IMBD scores, suggesting that other factors might influence the viewer ratings of these films.
+Across both Bechdel test results, movies with no awards have a wider range of IMBD scores, indicating variability in how viewers rate them. For movies that fail the Bechdel test, as the number of awards increases, there seems to be a slight trend towards higher IMBD scores. Interestingly, movies that pass the Bechdel test show a less clear pattern between awards and IMBD scores, suggesting that other factors might influence the viewer ratings of these films.
 
 This visual analysis allows us to observe that while awards seem to be associated with higher IMBD scores for movies passing the Bechdel test, the story isn't as straightforward for movies that fail it. It hints at the complex relationship between movie ratings, gender representation, and critical acclaim.
 
 
 ## Exploration 6: Interaction Between Awards and Bechdel Test Results
-The interaction plot below helps us visualize whether the relationship between the number of awards and IMBD scores is different for movies that pass the Bechdel test compared to those that fail.
+The interaction plot in Figure \ref{fig:imbd_bechedel_interaction_plot} helps us visualize whether the relationship between the number of awards and IMBD scores is different for movies that pass the Bechdel test compared to those that fail.
 ```{r imbd_bechedel_interaction_plot}
-#|fig.cap="Interaction plot showing the relationship between IMBD Scores, Bechdel Test Result, and Awards Factor",
-#| fig.width=6, 
+#| fig.cap="Interaction plot showing the relationship between IMBD Scores, Bechdel Test Result, and Awards Factor",
+#| fig.width=7, 
 #| fig.height=3, 
 #| fig.pos="H"
 # Interaction plot for Bechdel test result and awards factor
@@ -430,7 +423,7 @@ interaction.plot(bechdel_awards$awards_factor, bechdel_awards$movies.code, bechd
                  main = "Interaction Plot", xlab = "Awards Factor", ylab = "Average IMBD Score", 
                  trace.label = "Bechdel Test", fixed = TRUE)
 ```
-Movies that pass the Bechdel test (solid line) generally have higher average IMBD scores than those that fail (dashed line) across all awards categories. The influence of awards on IMBD scores appears to be more pronounced for movies that pass the Bechdel test, particularly in the '3-6 Awards' and '11+ Awards' categories.There seems to be a notable increase in average IMBD scores for movies that pass the Bechdel test as the number of awards goes from '7-10' to '11+' awards, which is less evident for movies that fail the test.
+Movies that pass the Bechdel test (solid line) generally have lower average IMBD scores than those that fail (dashed line) across all awards categories. The influence of awards on IMBD scores appears to be more pronounced for movies that pass the Bechdel test, particularly in the '3-6 Awards' and '11+ Awards' categories. There seems to be a notable increase in IMBD scores for movies that pass the Bechdel test as the number of awards goes from '7-10' to '11+' awards, which is less evident for movies that fail the test.
 
 This pattern indicates a potential synergistic effect, where both awards and positive Bechdel test results may be associated with higher viewer ratings. However, it also suggests that the Bechdel test alone does not explain all the variability in IMBD scores, and winning awards is an important factor regardless of Bechdel test outcome.
 
@@ -440,9 +433,10 @@ This interaction suggests that awards and positive representation of women (as m
 
 ## Exploration 7: Visualizing the Influence of Awards and Bechdel Test Results
 
-The following heat map allows us to see at a glance how the average IMBD scores differ across movies that pass or fail the Bechdel test and how many awards they've won.
+The heat map in Figure \ref{fig:imbd_heatmap} allows us to see at a glance how the IMBD scores differ across movies that pass or fail the Bechdel test and how many awards they've won.
+
 ```{r imbd_heatmap}
-#|fig.cap="Heat map showing the average IMBD Scores by Bechdel Test Result and Awards Factor",
+#| fig.cap="Heat map showing the average IMBD Scores by Bechdel Test Result and Awards Factor",
 #| fig.width=6,
 #| fig.height=3,
 #| fig.pos="H"
@@ -465,7 +459,7 @@ This visualization helps us understand that there is a positive association betw
 
 ```{r movie_distribution_by_bechdel_and_awards}
 #| fig.cap="Bar chart showing the number of movies by Bechdel Test Result and Awards Factor", 
-#| fig.width=6, 
+#| fig.width=7, 
 #| fig.height=3, 
 #| fig.pos="H"
 ggplot(bechdel_awards, aes(x = awards_factor, fill = movies.code)) +
@@ -475,13 +469,14 @@ ggplot(bechdel_awards, aes(x = awards_factor, fill = movies.code)) +
   theme_minimal()
 
 ```
-It suggests that movies which fail the Bechdel test might be more likely to receive awards, or conversely, that movies with more awards tend to fail the Bechdel test more often.
+
+The histogram in Figure \ref{fig:movie_distribution_by_bechdel_and_awards} suggests that movies which fail the Bechdel test might be more likely to receive awards, or conversely, that movies with more awards tend to fail the Bechdel test more often.
 
 
 ## Exploration 9: Plot of IMBD Scores by Awards Factor and Bechdel Test
 ```{r imbd_score_ridge_plot}
 #| fig.cap="Ridge plot showing IMBD Score Distributions Across Awards Factor", 
-#| fig.width=6,
+#| fig.width=7,
 #|  fig.height=3, 
 #|  fig.pos="H"
 library(ggridges)
@@ -493,7 +488,7 @@ ggplot(bechdel_awards, aes(x = imbd_score, y = awards_factor, fill = movies.code
 
 
 ```
-The comparison between movies that fail and pass the Bechdel test shows different distribution shapes, with failing movies showing a tighter concentration of higher scores, especially in the higher awards categories.For movies with no awards, the distribution of scores is wider, suggesting a greater diversity in audience ratings regardless of the Bechdel test result.
+The comparison between movies that fail and pass the Bechdel test in Figure \ref{fig:imbd_score_ridge_plot} shows different distribution shapes, with failing movies showing a tighter concentration of higher scores, especially in the higher awards categories. For movies with no awards, the distribution of scores is wider, suggesting a greater diversity in audience ratings regardless of the Bechdel test result.
 
 ## Exploration 10: Awards Over Time by Bechdel Test Result
 ```{r total_awards_by_year_and_bechdel}
@@ -529,9 +524,8 @@ bechdel_awards %>%
   xlab("Longevity") +
   theme(legend.position = "bottom")
 ```
-The distributions show how the IMBD scores are spread within each awards category.
-We can see that some awards categories, such as '7+ Awards', tend to have a higher density around higher IMBD scores, suggesting that movies with more awards may be rated more favorably.
-The overlap between the distributions of different awards categories indicates that while there may be a trend, the number of awards is not the sole determinant of IMBD scores.
+
+The distributions in Figure \ref{fig:imbd_score_density_awards} show how the IMBD scores are spread within each awards category. We can see that some awards categories, such as '7+ Awards', tend to have a higher density around higher IMBD scores, suggesting that movies with more awards may be rated more favorably. The overlap between the distributions of different awards categories indicates that while there may be a trend, the number of awards is not the sole determinant of IMBD scores.
 
 ## Exploration 12:  Shadowgram Visualization of IMBD Scores
 ```{r imbd_scores_shadowgram}
@@ -552,7 +546,7 @@ shadowgram(
 
 ```
 
-The visualization shows a multi-layered perspective of the IMBD scores, with peaks at certain scores suggesting common ratings given by viewers.The spread of the scores across different layers indicates the diversity in the viewers' ratings, with some scores being much more common than others.
+The visualization shows a multi-layered perspective of the IMBD scores, with peaks at certain scores suggesting common ratings given by viewers. The spread of the scores across different layers indicates the diversity in the viewers' ratings, with some scores being much more common than others.
 
 ## Exploration 13: Descriptive Statistics of IMBD Scores by Bechdel Test Result
 
@@ -595,7 +589,7 @@ bechdel_stats %>%
 
 
 ```
-From Table 13, we discern that movies failing the Bechdel test have a marginally higher median IMBD score, a subtle yet intriguing finding. The median score, an indicator less sensitive to outliers, suggests that movies with less female presence or those that do not emphasize female-centric conversations are not necessarily disadvantaged in terms of viewer ratings. However, the range of IMBD scores (from minimum to maximum) for Bechdel-failing movies is broader, indicating a more varied reception amongst viewers.
+From Table \ref{tab:bechdel_summary_stats}, we discern that movies failing the Bechdel test have a marginally higher median IMBD score, a subtle yet intriguing finding. The median score, an indicator less sensitive to outliers, suggests that movies with less female presence or those that do not emphasize female-centric conversations are not necessarily disadvantaged in terms of viewer ratings. However, the range of IMBD scores (from minimum to maximum) for Bechdel-failing movies is broader, indicating a more varied reception amongst viewers.
 
 Conversely, movies that pass the Bechdel test exhibit a slightly lower median, suggesting that a focus on female representation does not always correlate with higher ratings. Nonetheless, the more concentrated interquartile range (Q1 to Q3) for Bechdel-passing films implies a consistency in scoring, perhaps indicating a more uniform viewer appreciation.
 
@@ -623,7 +617,7 @@ measurement order. We could look at the measurement order with respect to the
 year that it came out, but that wouldn't make sense when looking at IMBD scores,
 since a lot of these movies came out long before people began giving scores. 
 
-```{r, normality}
+```{r, normality,fig.cap='QQ Plot'}
 # Assumption Assessment Visualizations ----
 ## Gaussian Residuals Assumption
 car::qqPlot(
@@ -636,12 +630,12 @@ car::qqPlot(
 )
 ```
 
-Looking at this first assumption of normality, it appears that there are many points
+Looking at this first assumption in Figure \ref{fig:normality} of normality, it appears that there are many points
 over the 90% envelope. This happens mainly on the lower end, but it is still enough
 to consider this assumption not met. This will have to be looked into, but first
 we need to assess the equal variance assumption.
 
-```{r,eqvar,fig.height=3,fig.width=7}
+```{r,eqvar,fig.height=3,fig.width=7,fig.cap='Tukey-Anscombe Plot'}
 ## Strip Chart for Homoscedasticity ----
 ggplot(
   data = data.frame(
@@ -655,19 +649,11 @@ ggplot(
   xlab("Fitted values (points)") +
   ylab("Residuals (points)")
 ```
-This assumption would be on the edge of being met. The main concern here are the 
-three strips that have less than 4 points. Since these are here, it is hard to asses 
-whether or not the assumption is met, but since there is no fanning or funneling
-throughout the entire strip chart, we think it is safe to assume this assumption
-is met and we can continue, keeping in mind the possiblility of this being incorrect.
+The equal variance assumption in Figure \ref{fig:eqvar} would be on the edge of being met. The main concern here are the three strips that have less than 4 points. Since these are here, it is hard to assess whether or not the assumption is met, but since there is no fanning or funneling throughout the entire strip chart, we think it is safe to assume this assumption is met and we can continue, keeping in mind the possiblility of this being incorrect.
 
 ### Transformations
 
-Some of the possible transformations that we looked into did not help. These
-included squaring, square rooting, and logging the response variable. While searching
-for other possible ways to help, we found that cubing the response was the best.
-Here, we are going to reconsider both assumptions made and use this transformation
-for the rest of the paper. 
+Since the normality assumption was not met, we needed to look into other possible solutions. Some of the possible transformations that we looked into did not help. These included squaring, square rooting, and logging the response variable. While searching for other possible ways to help, we found that cubing the response was the best. Here, we are going to reconsider both assumptions made and use this transformation for the rest of the paper. 
 
 ```{r model_fit2}
 # Fit the model for ANOVA ----
@@ -679,7 +665,7 @@ imbd_model <- aov(
 )
 ```
 
-```{r}
+```{r,normality-transformed,fig.cap='QQ Plot Transformed'}
 # Assumption Assessment Visualizations ----
 ## Gaussian Residuals Assumption
 car::qqPlot(
@@ -692,13 +678,9 @@ car::qqPlot(
 )
 ```
 
-After applying the transformation, it is hard to tell but it worked. We did not
-want to dedicate an entire page to this qq plot to see, but after expanding
-the plot outside of the paper, we easily saw that only some of the points
-were outside of the envelope. This is a much bigger improvement from before, and
-we can now say that the normality assumption is met. 
+After applying the transformation, it is hard to tell but it worked. We did not want to dedicate an entire page to the qq plot in Figure \ref{fig:normality-transformed} to see, but after expanding the plot outside of the paper, we easily saw that only some of the points were outside of the envelope. This is a much bigger improvement from before, and we can now say that the normality assumption is met. 
 
-```{r,fig.height=3,fig.width=7}
+```{r eqvar-transformed,fig.height=3,fig.width=7,fig.cap='Tukey-Anscombe Plot Transformed'}
 ## Strip Chart for Homoscedasticity ----
 ggplot(
   data = data.frame(
@@ -712,11 +694,8 @@ ggplot(
   xlab("Fitted values (points)") +
   ylab("Residuals (points)")
 ```
-Looking at the homoscedasticity of the residuals, it looks almost the same as before. We
-still show caution with the three strips of points that are smaller, but we believe
-it is safe to continue on with the assumption being met points swap places Since the two assumptions
-are now met, we can use this transformed that to now look at the Omnibus report and
-begin to answer our research questions. 
+
+Looking at the homoscedasticity of the residuals in Figure \ref{fig:eqvar-transformed}, it looks almost the same as before. We still show caution with the three strips of points that are smaller, but we believe it is safe to continue on with the assumption being met points swap places. Since the two assumptions are now met, we can use this transformed data to now look at the Omnibus report and begin to answer our research questions. 
 
 ## Omnibus
 
@@ -771,7 +750,7 @@ individual main effects, and answer our two questions from the beginning:
 
 ### Individual Main effect Comparisons
 
-```{r,fig.align='center'}
+```{r Bechdel-posthoc,fig.align='center'}
 IMBDPostHoc <- emmeans::emmeans(
   object = imbd_model,
   specs = pairwise ~ movies.code, # Notice the use of the |
@@ -801,7 +780,7 @@ left_join(
 ) %>%
 knitr::kable(
 digits = 3,
-caption = "Post Hoc Comparisons for Main Effect Plate Material",
+caption = "Post Hoc Comparisons for Main Effect Bechdel Score",
 col.names = c("Pair", "Difference", "SE", "DF", "t", "p-value", "Cohen's d",
 "Prob. of Superiority"),
 align = "lccccccc",
@@ -814,28 +793,10 @@ latex_options = c("HOLD_position")
 )
 ```
 
-To begin, we want to first look at the p-value given and compare it directly with
-the unusualness threshold we decided from before of 0.1. The p-value came out to
-0.024, which is below the threshold level. Since it is below, this means that
-we must reject the null hypothesis that there is no difference in the Bechdel test
-scores and act as if there is a difference in IMBD scores when looking at the
-Bechdel test score. As mentioned before, we can not make any causal statements
-about failing or passing the Bechdel test leading to better or worse scores, but
-we can say that there is a significant statistical difference between IMBD scores
-depending on if you fail or pass the Bechdel test. We can also take a look at 
-Cohen's d and claim that there are 0.471 standard deviations between these two groups. 
-This is not a lot of distance between the two, but with a p-value being so low,
-there must be a small variance for both tests. The probability of superiority explains
-what percent of the time a randomly selected number of the first group will have
-a higher numeric value of the response than a randomly selescted member of the second.
-In our case, this value is 0.63, meaning that 63% of the time a random value is chosen
-from movies that fail the Bechdel test, their IMBD score will be higher than a 
-randomly selected value from movies that pass. This backs up our question because
-it shows that a large percent of the time a movie fails (shows less representation
-of women), they have a higher IMBD score.
+To begin, we want to first look at the p-value given in Table \ref{tab:Bechdel-posthoc} and compare it directly with the unusualness threshold we decided from before of 0.1. The p-value came out to 0.024, which is below the threshold level. Since it is below, this means that we must reject the null hypothesis that there is no difference in the Bechdel test scores and act as if there is a difference in IMBD scores when looking at the Bechdel test score. As mentioned before, we can not make any causal statements about failing or passing the Bechdel test leading to better or worse scores, but we can say that there is a significant statistical difference between IMBD scores depending on if you fail or pass the Bechdel test. We can also take a look at Cohen's d and claim that there are 0.471 standard deviations between these two groups. This is not a lot of distance between the two, but with a p-value being so low, there must be a small variance for both tests. The probability of superiority explains what percent of the time a randomly selected number of the first group will have a higher numeric value of the response than a randomly selescted member of the second. In our case, this value is 0.63, meaning that 63% of the time a random value is chosen from movies that fail the Bechdel test, their IMBD score will be higher than a randomly selected value from movies that pass. This backs up our question because it shows that a large percent of the time a movie fails (shows less representation of women), they have a higher IMBD score.
 
 
-```{r,fig.align='center'}
+```{r Awards-posthoc,fig.align='center'}
 IMBDPostHoc <- emmeans::emmeans(
   object = imbd_model,
   specs = pairwise ~ awards_factor,
@@ -878,67 +839,23 @@ latex_options = c("HOLD_position")
 )
 ```
 
-A similar breakdown can be used to look at the number of awards received. While 
-looking at every p-value for movies that received no awards, they are all 0.
-This would indicate that we reject the null hypothesis that there is no statistical 
-difference between getting no awards and getting any of the other types, and act
-as if there is a difference between them. We can tell that movies that get no 
-awards tend to have less IMBD scores because each of the cohen's d values are less
-than 0 (meaning no awards are that many standard deviation below its respective
-counterpart) and the probability of superiority is less than 50%, meaning for every
-random movie that has no awards is far less likely to have a higher IMBD score
-than those that have any awards at all. 
+A similar breakdown can be used to look at the number of awards received in Table \ref{tab:Awards-posthoc}. While looking at every p-value for movies that received no awards, they are all 0. This would indicate that we reject the null hypothesis that there is no statistical difference between getting no awards and getting any of the other types, and act as if there is a difference between them. We can tell that movies that get no awards tend to have less IMBD scores because each of the cohen's d values are less than 0 (meaning no awards are that many standard deviation below its respective counterpart) and the probability of superiority is less than 50%, meaning for every random movie that has no awards is far less likely to have a higher IMBD score than those that have any awards at all. 
 
-There are only 3 cases of failing to reject the null hypotheses and having no statistical
-difference between the two, and these are for some and many awards, some and a lot 
-of awards, and many and a lot of awards. This could be due to the lack of data 
-points in each of these categories, but it is quite interesting to see that movies
-who get over 3 awards tend to have similar IMBD scores. 
+There are only 3 cases of failing to reject the null hypotheses and having no statistical difference between the two, and these are for some and many awards, some and a lot of awards, and many and a lot of awards. This could be due to the lack of data points in each of these categories, but it is quite interesting to see that movies who get over 3 awards tend to have similar IMBD scores. 
 
 # Discussion
 
-There does appear to be a correlation of passing the Bechdel test and getting a 
-higher score on IMBD. There also appears to be a correlation between getting no awards
-and having a lower IMBD score. As a reinstatement, since we are working with an 
-observational study, we cannot make any claims about the Bechdel test or the 
-number of awards causing IMBD scores to be what they are. We can however state 
-that there was a statistical difference between the Bechdel test scores and 
-also the number of awards received. It was interesting to see that the Omnibus
-results stated that the interaction term had no statistical evidence of the IMBD
-scores being different, yet there was a difference in the extremes of the factors
-(passing with no awards and failing with a lot of awards). 
+There does appear to be a correlation of passing the Bechdel test and getting a higher score on IMBD. There also appears to be a correlation between getting no awards and having a lower IMBD score. As a reinstatement, since we are working with an observational study, we cannot make any claims about the Bechdel test or the number of awards causing IMBD scores to be what they are. We can however state that there was a statistical difference between the Bechdel test scores and also the number of awards received. It was interesting to see that the Omnibus results stated that the interaction term had no statistical evidence of the IMBD scores being different, yet there was a difference in the extremes of the factors (passing with no awards and failing with a lot of awards). 
 
 ## Limitations and Future Work
 
-In this section, we will discuss specific limitations to our project and how this
-could be incorporated into future work.
+In this section, we will discuss specific limitations to our project and how this could be incorporated into future work.
 
-To start, our data set only consisted of movies between the years 1971 and 2013
-due to how the combined data sets just happened to line up. There are probably movies
-not on this list that would be able to get included, especially from recent times.
-It would be an interesting question to see how over time, these difference in Bechdel
-test scores could matter more or less. This type of futre work could be making a
-data set that is able to have all movies from 1900 all the way to present day and 
-see the impacts that different years make, and how additional years impact over time.
+To start, our data set only consisted of movies between the years 1971 and 2013 due to how the combined data sets just happened to line up. There are probably movies not on this list that would be able to get included, especially from recent times. It would be an interesting question to see how over time, the difference in Bechdel test scores could matter more or less. This type of future work could be making a data set that is able to have all movies from 1900 all the way to present day and see the impacts that different years make, and how additional years impact over time.
 
-I second limitation consists of including two factors or potential blocks. First, 
-we did not take into consideration any type of genre throughout. It is possible 
-that the type of movie also impacts the IMBD score, and this would be interesting
-to see what genres tend to do better. The second is the year it came out. There is
-potential here for this to be used as a factor, but also as a block. Obviously, 
-movies from the 1960s will probably have less representation of women than those
-in the 2010s, so using this as a block could have potential to block out the 
-impacts that the year might have on the Bechdel test score. 
+A second limitation consists of including two factors or potential blocks. First, we did not take into consideration any type of genre throughout. It is possible that the type of movie also impacts the IMBD score, and this would be interesting to see what genres tend to do better. The second is the year it came out. There is potential here for this to be used as a factor, but also as a block. Obviously, movies from the 1960s will probably have less representation of women than those in the 2010s, so using this as a block could have potential to block out the impacts that the year might have on the Bechdel test score. 
 
-The final limitation has to do with our response. We used IMBD score because we
-thought it would be able to represent the populations interests the best. However,
-there are many other ways to score a movie. Rotten tomatoes is probably the biggest
-out there, but this is dependent mainly on critics ratings, and the percentage
-you see is typically what percentage of critics who rated the movie rated it 
-above 3.5. This seems biased mainly towards critics and not a good representation 
-of the score, but nonetheless it would be interesting to use this as a response,
-or even as a factor. Another potential score could be Letterboxd scores, as they
-represent a much larger population of people. 
+The final limitation has to do with our response. We used IMBD score because we thought it would be able to represent the populations interests the best. However, there are many other ways to score a movie. Rotten tomatoes is probably the biggest out there, but this is dependent mainly on critics ratings, and the percentage you see is typically what percentage of critics who rated the movie rated it above 3.5. This seems biased mainly towards critics and not a good representation of the score, but nonetheless it would be interesting to use this as a response, or even as a factor. Another potential score could be Letterboxd scores, as they represent a much larger population of people. 
 
 # References
 
@@ -952,6 +869,6 @@ https://help.imdb.com/article/imdb/track-movies-tv/ratings-faq/G67Y87TFYYP6TWAV#
 
 https://blogs.fu-berlin.de/abv-gender-diversity/2021/12/13/the-bechdel-test-and-gender-equality-in-the-film-industry/
 
-# Author Contributions
+# Code Appendix
 
 
